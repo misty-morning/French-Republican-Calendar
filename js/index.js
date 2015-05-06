@@ -24,6 +24,7 @@ $(document).ready(function() {
 
 	//Revolutionary Calendar
 
+	var revDecade, revDay, revMonth, revYear;
 /*
 	var year = {
 		january: 31,
@@ -40,14 +41,14 @@ $(document).ready(function() {
 		december: 31
 	};
 */	
-	var testTime = new Date(2015, 8, 23);
+	var testTime = new Date(2015, 4, 20);
 
 	var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 	var thisCommonMonth = commonTime.getMonth();
 	var thisCommonDay = commonTime.getDate();
 
-	var firstDateOfThisYear = new Date(2014, 8, 24);
+	var firstDateOfThisYear = new Date(2014, 8, 23);
 	var firstDayOfThisYear = firstDateOfThisYear.getDate();
 	var firstMonthOfThisYear = firstDateOfThisYear.getMonth();
 
@@ -74,12 +75,22 @@ $(document).ready(function() {
 	else {
 		daysAmount = thisCommonDay - firstDayOfThisYear;
 	}
-	daysAmount += 1;
-
-
+	//daysAmount += 1;
 	console.log("daysAmount: " + daysAmount);
 
-	var revDecade, revDay, revMonth, revYear;
+	var monthIndex = daysAmount / 30 >> 0;
+	console.log("monthIndex: " + monthIndex);
+
+	var revMonthsArray = ["вандемьера", "брюмера", "фримера", "нивоза", "плювиоза", "вантоза", "жерминаля", "флореаля", "прериаля", "мессидора", "термидора", "фрюктидора"];
+
+	revMonth = revMonthsArray[monthIndex];
+
+	revDay = daysAmount % 30;
+
+	var decadeArray = ["Примиди", "Дуоди", "Триди", "Квартиди", "Квинтиди", "Секстиди", "Септиди", "Октиди", "Нониди", "Декади"];
+
+	revDecade = decadeArray[daysAmount % 10 - 1];
+
 	revYear = commonTime.getFullYear() - 1791;
 
 	$(revDecadeTag).html(revDecade);
