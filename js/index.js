@@ -12,72 +12,74 @@ var comYearTag = "[data-js-com-year]"
 $(document).ready(function() {
 	var commonTime = new Date();
 
-	var commonWeek
-	switch (commonTime.getDay()) {
-		case 0:
-			commonWeek = "Воскресенье"
-			break;
-		case 1:
-			commonWeek = "Понедельник"
-			break;
-		case 2:
-			commonWeek = "Вторник"
-			break;
-		case 3:
-			commonWeek = "Среда"
-			break;
-		case 4:
-			commonWeek = "Четверг"
-			break;
-		case 5:
-			commonWeek = "Пятница"
-			break;
-		case 6:
-			commonWeek = "Суббота"
-			break;
+	//Common Calendar
+
+	var commonWeekArray = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+	var commonMonthArray = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+
+	$(comWeekTag).html(commonWeekArray[commonTime.getDay()]);
+	$(comDayTag).html(commonTime.getDate());
+	$(comMonthTag).html(commonMonthArray[commonTime.getMonth()]);
+	$(comYearTag).html(commonTime.getFullYear());
+
+	//Revolutionary Calendar
+
+	var thisCommonMonth = commonTime.getMonth();
+	var thisCommonDay = commonTime.getDate();
+/*
+	var year = {
+		january: 31,
+		february: 28,
+		march: 31,
+		april: 30,
+		may: 31,
+		june: 30,
+		july: 31,
+		august: 31,
+		september: 30,
+		october: 31,
+		november: 30,
+		december: 31
+	};
+*/
+	var daysAmount;
+	var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+	var firstDateOfThisYear = new Date(2014, 8, 24);
+	var firstDayOfThisYear = firstDateOfThisYear.getDate();
+	var firstMonthOfThisYear = firstDateOfThisYear.getMonth();
+
+	if (thisCommonMonth != firstMonthOfThisYear) {
+		var daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
+		if (thisCommonMonth > firstMonthOfThisYear) {
+			for (var i = firstMonthOfThisYear + 1; i < thisCommonMonth; i++) {
+				daysAmount += year[i];
+			}
+			daysAmount += thisCommonDay;
+		}
+		else if (thisCommonMonth < firstMonthOfThisYear) {
+			for (var i = firstMonthOfThisYear + 1; i <= 11; i++) {
+				daysAmount += year[i];
+			}
+			for (var i = 0; i < thisCommonMonth; i++) {
+				daysAmount += year[i];
+			}
+			daysAmount += thisCommonDay;
+		}
 	}
-	var commonMonth
-	switch (commonTime.getMonth()) {
-		case 0:
-			commonMonth = "января"
-			break;
-		case 1:
-			commonMonth = "февраля"
-			break;
-		case 2:
-			commonMonth = "марта"
-			break;
-		case 3:
-			commonMonth = "апреля"
-			break;
-		case 4:
-			commonMonth = "мая"
-			break;
-		case 5:
-			commonMonth = "июня"
-			break;
-		case 6:
-			commonMonth = "июля"
-			break;
-		case 7:
-			commonMonth = "августа"
-			break;
-		case 8:
-			commonMonth = "сентября"
-			break;
-		case 9:
-			commonMonth = "октября"
-			break;
-		case 10:
-			commonMonth = "ноября"
-			break;
-		case 11:
-			commonMonth = "декабря"
-			break;
+	else {
+		if ()
 	}
 
-	$(comWeekTag).html(commonWeek);
-	$(comDayTag).html(commonTime.getDate());
-	$(comMonthTag).html(commonMonth);
-	$(comYearTag).html(commonTime.getFullYear());
-})
+
+
+	console.log("daysAmount: " + daysAmount);
+
+	var revDecade, revDay, revMonth, revYear;
+	revYear = commonTime.getFullYear() - 1791;
+
+	$(revDecadeTag).html(revDecade);
+	$(revDayTag).html(revDay);
+	$(revMonthTag).html(revMonth);
+	$(revYearTag).html(revYear);
+});

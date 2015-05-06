@@ -9,7 +9,7 @@ Content
 .content {
 	width: 900px;
 	margin: 0 auto;
-	height: 100%;
+	/*height: 100%;*/
 	text-align: center;
 }
 .main-head {
