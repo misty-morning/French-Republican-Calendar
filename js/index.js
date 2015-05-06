@@ -24,8 +24,6 @@ $(document).ready(function() {
 
 	//Revolutionary Calendar
 
-	var thisCommonMonth = commonTime.getMonth();
-	var thisCommonDay = commonTime.getDate();
 /*
 	var year = {
 		january: 31,
@@ -41,23 +39,29 @@ $(document).ready(function() {
 		november: 30,
 		december: 31
 	};
-*/
-	var daysAmount;
+*/	
+	var testTime = new Date(2015, 8, 23);
+
 	var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+	var thisCommonMonth = commonTime.getMonth();
+	var thisCommonDay = commonTime.getDate();
 
 	var firstDateOfThisYear = new Date(2014, 8, 24);
 	var firstDayOfThisYear = firstDateOfThisYear.getDate();
 	var firstMonthOfThisYear = firstDateOfThisYear.getMonth();
 
-	if (thisCommonMonth != firstMonthOfThisYear) {
-		var daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
+	var daysAmount;
+
+	if ((thisCommonMonth != firstMonthOfThisYear) || (thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
+		daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
 		if (thisCommonMonth > firstMonthOfThisYear) {
 			for (var i = firstMonthOfThisYear + 1; i < thisCommonMonth; i++) {
 				daysAmount += year[i];
 			}
 			daysAmount += thisCommonDay;
 		}
-		else if (thisCommonMonth < firstMonthOfThisYear) {
+		else if (thisCommonMonth <= firstMonthOfThisYear) {
 			for (var i = firstMonthOfThisYear + 1; i <= 11; i++) {
 				daysAmount += year[i];
 			}
@@ -68,9 +72,9 @@ $(document).ready(function() {
 		}
 	}
 	else {
-		if ()
+		daysAmount = thisCommonDay - firstDayOfThisYear;
 	}
-
+	daysAmount += 1;
 
 
 	console.log("daysAmount: " + daysAmount);
