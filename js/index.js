@@ -24,7 +24,6 @@ $(document).ready(function() {
 
 	//Revolutionary Calendar
 
-	var revDecade, revDay, revMonth, revYear;
 /*
 	var year = {
 		january: 31,
@@ -42,17 +41,21 @@ $(document).ready(function() {
 	};
 */	
 	var testTime = new Date(2015, 4, 20);
+	var firstDateOfThisYear = new Date(2014, 8, 23);
 
-	var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
+	
 	var thisCommonMonth = commonTime.getMonth();
 	var thisCommonDay = commonTime.getDate();
 
-	var firstDateOfThisYear = new Date(2014, 8, 23);
+	
 	var firstDayOfThisYear = firstDateOfThisYear.getDate();
 	var firstMonthOfThisYear = firstDateOfThisYear.getMonth();
 
+	var revTime = {};
+
 	var daysAmount;
+
+	var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 	if ((thisCommonMonth != firstMonthOfThisYear) || (thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
 		daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
@@ -76,22 +79,23 @@ $(document).ready(function() {
 		daysAmount = thisCommonDay - firstDayOfThisYear;
 	}
 	//daysAmount += 1;
-	console.log("daysAmount: " + daysAmount);
+	revTime.year = commonTime.getFullYear() - 1791;
+	revTime.month = daysAmount / 30 >> 0;	
+	revTime.day = daysAmount % 30;
+	revTime.decade = daysAmount % 10 - 1;
 
-	var monthIndex = daysAmount / 30 >> 0;
-	console.log("monthIndex: " + monthIndex);
+
+	console.log("daysAmount: " + daysAmount);
+	console.log("monthIndex: " + revTime.month);
 
 	var revMonthsArray = ["вандемьера", "брюмера", "фримера", "нивоза", "плювиоза", "вантоза", "жерминаля", "флореаля", "прериаля", "мессидора", "термидора", "фрюктидора"];
-
-	revMonth = revMonthsArray[monthIndex];
-
-	revDay = daysAmount % 30;
+	var revMonth = revMonthsArray[revTime.month];
 
 	var decadeArray = ["Примиди", "Дуоди", "Триди", "Квартиди", "Квинтиди", "Секстиди", "Септиди", "Октиди", "Нониди", "Декади"];
+	var revDecade = decadeArray[revTime.decade];
 
-	revDecade = decadeArray[daysAmount % 10 - 1];
-
-	revYear = commonTime.getFullYear() - 1791;
+	var revDay = revTime.day;
+	var revYear = revTime.year;
 
 	$(revDecadeTag).html(revDecade);
 	$(revDayTag).html(revDay);
