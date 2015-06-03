@@ -31,9 +31,9 @@ $(document).ready(function() {
 		var firstDayOfThisYear = firstDayDate.getDate();
 		var firstMonthOfThisYear = firstDayDate.getMonth();
 
-		var daysAmount;
-
 		var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+		var daysAmount;
 
 		if ((thisCommonMonth != firstMonthOfThisYear) || (thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
 			daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
@@ -57,7 +57,7 @@ $(document).ready(function() {
 			daysAmount = thisCommonDay - firstDayOfThisYear;
 		}
 		//daysAmount += 1;
-		
+
 		var revolutionaryDate = {};
 		
 		revolutionaryDate.year = date.getFullYear() - 1791;
