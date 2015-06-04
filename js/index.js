@@ -1,15 +1,18 @@
-//Ui
-var revDecadeTag = "[data-js-decade]"
-var revDayTag = "[data-js-day]"
-var revMonthTag = "[data-js-month]"
-var revYearTag = "[data-js-year]"
-
-var comWeekTag = "[data-js-com-week]"
-var comDayTag = "[data-js-com-day]"
-var comMonthTag = "[data-js-com-month]"
-var comYearTag = "[data-js-com-year]"
 
 $(document).ready(function() {
+	//Ui
+	var $revCalendarEl = $("[data-js-rev-calendar]");
+	/*
+	var revDecadeTag = "[data-js-decade]"
+	var revDayTag = "[data-js-day]"
+	var revMonthTag = "[data-js-month]"
+	var revYearTag = "[data-js-year]"
+	*/
+	var comWeekTag = "[data-js-com-week]"
+	var comDayTag = "[data-js-com-day]"
+	var comMonthTag = "[data-js-com-month]"
+	var comYearTag = "[data-js-com-year]"
+	
 	var commonTime = new Date();
 
 	//Common Calendar
@@ -24,7 +27,7 @@ $(document).ready(function() {
 
 	//Revolutionary Calendar
 
-	function revolutionaryCalendar(firstDayDate, date) {
+	var RevolutionaryCalendar = function(firstDayDate, date) {
 		var thisCommonMonth = date.getMonth();
 		var thisCommonDay = date.getDate();
 
@@ -64,30 +67,68 @@ $(document).ready(function() {
 		revolutionaryDate.month = daysAmount / 30 >> 0;	
 		revolutionaryDate.day = daysAmount % 30;
 		revolutionaryDate.decade = daysAmount % 10 - 1;
+		revolutionaryDate.dayName = daysAmount;
 
 		console.log("daysAmount: " + daysAmount);
 
 		return revolutionaryDate;
 	}
 
+	function renderRevCalendar(revolutionaryCalendar, $element) {
+		var dayNameArray = [
+			// Вандемьер
+			"винограда",
+			"шафрана",
+			"каштана",
+			"безвременника",
+			"лошади",
+			"бальзамина",
+			"моркови",
+			"амаранта",
+			"пастернака",
+			"чана",
+			"картошки",
+			"бессмертника",
+			"тыквы обыкновенной",
+			"резеды",
+			"осла",
+			"мирабилиса",
+			"тыквы",
+			"гречихи",
+			"подсолнечника",
+			"пресса",
+			"конопли",
+			"персика",
+			"репы",
+			"амариллиса",
+			"вола",
+			"баклажана",
+			"красного перца",
+			"томата",
+			"ячменя",
+			"бочки",
+			// Брюмер
+		];
+		var dayName = dayNameArray[revolutionaryCalendar.dayName];
+
+		var revMonthsArray = ["вандемьера", "брюмера", "фримера", "нивоза", "плювиоза", "вантоза", "жерминаля", "флореаля", "прериаля", "мессидора", "термидора", "фрюктидора"];
+		var revMonth = revMonthsArray[revolutionaryCalendar.month];
+
+		var decadeArray = ["Примиди", "Дуоди", "Триди", "Квартиди", "Квинтиди", "Секстиди", "Септиди", "Октиди", "Нониди", "Декади"];
+		var revDecade = decadeArray[revolutionaryCalendar.decade];
+
+		var revDay = revolutionaryCalendar.day;
+		var revYear = revolutionaryCalendar.year;
+
+		$element.html(revDecade + ", " + revDay + " " + revMonth + " " + revYear + " года.");
+	}
+
 	var testTime = new Date(2015, 4, 20);
 	var firstDateOfThisYear = new Date(2014, 8, 23);
 
-	var revTime = revolutionaryCalendar(firstDateOfThisYear, commonTime);
+	var revTime = new RevolutionaryCalendar(firstDateOfThisYear, commonTime);
 
 	console.log("monthIndex: " + revTime.month);
 
-	var revMonthsArray = ["вандемьера", "брюмера", "фримера", "нивоза", "плювиоза", "вантоза", "жерминаля", "флореаля", "прериаля", "мессидора", "термидора", "фрюктидора"];
-	var revMonth = revMonthsArray[revTime.month];
-
-	var decadeArray = ["Примиди", "Дуоди", "Триди", "Квартиди", "Квинтиди", "Секстиди", "Септиди", "Октиди", "Нониди", "Декади"];
-	var revDecade = decadeArray[revTime.decade];
-
-	var revDay = revTime.day;
-	var revYear = revTime.year;
-
-	$(revDecadeTag).html(revDecade);
-	$(revDayTag).html(revDay);
-	$(revMonthTag).html(revMonth);
-	$(revYearTag).html(revYear);
+	renderRevCalendar(revTime, $revCalendarEl);
 });
