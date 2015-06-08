@@ -31,6 +31,8 @@ $(document).ready(function() {
 		var thisCommonMonth = date.getMonth();
 		var thisCommonDay = date.getDate();
 
+
+		//Первым днем года будет день, следующий за днем осеннего равноденствия
 		var firstDayOfThisYear = firstDayDate.getDate();
 		var firstMonthOfThisYear = firstDayDate.getMonth();
 
@@ -38,7 +40,9 @@ $(document).ready(function() {
 
 		var daysAmount;
 
+
 		if ((thisCommonMonth != firstMonthOfThisYear) || (thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
+			
 			daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
 			if (thisCommonMonth > firstMonthOfThisYear) {
 				for (var i = firstMonthOfThisYear + 1; i < thisCommonMonth; i++) {
@@ -58,18 +62,26 @@ $(document).ready(function() {
 		}
 		else {
 			daysAmount = thisCommonDay - firstDayOfThisYear;
+			
 		}
-		//daysAmount += 1;
 
+		var revYear;
+		var thisCommonYear = date.getFullYear();
+
+		if (thisCommonYear === firstDayDate.getFullYear()) {
+			revYear = thisCommonYear - 1790;
+		}
+		else {
+			revYear = thisCommonYear - 1791;
+		}
+		
 		var revolutionaryDate = {};
 		
-		revolutionaryDate.year = date.getFullYear() - 1791;
+		revolutionaryDate.year = revYear;
 		revolutionaryDate.month = daysAmount / 30 >> 0;	
-		revolutionaryDate.day = daysAmount % 30;
-		revolutionaryDate.decade = daysAmount % 10 - 1;
+		revolutionaryDate.day = daysAmount % 30 + 1;
+		revolutionaryDate.decade = daysAmount % 10;
 		revolutionaryDate.dayName = daysAmount;
-
-		console.log("daysAmount: " + daysAmount);
 
 		return revolutionaryDate;
 	}
@@ -108,6 +120,38 @@ $(document).ready(function() {
 			"ячменя",
 			"бочки",
 			// Брюмер
+			"яблока",
+			"сельдерея",
+			"груши",
+			"свеклы",
+			"гуся",
+			"гелиотропа",
+			"инжира",
+			"скорцонера",
+			"рябины обыкновенной",
+			"плуга",
+			"козлобородника",
+			"рогульника (чилима)",
+			"топинамбура",
+			"эндивия",
+			"индюка",
+			"сахарного корня",
+			"жерухи обыкновенной",
+			"свинчатки",
+			"граната",
+			"бороны",
+			"бакхариса",
+			"испанского боярышника",
+			"марены",
+			"апельсина",
+			"фазана",
+			"фисташки",
+			"чины клубненосной",
+			"айвы",
+			"рябины крупноплодной",
+			"валика",
+			//Фример
+
 		];
 		var dayName = dayNameArray[revolutionaryCalendar.dayName];
 
@@ -123,12 +167,25 @@ $(document).ready(function() {
 		$element.html(revDecade + ", " + revDay + " " + revMonth + " " + revYear + " года.");
 	}
 
-	var testTime = new Date(2015, 4, 20);
-	var firstDateOfThisYear = new Date(2014, 8, 23);
+	var firstDateOfThisYear = new Date(2014, 8, 24);
 
 	var revTime = new RevolutionaryCalendar(firstDateOfThisYear, commonTime);
 
 	console.log("monthIndex: " + revTime.month);
+	console.log("daysAmount: " + revTime.dayName);
+	console.log("today: " + commonTime.getDate());
 
 	renderRevCalendar(revTime, $revCalendarEl);
+
+	// Test
+
+	var testTime = new Date(2014, 10, 23);
+
+	var testRevTime = new RevolutionaryCalendar(firstDateOfThisYear, testTime);
+
+	console.log("testDaysAmount: " + testRevTime.dayName);
+
+	var $test = $("#test1");
+
+	renderRevCalendar(testRevTime, $test);
 });
