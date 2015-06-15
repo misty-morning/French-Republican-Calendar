@@ -27,6 +27,7 @@ $(document).ready(function() {
 
 	//Revolutionary Calendar
 
+	//вероятно, лучше передавать первым аргументом числовую переменную 21/22/23
 	var RevolutionaryCalendar = function(firstDayDate, date) {
 		var thisCommonMonth = date.getMonth();
 		var thisCommonDay = date.getDate();
@@ -64,15 +65,15 @@ $(document).ready(function() {
 			daysAmount = thisCommonDay - firstDayOfThisYear;
 			
 		}
-
+		//bug: разные годы + одинаковые месяцы = неверная дата
 		var revYear;
 		var thisCommonYear = date.getFullYear();
 
 		if (thisCommonYear === firstDayDate.getFullYear()) {
-			revYear = thisCommonYear - 1790;
+			revYear = thisCommonYear - 1791;
 		}
 		else {
-			revYear = thisCommonYear - 1791;
+			revYear = thisCommonYear - 1792;
 		}
 		
 		var revolutionaryDate = {};
@@ -82,10 +83,12 @@ $(document).ready(function() {
 		revolutionaryDate.day = daysAmount % 30 + 1;
 		revolutionaryDate.decade = daysAmount % 10;
 		revolutionaryDate.dayName = daysAmount;
-
+		//toDo: переделать из феуции в объект с методами daysAmount, year, month и пр.
 		return revolutionaryDate;
 	}
 
+
+	//toDo: render должно быть свойством календаря
 	function renderRevCalendar(revolutionaryCalendar, $element) {
 		var dayNameArray = [
 			// Вандемьер
@@ -151,6 +154,37 @@ $(document).ready(function() {
 			"рябины крупноплодной",
 			"валика",
 			//Фример
+			"рапунцель",
+			"турнепса",
+			"цикория",
+			"мушмулы",
+			"свиньи",
+			"валерьяницы",
+			"цветной капусты",
+			"мёда",
+			"можжевельника",
+			"кирки",
+			"воска",
+			"хрена",
+			"кедра",
+			"ели",
+			"косули",
+			"утесника",
+			"кипариса",
+			"плюща",
+			"можжевельника казацкого",
+			"мотыги",
+			"клена сахарного",
+			"вереска",
+			"тросника",
+			"щавеля",
+			"сверчка",
+			"кедрового ореха",
+			"пробки",
+			"трюфеля",
+			"оливы",
+			"лопаты",
+			//Нивоз
 
 		];
 		var dayName = dayNameArray[revolutionaryCalendar.dayName];
@@ -179,13 +213,15 @@ $(document).ready(function() {
 
 	// Test
 
-	var testTime = new Date(2014, 10, 23);
+	var testFirstDate = new Date(1792, 8, 22);
+	var testTime = new Date(1793, 8, 22);
 
-	var testRevTime = new RevolutionaryCalendar(firstDateOfThisYear, testTime);
+	var testRevTime = new RevolutionaryCalendar(testFirstDate, testTime);
 
 	console.log("testDaysAmount: " + testRevTime.dayName);
 
 	var $test = $("#test1");
 
 	renderRevCalendar(testRevTime, $test);
+
 });
