@@ -35,7 +35,7 @@ $(document).ready(function() {
 
 		//Первым днем года будет день, следующий за днем осеннего равноденствия
 		var firstDayOfThisYear = firstDayDate.getDate();
-		var firstMonthOfThisYear = firstDayDate.getMonth();
+		var firstMonthOfThisYear = 8;
 
 		var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -65,7 +65,7 @@ $(document).ready(function() {
 			daysAmount = thisCommonDay - firstDayOfThisYear;
 			
 		}
-		//bug: разные годы + одинаковые месяцы = неверная дата
+
 		var revYear;
 		var thisCommonYear = date.getFullYear();
 
@@ -213,8 +213,8 @@ $(document).ready(function() {
 
 	// Test
 
-	var testFirstDate = new Date(1792, 8, 22);
-	var testTime = new Date(1793, 8, 22);
+	var testFirstDate = new Date(2014, 8, 24);
+	var testTime = new Date(2015, 8, 10);
 
 	var testRevTime = new RevolutionaryCalendar(testFirstDate, testTime);
 
