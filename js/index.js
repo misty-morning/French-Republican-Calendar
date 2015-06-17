@@ -2,12 +2,7 @@
 $(document).ready(function() {
 	//Ui
 	var $revCalendarEl = $("[data-js-rev-calendar]");
-	/*
-	var revDecadeTag = "[data-js-decade]"
-	var revDayTag = "[data-js-day]"
-	var revMonthTag = "[data-js-month]"
-	var revYearTag = "[data-js-year]"
-	*/
+
 	var comWeekTag = "[data-js-com-week]"
 	var comDayTag = "[data-js-com-day]"
 	var comMonthTag = "[data-js-com-month]"
@@ -27,14 +22,12 @@ $(document).ready(function() {
 
 	//Revolutionary Calendar
 
-	//вероятно, лучше передавать первым аргументом числовую переменную 21/22/23
-	var RevolutionaryCalendar = function(date, firstDayDate) {
+	//Первым днем года будет день, следующий за днем осеннего равноденствия(по ходу, наоборот)
+	var RevolutionaryCalendar = function(date, firstDay) {
 		var thisCommonMonth = date.getMonth();
 		var thisCommonDay = date.getDate();
 
-
-		//Первым днем года будет день, следующий за днем осеннего равноденствия
-		var firstDayOfThisYear = firstDayDate;
+		var firstDayOfThisYear = firstDay;
 		var firstMonthOfThisYear = 8;
 
 		var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -76,7 +69,6 @@ $(document).ready(function() {
 			revYear = thisCommonYear - 1792;
 		}
 
-		
 		var revolutionaryDate = {};
 		
 		revolutionaryDate.year = revYear;
@@ -199,10 +191,22 @@ $(document).ready(function() {
 		var revDay = revolutionaryCalendar.day;
 		var revYear = revolutionaryCalendar.year;
 
-		$element.html(revDecade + ", " + revDay + " " + revMonth + " " + revYear + " года.");
+
+
+
+		if (revolutionaryCalendar.dayName < 360) {
+			$element.html(revDecade + ", " + revDay + " " + revMonth + " " + revYear + " года.");
+		}
+		else {
+			var sansculottidesArray = ["День Доблести(Добродетели)", "День Таланта", "День Труда", "День Мнений", "День Наград", "День Революции"];
+			var sansculottidesOrderArray = ["Первая", "Вторая", "Третья", "Четвертая", "Пятая", "Шестая"];
+			var	sansculottideNumber = revolutionaryCalendar.dayName - 360;
+
+			$element.html(sansculottidesOrderArray[sansculottideNumber] + " санкюлотида: " + sansculottidesArray[sansculottideNumber] + ".");
+		}
 	}
 
-	var revTime = new RevolutionaryCalendar(commonTime, 24);
+	var revTime = new RevolutionaryCalendar(commonTime, 23);
 
 	console.log("monthIndex: " + revTime.month);
 	console.log("daysAmount: " + revTime.dayName);
@@ -212,10 +216,9 @@ $(document).ready(function() {
 
 	// Test
 
-	var testFirstDate = new Date(2014, 8, 24);
-	var testTime = new Date(2014, 11, 26);
+	var testTime = new Date(2015, 8, 21);
 
-	var testRevTime = new RevolutionaryCalendar(testTime, 24);
+	var testRevTime = new RevolutionaryCalendar(testTime, 23);
 
 	console.log("testDaysAmount: " + testRevTime.dayName);
 
