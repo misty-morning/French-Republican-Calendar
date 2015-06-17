@@ -28,13 +28,13 @@ $(document).ready(function() {
 	//Revolutionary Calendar
 
 	//вероятно, лучше передавать первым аргументом числовую переменную 21/22/23
-	var RevolutionaryCalendar = function(firstDayDate, date) {
+	var RevolutionaryCalendar = function(date, firstDayDate) {
 		var thisCommonMonth = date.getMonth();
 		var thisCommonDay = date.getDate();
 
 
 		//Первым днем года будет день, следующий за днем осеннего равноденствия
-		var firstDayOfThisYear = firstDayDate.getDate();
+		var firstDayOfThisYear = firstDayDate;
 		var firstMonthOfThisYear = 8;
 
 		var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -65,16 +65,17 @@ $(document).ready(function() {
 			daysAmount = thisCommonDay - firstDayOfThisYear;
 			
 		}
-
+		
 		var revYear;
 		var thisCommonYear = date.getFullYear();
 
-		if (thisCommonYear === firstDayDate.getFullYear()) {
+		if (thisCommonMonth > 8 || thisCommonMonth == 8 && thisCommonDay >= firstDayOfThisYear) {
 			revYear = thisCommonYear - 1791;
 		}
 		else {
 			revYear = thisCommonYear - 1792;
 		}
+
 		
 		var revolutionaryDate = {};
 		
@@ -201,9 +202,7 @@ $(document).ready(function() {
 		$element.html(revDecade + ", " + revDay + " " + revMonth + " " + revYear + " года.");
 	}
 
-	var firstDateOfThisYear = new Date(2014, 8, 24);
-
-	var revTime = new RevolutionaryCalendar(firstDateOfThisYear, commonTime);
+	var revTime = new RevolutionaryCalendar(commonTime, 24);
 
 	console.log("monthIndex: " + revTime.month);
 	console.log("daysAmount: " + revTime.dayName);
@@ -214,9 +213,9 @@ $(document).ready(function() {
 	// Test
 
 	var testFirstDate = new Date(2014, 8, 24);
-	var testTime = new Date(2015, 8, 10);
+	var testTime = new Date(2014, 11, 26);
 
-	var testRevTime = new RevolutionaryCalendar(testFirstDate, testTime);
+	var testRevTime = new RevolutionaryCalendar(testTime, 24);
 
 	console.log("testDaysAmount: " + testRevTime.dayName);
 
