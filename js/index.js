@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 	//Revolutionary Calendar
 
-	//Первым днем года будет день, следующий за днем осеннего равноденствия(по ходу, наоборот)
+	//Первый день календаря - день осеннего равноденствия
 	var RevolutionaryCalendar = function(date, firstDay) {
 		var thisCommonMonth = date.getMonth();
 		var thisCommonDay = date.getDate();
@@ -33,7 +33,6 @@ $(document).ready(function() {
 		var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 		var daysAmount;
-
 
 		if ((thisCommonMonth != firstMonthOfThisYear) || (thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
 			
@@ -178,6 +177,37 @@ $(document).ready(function() {
 			"оливы",
 			"лопаты",
 			//Нивоз
+			"торфа",
+			"каменного угля",
+			"битума",
+			"серы",
+			"собаки",
+			"лавы",
+			"почвы",
+			"навоза",
+			"селитры",
+			"цепа",
+			"гранита",
+			"глины",
+			"аспидного сланца",
+			"песчаника",
+			"кролика",
+			"кремня",
+			"мергеля",
+			"известняка",
+			"мрамора",
+			"решета для веяния",
+			"гипса",
+			"соли",
+			"железа",
+			"меди",
+			"кошки",
+			"олова",
+			"свинца",
+			"цинка",
+			"ртути",
+			"сита",
+			//Плювиоз 
 
 		];
 		var dayName = dayNameArray[revolutionaryCalendar.dayName];
@@ -191,9 +221,6 @@ $(document).ready(function() {
 		var revDay = revolutionaryCalendar.day;
 		var revYear = revolutionaryCalendar.year;
 
-
-
-
 		if (revolutionaryCalendar.dayName < 360) {
 			$element.html(revDecade + ", " + revDay + " " + revMonth + " " + revYear + " года.");
 		}
@@ -202,7 +229,7 @@ $(document).ready(function() {
 			var sansculottidesOrderArray = ["Первая", "Вторая", "Третья", "Четвертая", "Пятая", "Шестая"];
 			var	sansculottideNumber = revolutionaryCalendar.dayName - 360;
 
-			$element.html(sansculottidesOrderArray[sansculottideNumber] + " санкюлотида: " + sansculottidesArray[sansculottideNumber] + ".");
+			$element.html(sansculottidesOrderArray[sansculottideNumber] + " санкюлотида: " + sansculottidesArray[sansculottideNumber] + ". " + revYear + " год.");
 		}
 	}
 
@@ -216,7 +243,7 @@ $(document).ready(function() {
 
 	// Test
 
-	var testTime = new Date(2015, 8, 21);
+	var testTime = new Date(2015, 7, 22);
 
 	var testRevTime = new RevolutionaryCalendar(testTime, 23);
 
