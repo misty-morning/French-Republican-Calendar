@@ -22,67 +22,8 @@ $(document).ready(function() {
 
 	//Revolutionary Calendar
 
-	//Первый день календаря - день осеннего равноденствия
-	var RevolutionaryCalendar = function(date, firstDay) {
-		var thisCommonMonth = date.getMonth();
-		var thisCommonDay = date.getDate();
-
-		var firstDayOfThisYear = firstDay;
-		var firstMonthOfThisYear = 8;
-
-		var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-		var daysAmount;
-
-		if ((thisCommonMonth != firstMonthOfThisYear) || (thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
-			
-			daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
-			if (thisCommonMonth > firstMonthOfThisYear) {
-				for (var i = firstMonthOfThisYear + 1; i < thisCommonMonth; i++) {
-					daysAmount += year[i];
-				}
-				daysAmount += thisCommonDay;
-			}
-			else if (thisCommonMonth <= firstMonthOfThisYear) {
-				for (var i = firstMonthOfThisYear + 1; i <= 11; i++) {
-					daysAmount += year[i];
-				}
-				for (var i = 0; i < thisCommonMonth; i++) {
-					daysAmount += year[i];
-				}
-				daysAmount += thisCommonDay;
-			}
-		}
-		else {
-			daysAmount = thisCommonDay - firstDayOfThisYear;
-			
-		}
-		
-		var revYear;
-		var thisCommonYear = date.getFullYear();
-
-		if (thisCommonMonth > 8 || thisCommonMonth == 8 && thisCommonDay >= firstDayOfThisYear) {
-			revYear = thisCommonYear - 1791;
-		}
-		else {
-			revYear = thisCommonYear - 1792;
-		}
-
-		var revolutionaryDate = {};
-		
-		revolutionaryDate.year = revYear;
-		revolutionaryDate.month = daysAmount / 30 >> 0;	
-		revolutionaryDate.day = daysAmount % 30 + 1;
-		revolutionaryDate.decade = daysAmount % 10;
-		revolutionaryDate.dayName = daysAmount;
-		//toDo: переделать из феуции в объект с методами daysAmount, year, month и пр.
-		return revolutionaryDate;
-	}
-
-
-	//toDo: render должно быть свойством календаря
-	function renderRevCalendar(revolutionaryCalendar, $element) {
-		var dayNameArray = [
+	var calendarNames = {
+		day: [
 			// Вандемьер
 			"винограда",
 			"шафрана",
@@ -455,14 +396,82 @@ $(document).ready(function() {
 			"кукурузы",
 			"каштана (плода)",
 			"корзины"
-		];
-		var dayName = dayNameArray[revolutionaryCalendar.dayName];
+		],
+		month: ["вандемьера", "брюмера", "фримера", "нивоза", "плювиоза", "вантоза", "жерминаля", "флореаля", "прериаля", "мессидора", "термидора", "фрюктидора"],
+		decade: ["Примиди", "Дуоди", "Триди", "Квартиди", "Квинтиди", "Секстиди", "Септиди", "Октиди", "Нониди", "Декади"],
+		sansculottide: ["День Доблести (Добродетели)", "День Таланта", "День Труда", "День Мнений", "День Наград", "День Революции"],
+		sansculottideOrder: ["Первая", "Вторая", "Третья", "Четвертая", "Пятая", "Шестая"],
+	};
 
-		var revMonthsArray = ["вандемьера", "брюмера", "фримера", "нивоза", "плювиоза", "вантоза", "жерминаля", "флореаля", "прериаля", "мессидора", "термидора", "фрюктидора"];
-		var revMonth = revMonthsArray[revolutionaryCalendar.month];
+	//Первый день календаря - день осеннего равноденствия
+	var RevolutionaryCalendar = function(date, firstDay) {
+		var firstMonthOfThisYear = 8;
 
-		var decadeArray = ["Примиди", "Дуоди", "Триди", "Квартиди", "Квинтиди", "Секстиди", "Септиди", "Октиди", "Нониди", "Декади"];
-		var revDecade = decadeArray[revolutionaryCalendar.decade];
+		var firstDayOfThisYear;
+
+		if (!firstDay) {
+			firstDayOfThisYear = 23;
+		}
+		else {
+			firstDayOfThisYear = firstDay;	
+		}
+		
+		var thisCommonMonth = date.getMonth();
+		var thisCommonDay = date.getDate();
+
+		var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+		var daysAmount;
+
+		if ((thisCommonMonth != firstMonthOfThisYear) || (thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
+			
+			daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
+			if (thisCommonMonth > firstMonthOfThisYear) {
+				for (var i = firstMonthOfThisYear + 1; i < thisCommonMonth; i++) {
+					daysAmount += year[i];
+				}
+				daysAmount += thisCommonDay;
+			}
+			else if (thisCommonMonth <= firstMonthOfThisYear) {
+				for (var i = firstMonthOfThisYear + 1; i <= 11; i++) {
+					daysAmount += year[i];
+				}
+				for (var i = 0; i < thisCommonMonth; i++) {
+					daysAmount += year[i];
+				}
+				daysAmount += thisCommonDay;
+			}
+		}
+		else {
+			daysAmount = thisCommonDay - firstDayOfThisYear;
+			
+		}
+		
+		var revYear;
+		var thisCommonYear = date.getFullYear();
+
+		if (thisCommonMonth > 8 || thisCommonMonth == 8 && thisCommonDay >= firstDayOfThisYear) {
+			revYear = thisCommonYear - 1791;
+		}
+		else {
+			revYear = thisCommonYear - 1792;
+		}
+
+		var revolutionaryDate = {};
+		
+		revolutionaryDate.year = revYear;
+		revolutionaryDate.month = daysAmount / 30 >> 0;	
+		revolutionaryDate.day = daysAmount % 30 + 1;
+		revolutionaryDate.decade = daysAmount % 10;
+		revolutionaryDate.dayName = daysAmount;
+
+		return revolutionaryDate;
+	}
+
+	function renderRevCalendar(revolutionaryCalendar, $element) {
+		var dayName = calendarNames.day[revolutionaryCalendar.dayName];
+		var revMonth = calendarNames.month[revolutionaryCalendar.month];
+		var revDecade = calendarNames.decade[revolutionaryCalendar.decade];
 
 		var revDay = revolutionaryCalendar.day;
 		var revYear = revolutionaryCalendar.year;
@@ -471,11 +480,8 @@ $(document).ready(function() {
 			$element.html("День " + dayName +  ".<br>" + revDecade + ", " + revDay + " " + revMonth + " " + revYear + " года.");
 		}
 		else {
-			var sansculottidesArray = ["День Доблести(Добродетели)", "День Таланта", "День Труда", "День Мнений", "День Наград", "День Революции"];
-			var sansculottidesOrderArray = ["Первая", "Вторая", "Третья", "Четвертая", "Пятая", "Шестая"];
 			var	sansculottideNumber = revolutionaryCalendar.dayName - 360;
-
-			$element.html(sansculottidesOrderArray[sansculottideNumber] + " санкюлотида: " + sansculottidesArray[sansculottideNumber] + ". " + revYear + " год.");
+			$element.html(calendarNames.sansculottideOrder[sansculottideNumber] + " санкюлотида: " + calendarNames.sansculottide[sansculottideNumber] + ", " + revYear + " год.");
 		}
 	}
 
@@ -489,7 +495,7 @@ $(document).ready(function() {
 
 	// Test
 
-	var testTime = new Date(2015, 8, 17);
+	var testTime = new Date(2015, 8, 18);
 
 	var testRevTime = new RevolutionaryCalendar(testTime, 23);
 
