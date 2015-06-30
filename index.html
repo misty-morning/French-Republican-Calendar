@@ -11,9 +11,10 @@
  		<h1 class="main-head">Французский республиканский календарь online</h1>
  		<p class="rev-claendar"data-js-rev-calendar>
  		</p>
- 		<h1>Test</h1>
+ 		<!--
+ 		<h3>Test</h3>
  		<p id="test1"></p>
- 		
+ 		-->
  		<h3 class="main-head">Григорианский календарь</h3>
  		<p class="com-claendar">
  			<span class="com-claendar--week" data-js-com-week>test</span>,
@@ -22,6 +23,36 @@
  			<span class="com-claendar--year" data-js-com-year>test</span>
  			года
  		</p>
+
+ 		<h3>Узнать дату</h3>
+ 		<p>Введите дату по григоринскому календарю</p>
+ 		<p>
+ 			<input id="calc--day" type="number" min="1" max="31">
+ 			<select id="calc-month">
+ 				<option value="0">Январь</option>
+ 				<option value="1">Февраль</option>
+ 				<option value="2">Март</option>
+ 				<option value="3">Апрель</option>
+ 				<option value="4">Май</option>
+ 				<option value="5">Июнь</option>
+ 				<option value="6">Июль</option>
+ 				<option value="7">Август</option>
+ 				<option value="8">Сентябрь</option>
+ 				<option value="9">Октябрь</option>
+ 				<option value="10">Ноябрь</option>
+ 				<option value="11">Декабрь</option>
+ 			</select>
+ 			<input id="calc--year" type="number" min="1792" max="3000">
+ 			<select id="calc--first-day">
+ 				<option>22</option>
+ 				<option>23</option>
+ 				<option>24</option>
+ 			</select>
+ 		</p>
+
+ 		<p><button id="calc--btn">Результат</button></p>
+
+ 		<p id="calc--result"></p>
  	</div>
 
 

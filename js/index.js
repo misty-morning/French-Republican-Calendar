@@ -493,6 +493,24 @@ $(document).ready(function() {
 
 	renderRevCalendar(revTime, $revCalendarEl);
 
+	// Calculate rev date
+
+	$calcDay = $("#calc--day");
+	$calcMonth = $("#calc-month");
+	$calcYear = $("#calc--year");
+	$calcFirstDay = $("#calc--first-day");
+	$calcBnt = $("#calc--btn");
+	$calcResult = $("#calc--result");
+
+	$calcBnt.click(function() {
+		var date = new Date($calcYear.val(), $calcMonth.val(), $calcDay.val());
+
+		var revDate = new RevolutionaryCalendar(date, $calcFirstDay.val());
+		renderRevCalendar(revDate, $calcResult);
+	});
+
+
+
 	// Test
 
 	var testTime = new Date(2015, 8, 18);
