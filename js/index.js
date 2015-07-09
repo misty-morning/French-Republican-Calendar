@@ -1,16 +1,14 @@
 
 $(document).ready(function() {
-	//Ui
-	var $revCalendarEl = $("[data-js-rev-calendar]");
+	//Common Calendar
 
+	//Ui
 	var comWeekTag = "[data-js-com-week]"
 	var comDayTag = "[data-js-com-day]"
 	var comMonthTag = "[data-js-com-month]"
 	var comYearTag = "[data-js-com-year]"
 	
 	var commonTime = new Date();
-
-	//Common Calendar
 
 	var commonWeekArray = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
 	var commonMonthArray = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
@@ -21,6 +19,9 @@ $(document).ready(function() {
 	$(comYearTag).html(commonTime.getFullYear());
 
 	//Revolutionary Calendar
+
+	//Ui
+	var $revCalendarEl = $("[data-js-rev-calendar]");
 
 	var calendarNames = {
 		day: [
@@ -403,14 +404,14 @@ $(document).ready(function() {
 		sansculottideOrder: ["Первая", "Вторая", "Третья", "Четвертая", "Пятая", "Шестая"],
 	};
 
-	//Первый день календаря - день осеннего равноденствия
+	//First day of the calendar is the day of the autumn solstice
 	var RevolutionaryCalendar = function(date, firstDay) {
 		var firstMonthOfThisYear = 8;
 
 		var firstDayOfThisYear;
 
 		if (!firstDay) {
-			firstDayOfThisYear = 23;
+			firstDayOfThisYear = 22;
 		}
 		else {
 			firstDayOfThisYear = firstDay;	
@@ -487,14 +488,15 @@ $(document).ready(function() {
 
 	var revTime = new RevolutionaryCalendar(commonTime, 23);
 
-	console.log("monthIndex: " + revTime.month);
-	console.log("daysAmount: " + revTime.dayName);
-	console.log("today: " + commonTime.getDate());
+	//console.log("monthIndex: " + revTime.month);
+	//console.log("daysAmount: " + revTime.dayName);
+	//console.log("today: " + commonTime.getDate());
 
 	renderRevCalendar(revTime, $revCalendarEl);
 
 	// Calculate rev date
 
+	//Ui
 	$calcDay = $("#calc--day");
 	$calcMonth = $("#calc-month");
 	$calcYear = $("#calc--year");
