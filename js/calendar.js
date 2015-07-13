@@ -1,5 +1,5 @@
 
-$(document).ready(function() {
+//$(document).ready(function() {
 	//Common Calendar
 
 	//Ui
@@ -525,4 +525,4 @@ $(document).ready(function() {
 
 	renderRevCalendar(testRevTime, $test);
 
-});
+//});
