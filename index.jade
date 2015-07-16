@@ -7,7 +7,36 @@ block head
 block content
 	div.container.index--content
 		h1 Французский республиканский календарь online
-		p#index--rev-calendar test
+		p#index--rev-calendar
+
+		h2 Григорианский календарь
+		p#index--common-calendar
+
+		h3 Узнать дату
+		p Введите дату по григоринскому календарю
+
+		p
+			input#calc--day(type="number" min="1" max="31")
+			select#calc-month
+				option(value="0") Январь
+				option(value="1") Февраль
+				option(value="2") Март
+				option(value="3") Апрель
+				option(value="4") Май
+				option(value="5") Июнь
+				option(value="6") Июль
+				option(value="7") Август
+				option(value="8") Сентябрь
+				option(value="9") Октябрь
+				option(value="10") Ноябрь
+				option(value="11") Декабрь
+			input#calc--year(type="number" min="1792" max="3000")
+			select#calc--first-day
+				option 22
+				option 23
+				option 24
+		button#calc--btn.btn.btn-sm.btn-danger Результат
+		p#calc--result
 
 block scripts
 	script(type="text/javascript" src="js/index.js")
