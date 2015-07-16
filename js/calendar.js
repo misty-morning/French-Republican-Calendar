@@ -465,6 +465,8 @@ function renderRevCalendar(revolutionaryCalendar, $element) {
 
 // Common calendar
 
+var commonTime = new Date();
+
 var commonWeekArray = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
 var commonMonthArray = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 

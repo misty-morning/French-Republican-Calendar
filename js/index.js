@@ -3,10 +3,11 @@ $(document).ready(function() {
 	var $indexCommonCalendar = $("#index--common-calendar");
 	var $indexRevCalendar = $("#index--rev-calendar");
 
-	var commonTime = new Date();
 	renderCommonCalendar(commonTime, $indexCommonCalendar)
+
+	var currentFirstDay = 23;
 	
-	var revTime = new RevolutionaryCalendar(commonTime, 23);
+	var revTime = new RevolutionaryCalendar(commonTime, currentFirstDay);
 	renderRevCalendar(revTime, $indexRevCalendar);
 
 	// Calculate rev date
@@ -17,7 +18,12 @@ $(document).ready(function() {
 	$calcYear = $("#calc--year");
 	$calcFirstDay = $("#calc--first-day");
 	$calcBnt = $("#calc--btn");
-	$calcResult = $("#calc--result");
+	$calcResult = $("#calc--result");;
+
+	$calcDay.val(commonTime.getDate());
+	$calcMonth.val(commonTime.getMonth());
+	$calcYear.val(commonTime.getFullYear());
+	$calcFirstDay.val(currentFirstDay);
 
 	$calcBnt.click(function() {
 		var date = new Date($calcYear.val(), $calcMonth.val(), $calcDay.val());
