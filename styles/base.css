@@ -7,3 +7,22 @@ input,
 select {
   color: #000000;
 }
+body {
+  background-color: #4b413f;
+}
+header {
+  min-height: 200px;
+  width: 100%;
+  background-color: #000000;
+  border-bottom: 2px #c5320f solid;
+  text-align: center;
+}
+h1,
+h2,
+h3,
+h4 {
+  color: #c5320f;
+}
+* {
+  color: #ffffff;
+}

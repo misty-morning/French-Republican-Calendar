@@ -462,6 +462,8 @@ function renderRevCalendar(revolutionaryCalendar, $element) {
 		$element.html(calendarNames.sansculottideOrder[sansculottideNumber] + " санкюлотида: " + calendarNames.sansculottide[sansculottideNumber] + ", " + revYear + " год.");
 	}
 }
+	
+var currentFirstDay = 23;
 
 // Common calendar
 
