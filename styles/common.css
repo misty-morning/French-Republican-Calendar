@@ -1,0 +1,9 @@
+.form-field {
+  border: 2px #c5320f solid;
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 4px;
+  margin: 5px;
+  width: 120px;
+  height: 30px;
+}
