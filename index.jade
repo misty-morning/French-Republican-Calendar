@@ -16,7 +16,9 @@ block content
 		p Введите дату по григоринскому календарю
 
 		p
+			lable(for="calc--day") День
 			input#calc--day(type="number" min="1" max="31")
+			lable(for="calc--month") Месяц
 			select#calc-month
 				option(value="0") Январь
 				option(value="1") Февраль
@@ -30,7 +32,9 @@ block content
 				option(value="9") Октябрь
 				option(value="10") Ноябрь
 				option(value="11") Декабрь
+			lable(for="calc--year") Год
 			input#calc--year(type="number" min="1792" max="3000")
+			lable(for="calc--first-day") Осеннее равноденствие
 			select#calc--first-day
 				option 22
 				option 23
