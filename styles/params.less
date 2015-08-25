@@ -1,6 +1,6 @@
 // Colors
 
-@bodyBackClr: #4b413f; //grey
+@bodyBackClr: #8a0505; //old grey: #4b413f
 @backgroundClr: #000000;
 @headClr: #c5320f; //red
 @fontClr: #ffffff;
@@ -8,3 +8,10 @@
 // Colors END
 
 @controlsBRadius: 8px;
+
+.border-radius(@radius) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-khtml-border-radius: @radius;
+	border-radius: @radius;
+}
