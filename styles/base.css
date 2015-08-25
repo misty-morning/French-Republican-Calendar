@@ -25,6 +25,7 @@ body {
 header {
   height: 200px;
   width: 100%;
+  position: relative;
   background-color: #000000;
   border-bottom: 2px #c5320f solid;
   text-align: center;
