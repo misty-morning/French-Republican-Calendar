@@ -9,19 +9,20 @@ input, select {
 }
 body {
 	background-color: @bodyBackClr;
-	overflow: hidden;
+	//overflow: hidden;
 }
-/*
+
 * html .main {
      height: 100%;
  }
  .main 
 {
 	min-height: 100%;
+    height: 100%;
 	position:relative;
 	
 }
-*/
+
 header {
 	height: 200px;
 	width: 100%;
@@ -29,6 +30,7 @@ header {
 	background-color: @backgroundClr;
 	border-bottom: 2px @headClr solid;
 	text-align: center;
+	margin-bottom: -200px;
 }
 h1, h2, h3, h4 {
 	color: @headClr;
@@ -36,7 +38,31 @@ h1, h2, h3, h4 {
 * {
 	color: @fontClr;
 }
+.pusher-header {
+	width: 100%;
+	height: 200px;
+}
 .header--menu {
 	// position: absolute;
 	// bottom: 0;
+}
+.main-column {
+	height: 100%;
+	text-align: center;
+	background-color: @backgroundClr;
+	border-right: 2px @headClr solid;
+	border-left:  2px @headClr solid;
+}
+.pusher-footer {
+	width: 100%;
+	height: 60px;
+}
+.footer {
+	height: 60px;
+	width: 100%;
+	background-color: @backgroundClr;
+	border-top: 2px @headClr solid;
+	margin-top: -60px;
+	position: relative;
+	z-index: 2;
 }
