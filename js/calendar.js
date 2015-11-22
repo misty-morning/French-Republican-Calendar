@@ -377,6 +377,7 @@ var calendarNames = {
 	],
 	month: ["вандемьера", "брюмера", "фримера", "нивоза", "плювиоза", "вантоза", "жерминаля", "флореаля", "прериаля", "мессидора", "термидора", "фрюктидора"],
 	monthCommon: ["вандемьер", "брюмер", "фример", "нивоз", "плювиоз", "вантоз", "жерминаль", "флореаль", "прериаль", "мессидор", "термидор", "фрюктидор"],
+	monthImgUrls:  ["img/months/Vandemiaire.jpg", "img/months/Brumaire.jpg", "img/months/Frimaire.jpg", "img/months/Nivose.jpg", "img/months/Pluviose.jpg", "img/months/Ventose.jpg", "img/months/Germinal.jpg", "img/months/Floreal.jpg", "img/months/Prairial.jpg", "img/months/Messidor.jpg", "img/months/Thermidor.jpg", "img/months/Fructidor.jpg"],
 	decade: ["Примиди", "Дуоди", "Триди", "Квартиди", "Квинтиди", "Секстиди", "Септиди", "Октиди", "Нониди", "Декади"],
 	sansculottide: ["День Доблести (Добродетели)", "День Таланта", "День Труда", "День Мнений", "День Наград", "День Революции"],
 	sansculottideOrder: ["Первая", "Вторая", "Третья", "Четвертая", "Пятая", "Шестая"],

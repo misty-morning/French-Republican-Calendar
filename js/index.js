@@ -11,10 +11,19 @@ $(document).ready(function() {
 	$calcBnt = $("#calc--btn");
 	$calcResult = $("#calc--result");
 
-	$imgHead = $("#mouth-img-head");
-	$imgEl = $("#mouth-img-el");
+	$imgHead = $("#month-img-head");
+	$imgEl = $("#month-img-el");
+
+	// Mouth Image
 
 	var revTime = new RevolutionaryCalendar(commonTime, currentFirstDay);
+
+	var revMouthIndex = revTime.month;
+
+	$imgHead.html("Месяц " + calendarNames.monthCommon[revMouthIndex]);
+	$imgEl.attr("src", calendarNames.monthImgUrls[revMouthIndex]);
+
+	// Date calculation
 
 	$calcDay.val(commonTime.getDate());
 	$calcMonth.val(commonTime.getMonth());
@@ -28,11 +37,7 @@ $(document).ready(function() {
 		renderRevCalendar(revDate, $calcResult);
 	});
 
-	// Mouth Image
 
-	var revMouthIndex = revTime.month;
-
-	$imgHead.html("Месяц " + calendarNames.monthCommon[revMouthIndex]);
 
 });
 
