@@ -41,13 +41,16 @@ header {
   position: relative;
   height: 200px;
 }
-@media (max-width: 720px) {
+@media (max-width: 705px) {
   header h2 {
     font-size: 14px;
   }
   header h4,
   header p {
     font-size: 12px;
+  }
+  header .btn-sm {
+    font-size: 9px;
   }
 }
 h1,
