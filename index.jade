@@ -4,41 +4,50 @@ block head
 	link(rel="stylesheet" type="text/css" href="styles/index.css")
 	title Французский республиканский календарь
 
-block content	
-	h3 Узнать дату
-	p Введите дату по григоринскому календарю
+block content
 
 	div.row
-		div
-			lable(for="calc--day") День
-			input#calc--day(type="number" min="1" max="31").form-field
-		div
-			lable(for="calc--month") Месяц
-			select#calc-month.form-field
-				option(value="0") Январь
-				option(value="1") Февраль
-				option(value="2") Март
-				option(value="3") Апрель
-				option(value="4") Май
-				option(value="5") Июнь
-				option(value="6") Июль
-				option(value="7") Август
-				option(value="8") Сентябрь
-				option(value="9") Октябрь
-				option(value="10") Ноябрь
-				option(value="11") Декабрь
-		div
-			lable(for="calc--year") Год
-			input#calc--year(type="number" min="1792" max="3000").form-field
-		div
-			lable(for="calc--first-day") Осеннее равноденствие
-			select#calc--first-day.form-field
-				option 22
-				option 23
-				option 24
-	div
-		button#calc--btn.btn.btn-sm.btn-danger Результат
-	p#calc--result
+		div.col-md-6.col-xs-12
+			div.mouth-img-block
+				h3#mouth-img-head
+				img#mouth-img-el.mouth-img-el
+			div.visual-calendar-block
+
+		div.col-md-6.col-xs-12
+			h3 Узнать дату
+			p Введите дату по григоринскому календарю
+
+			div.row
+				div
+					lable(for="calc--day") День
+					input#calc--day(type="number" min="1" max="31").form-field
+				div
+					lable(for="calc--month") Месяц
+					select#calc-month.form-field
+						option(value="0") Январь
+						option(value="1") Февраль
+						option(value="2") Март
+						option(value="3") Апрель
+						option(value="4") Май
+						option(value="5") Июнь
+						option(value="6") Июль
+						option(value="7") Август
+						option(value="8") Сентябрь
+						option(value="9") Октябрь
+						option(value="10") Ноябрь
+						option(value="11") Декабрь
+				div
+					lable(for="calc--year") Год
+					input#calc--year(type="number" min="1792" max="3000").form-field
+				div
+					lable(for="calc--first-day") Осеннее равноденствие
+					select#calc--first-day.form-field
+						option 22
+						option 23
+						option 24
+			div
+				button#calc--btn.btn.btn-sm.btn-danger Результат
+			p#calc--result
 
 
 block scripts
