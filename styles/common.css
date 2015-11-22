@@ -7,3 +7,6 @@
   width: 120px;
   height: 30px;
 }
+.form-field option {
+  color: #000000;
+}

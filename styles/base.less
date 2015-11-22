@@ -37,6 +37,9 @@ header {
 	text-align: center;
 	margin-bottom: -200px;
 	z-index: 5;
+	a:visited {
+		color: #ffffff;
+	}
 }
 .header-container {
 	position: relative;
@@ -61,6 +64,12 @@ h1, h2, h3, h4 {
 }
 * {
 	color: @fontClr;
+}
+a {
+	color: @linkClr;
+}
+a:visited {
+	color: @headClr;
 }
 .pusher-header {
 	width: 100%;
@@ -97,4 +106,6 @@ h1, h2, h3, h4 {
 	position: relative;
 	z-index: 2;
 	clear: both;
+    padding-top: 12px;
+    font-size: 11px;
 }
