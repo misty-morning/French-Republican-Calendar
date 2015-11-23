@@ -6,13 +6,16 @@ block head
 
 block content
 
+	div.col-md-12.col-xs-12
+		div.month-img-block
+			h3#month-img-head
+			img#month-img-el.month-img-el
+		
 	div.row
-		div.col-md-6.col-xs-12
-			div.month-img-block
-				h3#month-img-head
-				img#month-img-el.month-img-el
-			div.visual-calendar-block
-
+		div.col-md-6.col-xs-12.visual-calendar-block
+			h3 Визуальный календарь
+			div
+				table#visual-calendar.visual-calendar
 		div.col-md-6.col-xs-12
 			h3 Узнать дату
 			p Введите дату по григоринскому календарю
@@ -40,11 +43,15 @@ block content
 					lable(for="calc--year") Год
 					input#calc--year(type="number" min="1792" max="3000").form-field
 				div
-					lable(for="calc--first-day") Осеннее равноденствие
+					lable(for="calc--first-day") Осеннее равноденствие*
 					select#calc--first-day.form-field
 						option 22
 						option 23
 						option 24
+				p.calc--comment
+					| * - Год во французском республиканском календаре начинается с дня осеннего равноденствия. 
+					| Благодаря этой особенности он имеет более высокую (по сревнению с григорианским) астрономическую точность.
+					| Чтобы точно определить дату, необходимо указать дату предшествующего ей осеннего равноденствия.
 			div
 				button#calc--btn.btn.btn-sm.btn-danger Результат
 			p#calc--result

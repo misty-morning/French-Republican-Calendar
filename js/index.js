@@ -14,6 +14,8 @@ $(document).ready(function() {
 	$imgHead = $("#month-img-head");
 	$imgEl = $("#month-img-el");
 
+	$visualCalendar = $("#visual-calendar");
+
 	// Mouth Image
 
 	var revTime = new RevolutionaryCalendar(commonTime, currentFirstDay);
@@ -22,6 +24,22 @@ $(document).ready(function() {
 
 	$imgHead.html("Месяц " + calendarNames.monthCommon[revMouthIndex]);
 	$imgEl.attr("src", calendarNames.monthImgUrls[revMouthIndex]);
+
+	// Visual calendar
+	var vcId = 1;
+	for(var i = 0; i < 3; i++) {
+		$visualCalendar.append("<tr data-id='" + i + "' class='vc-row'></tr>");
+		for(var j = 0; j < 10; j++) {
+			$(".vc-row[data-id='" + i + "']").append("<td data-id='" + vcId + "' class='vc-cell'>"+ vcId +"</td>");
+			if (j === 3 || j === 8 || j === 9) {
+				$(".vc-cell[data-id='" + vcId + "']").addClass("__holyday");
+			}
+			vcId++;
+		}
+	}
+
+	$(".vc-cell[data-id='" + revTime.day + "']").addClass("__active-cell");
+
 
 	// Date calculation
 
@@ -36,6 +54,8 @@ $(document).ready(function() {
 		var revDate = new RevolutionaryCalendar(date, $calcFirstDay.val());
 		renderRevCalendar(revDate, $calcResult);
 	});
+
+
 
 
 

@@ -6,3 +6,29 @@
 .month-img-el {
 	width: 200px;
 }
+.calc--comment {
+	font-size: 10px;
+}
+// Visual calendar
+.visual-calendar {
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	border-collapse: separate;
+	border: 1px @headClr solid;
+	td {
+		border: 2px @headClr solid;
+		height: 42px;
+
+		&.__active-cell {
+			border: 4px white solid;
+		}
+		&.__holyday {
+			background-color: @holydayClr;
+			color: @headClr;
+		}
+
+	}
+}
+
+// Visual calendar END
