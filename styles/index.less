@@ -5,6 +5,7 @@
 }
 .month-img-el {
 	width: 200px;
+	border: 5px @headClr ridge;
 }
 .index--comment {
 	font-size: 11px;
@@ -16,18 +17,31 @@
 	vertical-align: middle;
 	border-collapse: separate;
 	border: 1px @headClr solid;
+	th div {
+		text-align: center;
+	}
 	td {
 		border: 2px @headClr solid;
 		height: 42px;
-
+	    padding: 3px;
 		&.__active-cell {
 			border: 4px white solid;
 		}
-		&.__holyday {
+		&.__holyday, &.__holyday div {
 			background-color: @holydayClr;
 			color: @headClr;
 		}
 
+	}
+	.vc-cell-day-name {
+		font-size: 10px;
+	}
+	.vc--head-cell {
+		border: 2px @headClr solid;
+		height: 87px;
+	}
+	.vc--head-text {
+		.verticalText();
 	}
 }
 

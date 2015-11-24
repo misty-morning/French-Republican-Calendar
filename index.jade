@@ -5,23 +5,24 @@ block head
 	title Французский республиканский календарь
 
 block content
-
-	div.col-md-12.col-xs-12
-		div.month-img-block
-			h3#month-img-head
-			img#month-img-el.month-img-el
-		
 	div.row
-		div.col-md-6.col-xs-12.visual-calendar-block
+
+		div.col-md-3.col-xs-12
+			div.month-img-block
+				h3#month-img-head
+				img#month-img-el.month-img-el
+		div.col-md-9.col-xs-12.visual-calendar-block
 			h3 Визуальный календарь
 			div
 				table#visual-calendar.visual-calendar
 			p.index--comment
 				| Оригинальный календарь не содержал предписаний по поводу выходных.
-				| Однако государственным служащим в период великой французской революции полагался один выходной (дуоди, 10 день декады).
+				| Однако государственным служащим в период великой французской революции полагался один выходной (декади, 10 день декады).
 				| Предложенная здесь система является идеей авторов сайта (спасибо Леше Филиппову). Количество выходных в году здесь примерно соответстует количесву выходных при семидневной неделе с двумя выходными.
 				| Выходные отмечены желтым.
-		div.col-md-6.col-xs-12
+	div.row
+
+		div.col-md-12.col-xs-12
 			h3 Узнать дату
 			p Введите дату по григоринскому календарю
 

@@ -26,11 +26,17 @@ $(document).ready(function() {
 	$imgEl.attr("src", calendarNames.monthImgUrls[revMouthIndex]);
 
 	// Visual calendar
+
+	$visualCalendar.append("<tr id='vc--head-row'></tr>");
+	for(var i = 0; i < 10; i++) {
+		$("#vc--head-row").append("<th class='vc--head-cell'><div class='vc--head-text'>"+ calendarNames.decade[i] +"</div></th>");
+	}
+
 	var vcId = 1;
 	for(var i = 0; i < 3; i++) {
 		$visualCalendar.append("<tr data-id='" + i + "' class='vc-row'></tr>");
 		for(var j = 0; j < 10; j++) {
-			$(".vc-row[data-id='" + i + "']").append("<td data-id='" + vcId + "' class='vc-cell'>"+ vcId +"</td>");
+			$(".vc-row[data-id='" + i + "']").append("<td data-id='" + vcId + "' class='vc-cell'><div>"+ vcId +"</div><div class='vc-cell-day-name'>День<br>"+ calendarNames.day[revMouthIndex * 30 + vcId - 1] +"</div></td>");
 			if (j === 3 || j === 8 || j === 9) {
 				$(".vc-cell[data-id='" + vcId + "']").addClass("__holyday");
 			}

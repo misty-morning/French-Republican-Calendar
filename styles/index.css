@@ -3,6 +3,7 @@
 }
 .month-img-el {
   width: 200px;
+  border: 5px #c5320f ridge;
 }
 .index--comment {
   font-size: 11px;
@@ -14,14 +15,32 @@
   border-collapse: separate;
   border: 1px #c5320f solid;
 }
+.visual-calendar th div {
+  text-align: center;
+}
 .visual-calendar td {
   border: 2px #c5320f solid;
   height: 42px;
+  padding: 3px;
 }
 .visual-calendar td.__active-cell {
   border: 4px white solid;
 }
-.visual-calendar td.__holyday {
+.visual-calendar td.__holyday,
+.visual-calendar td.__holyday div {
   background-color: #dbfa42;
   color: #c5320f;
+}
+.visual-calendar .vc-cell-day-name {
+  font-size: 10px;
+}
+.visual-calendar .vc--head-cell {
+  border: 2px #c5320f solid;
+  height: 87px;
+}
+.visual-calendar .vc--head-text {
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  writing-mode: tb-rl;
 }
