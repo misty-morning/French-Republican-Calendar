@@ -5,16 +5,16 @@ block head
 	title Французский республиканский календарь
 
 block content
+	h3 Визуальный календарь
 	div.row
-
 		div.col-md-3.col-xs-12
 			div.month-img-block
-				h3#month-img-head
+				h4#month-img-head
 				img#month-img-el.month-img-el
 		div.col-md-9.col-xs-12.visual-calendar-block
-			h3 Визуальный календарь
-			div
-				table#visual-calendar.visual-calendar
+			
+			div.vc-wrapper
+				div#visual-calendar.visual-calendar
 			p.index--comment
 				| Оригинальный календарь не содержал предписаний по поводу выходных.
 				| Однако государственным служащим в период великой французской революции полагался один выходной (декади, 10 день декады).

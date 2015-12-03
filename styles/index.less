@@ -11,16 +11,26 @@
 	font-size: 11px;
 }
 // Visual calendar
+.vc-wrapper {
+    height: 300px;
+    overflow: auto;
+    margin-top: 15px;
+}
 .visual-calendar {
-	width: 100%;
+	width: 602px;
+	margin: 0 auto;
 	text-align: center;
 	vertical-align: middle;
 	border-collapse: separate;
 	border: 1px @headClr solid;
+/*	th {
+		display: inline-block;
+	}
 	th div {
 		text-align: center;
 	}
 	td {
+		display: inline-block;
 		border: 2px @headClr solid;
 		height: 42px;
 	    padding: 3px;
@@ -32,17 +42,48 @@
 			color: @headClr;
 		}
 
+	}*/
+	.vc-cell {
+		display: inline-block;
+		border: 2px @headClr solid;
+		height: 42px;
+	    padding: 3px;
+	    height: 66px;
+	    width: 60px;
+	    padding: 3px;
+	    overflow: hidden;
+	    margin: 0px;
+		&.__active-cell {
+			border: 4px white solid;
+		}
+		&.__holyday, &.__holyday div {
+			background-color: @holydayClr;
+			color: @headClr;
+		}
 	}
 	.vc-cell-day-name {
-		font-size: 10px;
+		margin-top: 4px;
+		font-size: 7px;
+		//.verticalText();
 	}
 	.vc--head-cell {
+		display: inline-block;
 		border: 2px @headClr solid;
-		height: 87px;
+	    height: 80px;
+	    width: 60px;
+	    padding-top: 25px;
+	    text-align: center;
 	}
 	.vc--head-text {
+		text-align: center;
 		.verticalText();
 	}
+	.vc-row {
+		margin: 0;
+		padding: 0;
+		height: 66px;
+	}
+
 }
 
 // Visual calendar END

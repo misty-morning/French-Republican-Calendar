@@ -475,5 +475,5 @@ var commonWeekArray = ["Воскресенье", "Понедельник", "Вт
 var commonMonthArray = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 
 function renderCommonCalendar(date, $element) {
-	$element.html(commonWeekArray[date.getDay()] + ", " + date.getDate() + " " + commonMonthArray[date.getMonth()] + " " + date.getFullYear() + " года.");
+	$element.html(commonWeekArray[date.getDay()] + ",<br> " + date.getDate() + " " + commonMonthArray[date.getMonth()] + " " + date.getFullYear() + " года.");
 }
