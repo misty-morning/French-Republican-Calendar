@@ -65,25 +65,40 @@ $(document).ready(function() {
 	$(".vc--month-btn").click(function() {
 		$(".vc--month-btn").removeClass("__active-month");
 		$(this).addClass("__active-month");
+		$("#vc--current-month").removeClass("__sansculottide");
 
 		$("#vc--current-month").empty();
-		$("#vc--current-month").append("<div id='vc--head-row'></div>");
-		for(var i = 0; i < 10; i++) {
-			$("#vc--head-row").append("<div class='vc--head-cell'><div class='vc--head-text'>"+ calendarNames.decade[i] +"</div></div>");
-		}
-
 		var activeMonthFirstDay = $(this).data("id") * 30 - 1;
-		var vcId = 1;
-		for(var i = 0; i < 3; i++) {
-			$("#vc--current-month").append("<div data-id='" + i + "' class='vc-row'></div>");
-			for(var j = 0; j < 10; j++) {
-				$(".vc-row[data-id='" + i + "']").append("<div data-id='" + vcId + "' class='vc-cell' data-toggle='tooltip' data-placement='bottom' title='День "+ calendarNames.day[activeMonthFirstDay + vcId] +"'><div>"+ vcId +"</div><div class='vc-cell-day-name'>День<br>"+ calendarNames.day[activeMonthFirstDay + vcId] +"</div></div>");
-				if (j === 3 || j === 8 || j === 9) {
-					$(".vc-cell[data-id='" + vcId + "']").addClass("__holyday");
+		//console.log(activeMonthFirstDay);	
+		if (activeMonthFirstDay + 1 < 360) {
+			$("#vc--current-month").append("<div id='vc--head-row'></div>");
+			for(var i = 0; i < 10; i++) {
+				$("#vc--head-row").append("<div class='vc--head-cell'><div class='vc--head-text'>"+ calendarNames.decade[i] +"</div></div>");
+			}
+
+			
+			var vcId = 1;
+			for(var i = 0; i < 3; i++) {
+				$("#vc--current-month").append("<div data-id='" + i + "' class='vc-row'></div>");
+				for(var j = 0; j < 10; j++) {
+					$(".vc-row[data-id='" + i + "']").append("<div data-id='" + vcId + "' class='vc-cell' data-toggle='tooltip' data-placement='bottom' title='День "+ calendarNames.day[activeMonthFirstDay + vcId] +"'><div>"+ vcId +"</div><div class='vc-cell-day-name'>День<br>"+ calendarNames.day[activeMonthFirstDay + vcId] +"</div></div>");
+					if (j === 3 || j === 8 || j === 9) {
+						$(".vc-cell[data-id='" + vcId + "']").addClass("__holyday");
+					}
+					vcId++;
 				}
-				vcId++;
 			}
 		}
+		else {
+			$("#vc--current-month").addClass("__sansculottide");
+			console.log("hey");
+			var sansculottideAmount = 6;
+
+			for (var i = 0; i < sansculottideAmount; i++) {
+				$("#vc--current-month").append("<div data-san-id='" + i + "' class='vc-cell __sansculottide' data-toggle='tooltip' data-placement='bottom' title='"+ calendarNames.sansculottide[i] +"'><div class='sansculottide-day'>"+ calendarNames.sansculottideOrder[i] + " санкюлотида:</div><div class='vc-cell-day-name'><br>"+ calendarNames.sansculottide[i] +"</div></div>");
+			};
+		}
+
 		if ($(this).data("id") == revMouthIndex) {
 			$(".vc-cell[data-id='" + revTime.day + "']").addClass("__active-cell");
 		}

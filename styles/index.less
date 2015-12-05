@@ -47,6 +47,9 @@
 		vertical-align: middle;
 		border-collapse: separate;
 		border: 1px @headClr solid;
+		&.__sansculottide {
+			border: none;
+		}
 	}
 
 /*	th {
@@ -86,7 +89,19 @@
 			background-color: @holydayClr;
 			color: @headClr;
 		}
+		&.__sansculottide {
+			height: 89px;
+			width: 90px;
+			.sansculottide-day {
+				font-size: 11px;
+			}
+			.vc-cell-day-name {
+				font-size: 11px;
+				margin-top: 0px;
+			}
+		}
 	}
+
 	.vc-cell-day-name {
 		margin-top: 4px;
 		font-size: 7px;

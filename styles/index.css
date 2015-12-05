@@ -66,6 +66,9 @@
   border-collapse: separate;
   border: 1px #c5320f solid;
 }
+.visual-calendar #vc--current-month.__sansculottide {
+  border: none;
+}
 .visual-calendar .vc-cell {
   display: inline-block;
   border: 2px #c5320f solid;
@@ -83,6 +86,17 @@
 .visual-calendar .vc-cell.__holyday div {
   background-color: #dbfa42;
   color: #c5320f;
+}
+.visual-calendar .vc-cell.__sansculottide {
+  height: 89px;
+  width: 90px;
+}
+.visual-calendar .vc-cell.__sansculottide .sansculottide-day {
+  font-size: 11px;
+}
+.visual-calendar .vc-cell.__sansculottide .vc-cell-day-name {
+  font-size: 11px;
+  margin-top: 0px;
 }
 .visual-calendar .vc-cell-day-name {
   margin-top: 4px;
