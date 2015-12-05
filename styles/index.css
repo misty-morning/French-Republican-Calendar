@@ -9,17 +9,11 @@
   font-size: 11px;
 }
 .vc-wrapper {
-  height: 300px;
+  height: 345px;
   overflow: auto;
   margin-top: 15px;
 }
 .visual-calendar {
-  width: 602px;
-  margin: 0 auto;
-  text-align: center;
-  vertical-align: middle;
-  border-collapse: separate;
-  border: 1px #c5320f solid;
   /*	th {
 		display: inline-block;
 	}
@@ -40,6 +34,34 @@
 		}
 
 	}*/
+}
+.visual-calendar .vc--month-btn {
+  display: inline-block;
+  padding: 2px 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border: 2px #c5320f solid;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.visual-calendar .vc--month-btn.__current-month {
+  color: #c5320f;
+}
+.visual-calendar .vc--month-btn:first-letter {
+  text-transform: uppercase;
+}
+.visual-calendar #vc--current-month {
+  width: 602px;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+  border-collapse: separate;
+  border: 1px #c5320f solid;
 }
 .visual-calendar .vc-cell {
   display: inline-block;

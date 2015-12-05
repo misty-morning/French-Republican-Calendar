@@ -27,16 +27,25 @@ $(document).ready(function() {
 
 	// Visual calendar
 
-	$visualCalendar.append("<div id='vc--head-row'></div>");
+	$visualCalendar.append("<div id='vc--months'></div>");
+	for (var i = 0; i < 12; i++) {
+		$("#vc--months").append("<div data-id='" + i + "' class='vc--month-btn'>"+ calendarNames.monthCommon[i] +"</div>");
+	};
+	$("#vc--months").append("<div data-id='12' class='vc--month-btn'>Санкюлотиды</div>");
+
+	$("#vc--months [data-id='" + revMouthIndex + "']").addClass("__current-month");
+
+	$visualCalendar.append("<div id='vc--current-month'></div>");
+	$("#vc--current-month").append("<div id='vc--head-row'></div>");
 	for(var i = 0; i < 10; i++) {
 		$("#vc--head-row").append("<div class='vc--head-cell'><div class='vc--head-text'>"+ calendarNames.decade[i] +"</div></div>");
 	}
 
 	var vcId = 1;
 	for(var i = 0; i < 3; i++) {
-		$visualCalendar.append("<div data-id='" + i + "' class='vc-row'></div>");
+		$("#vc--current-month").append("<div data-id='" + i + "' class='vc-row'></div>");
 		for(var j = 0; j < 10; j++) {
-			$(".vc-row[data-id='" + i + "']").append("<div data-id='" + vcId + "' class='vc-cell' title='День "+ calendarNames.day[revMouthIndex * 30 + vcId - 1] +"'><div>"+ vcId +"</div><div class='vc-cell-day-name'>День<br>"+ calendarNames.day[revMouthIndex * 30 + vcId - 1] +"</div></div>");
+			$(".vc-row[data-id='" + i + "']").append("<div data-id='" + vcId + "' class='vc-cell' data-toggle='tooltip' data-placement='bottom' title='День "+ calendarNames.day[revMouthIndex * 30 + vcId - 1] +"'><div>"+ vcId +"</div><div class='vc-cell-day-name'>День<br>"+ calendarNames.day[revMouthIndex * 30 + vcId - 1] +"</div></div>");
 			if (j === 3 || j === 8 || j === 9) {
 				$(".vc-cell[data-id='" + vcId + "']").addClass("__holyday");
 			}

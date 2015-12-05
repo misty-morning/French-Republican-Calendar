@@ -12,17 +12,43 @@
 }
 // Visual calendar
 .vc-wrapper {
-    height: 300px;
+    height: 345px;
     overflow: auto;
     margin-top: 15px;
 }
 .visual-calendar {
-	width: 602px;
-	margin: 0 auto;
-	text-align: center;
-	vertical-align: middle;
-	border-collapse: separate;
-	border: 1px @headClr solid;
+	#vc--months {
+		//margin-bottom: 5px;
+	}
+	.vc--month-btn {
+		display: inline-block;
+		padding: 2px 5px;
+		margin-right: 5px;
+	    margin-bottom: 5px;
+	    border: 2px @headClr solid;
+	    .border-radius(@controlsBRadius);
+	    font-size: 12px;
+        font-weight: bold;
+	    cursor: pointer;
+		&.__current-month {
+			color: @headClr;
+		}
+		&.__active-month {
+
+		}
+	}
+	.vc--month-btn:first-letter {
+		text-transform: uppercase;
+	}
+	#vc--current-month {
+		width: 602px;
+		margin: 0 auto;
+		text-align: center;
+		vertical-align: middle;
+		border-collapse: separate;
+		border: 1px @headClr solid;
+	}
+
 /*	th {
 		display: inline-block;
 	}
