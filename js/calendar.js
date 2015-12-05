@@ -469,6 +469,8 @@ var currentFirstDay = 23;
 
 // Common calendar
 
+var testTime = new Date(2016, 8, 22);
+
 var commonTime = new Date();
 
 var commonWeekArray = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];

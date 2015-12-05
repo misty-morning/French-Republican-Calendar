@@ -95,7 +95,7 @@ $(document).ready(function() {
 			var sansculottideAmount = 6;
 
 			for (var i = 0; i < sansculottideAmount; i++) {
-				$("#vc--current-month").append("<div data-san-id='" + i + "' class='vc-cell __sansculottide' data-toggle='tooltip' data-placement='bottom' title='"+ calendarNames.sansculottide[i] +"'><div class='sansculottide-day'>"+ calendarNames.sansculottideOrder[i] + " санкюлотида:</div><div class='vc-cell-day-name'><br>"+ calendarNames.sansculottide[i] +"</div></div>");
+				$("#vc--current-month").append("<div data-id='" + (i + 1) + "' class='vc-cell __sansculottide' data-toggle='tooltip' data-placement='bottom' title='"+ calendarNames.sansculottide[i] +"'><div class='sansculottide-day'>"+ calendarNames.sansculottideOrder[i] + " санкюлотида:</div><div class='vc-cell-day-name'><br>"+ calendarNames.sansculottide[i] +"</div></div>");
 			};
 		}
 
