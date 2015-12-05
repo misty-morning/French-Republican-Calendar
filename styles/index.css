@@ -52,6 +52,9 @@
 .visual-calendar .vc--month-btn.__current-month {
   color: #c5320f;
 }
+.visual-calendar .vc--month-btn.__active-month {
+  border: 2px #ffffff solid;
+}
 .visual-calendar .vc--month-btn:first-letter {
   text-transform: uppercase;
 }
