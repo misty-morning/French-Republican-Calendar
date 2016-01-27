@@ -18,12 +18,21 @@ $(document).ready(function() {
 
 	// Mouth Image
 
-	var revTime = new RevolutionaryCalendar(commonTime, currentFirstDay);
+	var revTime = new RevolutionaryCalendar(testTime, currentFirstDay);
 
 	var revMouthIndex = revTime.month;
+	console.log(revMouthIndex);
 
-	$imgHead.html("Месяц " + calendarNames.monthCommon[revMouthIndex]);
-	$imgEl.attr("src", calendarNames.monthImgUrls[revMouthIndex]);
+	if (revMouthIndex < 12) {
+		$imgHead.html("Месяц " + calendarNames.monthCommon[revMouthIndex]);
+		$imgEl.attr("src", calendarNames.monthImgUrls[revMouthIndex]);
+	}
+	else {
+		$imgEl.css("border", "none");
+	}
+
+	
+	
 
 	// Visual calendar
 
