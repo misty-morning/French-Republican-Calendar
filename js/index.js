@@ -18,10 +18,10 @@ $(document).ready(function() {
 
 	// Mouth Image
 
-	var revTime = new RevolutionaryCalendar(testTime, currentFirstDay);
+	var revTime = new RevolutionaryCalendar(commonTime, currentFirstDay);
 
 	var revMouthIndex = revTime.month;
-	console.log(revMouthIndex);
+	//console.log(revMouthIndex);
 
 	if (revMouthIndex < 12) {
 		$imgHead.html("Месяц " + calendarNames.monthCommon[revMouthIndex]);
