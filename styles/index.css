@@ -1,5 +1,5 @@
 .vc-wrapper {
-  height: 345px;
+  height: 360px;
   overflow: auto;
   margin-top: 15px; }
 
@@ -24,6 +24,8 @@
   		}
   
   	}*/ }
+  .visual-calendar #vc--months {
+    width: 570px; }
   .visual-calendar .vc--month-btn {
     display: inline-block;
     padding: 2px 5px;

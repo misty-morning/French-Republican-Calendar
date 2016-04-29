@@ -1,11 +1,12 @@
 .vc-wrapper {
-    height: 345px;
+    height: 360px;
     overflow: auto;
     margin-top: 15px;
 }
 .visual-calendar {
 	#vc--months {
-		//margin-bottom: 5px;
+		//margin-top: 3px;
+		width: 570px;
 	}
 	.vc--month-btn {
 		display: inline-block;
