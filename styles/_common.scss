@@ -1,8 +1,6 @@
-@import "params.less";
-
 .form-field {
-	border: 2px @headClr solid;
-	border-radius: @controlsBRadius;
+	border: 2px $headClr solid;
+	@include border-radius($controlsBRadius);
 	background-color: #ffffff;
 	padding: 4px;
 	margin: 5px;

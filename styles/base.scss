@@ -1,0 +1,67 @@
+@import "_params";
+@import "_common";
+
+@import "_header";
+@import "_footer";
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+input, select {
+	color: #000000;
+}
+body {
+	background-color: $bodyBackClr;
+	//overflow: hidden;
+}
+
+* html .main {
+     height: 100%;
+ }
+ * html .main-column {
+     height: 100%;
+ }
+ body > .main {height: auto; min-height: 100%;}
+.main 
+{
+    min-height: 100%;
+    height: auto !important;
+	position:relative;
+	padding-bottom: 60px;
+	overflow: hidden;
+	
+}
+h1, h2, h3, h4 {
+	color: $headClr;
+}
+* {
+	color: $fontClr;
+}
+a {
+	color: $linkClr;
+}
+a:visited {
+	color: $headClr;
+}
+.pusher-header {
+	width: 100%;
+	height: 200px;
+}
+.main-column {
+    min-height: 100%;
+    height: 100%;
+	text-align: center;
+	background-color: $backgroundClr;
+	border-right: 2px $headClr solid;
+	border-left:  2px $headClr solid;
+	position: relative;
+	z-index: 1;
+    padding-bottom: 30000px; /* отступ */
+    margin-bottom: -29900px; /* поле */
+}
+
+.pusher-footer {
+	width: 100%;
+	height: 60px;
+}

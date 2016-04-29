@@ -1,16 +1,3 @@
-@import "params.less";
-
-.month-img-block {
-	text-align: center;
-}
-.month-img-el {
-	width: 200px;
-	border: 5px @headClr ridge;
-}
-.index--comment {
-	font-size: 11px;
-}
-// Visual calendar
 .vc-wrapper {
     height: 345px;
     overflow: auto;
@@ -25,13 +12,13 @@
 		padding: 2px 5px;
 		margin-right: 5px;
 	    margin-bottom: 5px;
-	    border: 2px @headClr solid;
-	    .border-radius(@controlsBRadius);
+	    border: 2px $headClr solid;
+	    @include border-radius($controlsBRadius);
 	    font-size: 12px;
         font-weight: bold;
 	    cursor: pointer;
 		&.__current-month {
-			color: @headClr;
+			color: $headClr;
 		}
 		&.__active-month {
 			border: 2px #ffffff solid;
@@ -46,7 +33,7 @@
 		text-align: center;
 		vertical-align: middle;
 		border-collapse: separate;
-		border: 1px @headClr solid;
+		border: 1px $headClr solid;
 		&.__sansculottide {
 			border: none;
 		}
@@ -60,21 +47,21 @@
 	}
 	td {
 		display: inline-block;
-		border: 2px @headClr solid;
+		border: 2px $headClr solid;
 		height: 42px;
 	    padding: 3px;
 		&.__active-cell {
 			border: 4px white solid;
 		}
 		&.__holyday, &.__holyday div {
-			background-color: @holydayClr;
-			color: @headClr;
+			background-color: $holydayClr;
+			color: $headClr;
 		}
 
 	}*/
 	.vc-cell {
 		display: inline-block;
-		border: 2px @headClr solid;
+		border: 2px $headClr solid;
 		height: 42px;
 	    padding: 3px;
 	    height: 66px;
@@ -86,8 +73,8 @@
 			border: 4px white solid;
 		}
 		&.__holyday, &.__holyday div {
-			background-color: @holydayClr;
-			color: @headClr;
+			background-color: $holydayClr;
+			color: $headClr;
 		}
 		&.__sansculottide {
 			height: 89px;
@@ -109,7 +96,7 @@
 	}
 	.vc--head-cell {
 		display: inline-block;
-		border: 2px @headClr solid;
+		border: 2px $headClr solid;
 	    height: 80px;
 	    width: 60px;
 	    padding-top: 25px;
@@ -117,7 +104,7 @@
 	}
 	.vc--head-text {
 		text-align: center;
-		.verticalText();
+		@include verticalText();
 	}
 	.vc-row {
 		margin: 0;
@@ -126,5 +113,3 @@
 	}
 
 }
-
-// Visual calendar END

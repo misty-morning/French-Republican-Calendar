@@ -1,0 +1,12 @@
+.footer {
+	height: 60px;
+	width: 100%;
+	background-color: $backgroundClr;
+	border-top: 2px $headClr solid;
+	margin-top: -60px;
+	position: relative;
+	z-index: 2;
+	clear: both;
+    padding-top: 12px;
+    font-size: 11px;
+}

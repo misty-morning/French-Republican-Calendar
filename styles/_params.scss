@@ -1,0 +1,27 @@
+// Colors
+
+$bodyBackClr: #8a0505; //old grey: #4b413f
+$backgroundClr: #000000;
+$headClr: #c5320f; //red
+$fontClr: #ffffff;
+$linkClr: #F9F627;
+$holydayClr: #DBFA42;
+
+// Colors END
+
+$controlsBRadius: 8px;
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-khtml-border-radius: $radius;
+	border-radius: $radius;
+}
+@mixin verticalText() {
+	    -moz-transform: rotate(90deg);
+	    -webkit-transform: rotate(90deg);
+	    -o-transform: rotate(90deg);
+	    -ms-transform: rotate(90deg);
+	    transform:	rotate(90deg);
+	    // writing-mode: tb-rl;
+}
