@@ -12,6 +12,8 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	else {
 		firstDayOfThisYear = firstDay;	
 	}
+
+	//firstDayOfThisYear -= 1;
 	
 	var thisCommonMonth = date.getMonth();
 	var thisCommonDay = date.getDate();
@@ -20,7 +22,8 @@ var RevolutionaryCalendar = function(date, firstDay) {
 
 	var daysAmount;
 
-	if ((thisCommonMonth != firstMonthOfThisYear) || (thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
+	if ((thisCommonMonth != firstMonthOfThisYear) || 
+		(thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
 		
 		daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
 		if (thisCommonMonth > firstMonthOfThisYear) {
@@ -88,7 +91,7 @@ var currentFirstDay = 23;
 
 // Common calendar
 
-var testTime = new Date(2013, 8, 21);
+var testTime = new Date(2015, 0, 1);
 
 var commonTime = new Date();
 
