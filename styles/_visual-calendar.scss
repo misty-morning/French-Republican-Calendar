@@ -1,23 +1,24 @@
 .vc-wrapper {
-    height: 360px;
-    overflow: auto;
-    margin-top: 15px;
+	height: 360px;
+	overflow: auto;
+	margin-top: 15px;
 }
 .visual-calendar {
 	#vc--months {
 		//margin-top: 3px;
 		width: 570px;
+		margin: 0 auto;
 	}
 	.vc--month-btn {
 		display: inline-block;
 		padding: 2px 5px;
 		margin-right: 5px;
-	    margin-bottom: 5px;
-	    border: 2px $headClr solid;
-	    @include border-radius($controlsBRadius);
-	    font-size: 12px;
-        font-weight: bold;
-	    cursor: pointer;
+		margin-bottom: 5px;
+		border: 2px $headClr solid;
+		@include border-radius($controlsBRadius);
+		font-size: 12px;
+		font-weight: bold;
+		cursor: pointer;
 		&.__current-month {
 			color: $headClr;
 		}
@@ -50,7 +51,7 @@
 		display: inline-block;
 		border: 2px $headClr solid;
 		height: 42px;
-	    padding: 3px;
+		padding: 3px;
 		&.__active-cell {
 			border: 4px white solid;
 		}
@@ -64,12 +65,12 @@
 		display: inline-block;
 		border: 2px $headClr solid;
 		height: 42px;
-	    padding: 3px;
-	    height: 66px;
-	    width: 60px;
-	    padding: 3px;
-	    overflow: hidden;
-	    margin: 0px;
+		padding: 3px;
+		height: 66px;
+		width: 60px;
+		padding: 3px;
+		overflow: hidden;
+		margin: 0px;
 		&.__active-cell {
 			border: 4px white solid;
 		}
@@ -98,10 +99,10 @@
 	.vc--head-cell {
 		display: inline-block;
 		border: 2px $headClr solid;
-	    height: 80px;
-	    width: 60px;
-	    padding-top: 25px;
-	    text-align: center;
+		height: 80px;
+		width: 60px;
+		padding-top: 25px;
+		text-align: center;
 	}
 	.vc--head-text {
 		text-align: center;

@@ -14,7 +14,7 @@
   		display: inline-block;
   		border: 2px $headClr solid;
   		height: 42px;
-  	    padding: 3px;
+  		padding: 3px;
   		&.__active-cell {
   			border: 4px white solid;
   		}
@@ -25,7 +25,8 @@
   
   	}*/ }
   .visual-calendar #vc--months {
-    width: 570px; }
+    width: 570px;
+    margin: 0 auto; }
   .visual-calendar .vc--month-btn {
     display: inline-block;
     padding: 2px 5px;
