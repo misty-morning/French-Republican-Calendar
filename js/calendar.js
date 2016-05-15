@@ -10,11 +10,11 @@ var RevolutionaryCalendar = function(date, firstDay) {
 		firstDayOfThisYear = 22;
 	}
 	else {
-		firstDayOfThisYear = firstDay;	
+		firstDayOfThisYear = firstDay;
 	}
 
 	//firstDayOfThisYear -= 1;
-	
+
 	var thisCommonMonth = date.getMonth();
 	var thisCommonDay = date.getDate();
 
@@ -22,9 +22,9 @@ var RevolutionaryCalendar = function(date, firstDay) {
 
 	var daysAmount;
 
-	if ((thisCommonMonth != firstMonthOfThisYear) || 
+	if ((thisCommonMonth != firstMonthOfThisYear) ||
 		(thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
-		
+
 		daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
 		if (thisCommonMonth > firstMonthOfThisYear) {
 			for (var i = firstMonthOfThisYear + 1; i < thisCommonMonth; i++) {
@@ -44,9 +44,9 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	}
 	else {
 		daysAmount = thisCommonDay - firstDayOfThisYear;
-		
+
 	}
-	
+
 	var revYear;
 	var thisCommonYear = date.getFullYear();
 
@@ -58,9 +58,9 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	}
 
 	var revolutionaryDate = {};
-	
+
 	revolutionaryDate.year = revYear;
-	revolutionaryDate.month = daysAmount / 30 >> 0;	
+	revolutionaryDate.month = daysAmount / 30 >> 0;
 	revolutionaryDate.day = daysAmount % 30 + 1;
 	revolutionaryDate.decade = daysAmount % 10;
 	revolutionaryDate.dayName = daysAmount;
@@ -68,7 +68,7 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	console.log("days amount " + daysAmount);
 
 	return revolutionaryDate;
-}
+};
 
 function renderRevCalendar(revolutionaryCalendar, $element) {
 	var dayName = calendarNames.day[revolutionaryCalendar.dayName];
@@ -86,7 +86,7 @@ function renderRevCalendar(revolutionaryCalendar, $element) {
 		$element.html(calendarNames.sansculottideOrder[sansculottideNumber] + " санкюлотида: " + calendarNames.sansculottide[sansculottideNumber] + ", " + revYear + " год.");
 	}
 }
-	
+
 var currentFirstDay = 23;
 
 // Common calendar
