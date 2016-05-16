@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<div class="row header--menu">
-					<div role="group" aria-label="..." class="btn-group"><a href="/index.html" class="btn btn-sm btn-danger">Календарь</a><a href="/description.html" class="btn btn-sm btn-danger">Описание</a><a href="/guest.html" class="btn btn-sm btn-danger">Гостевая книга</a></div>
+					<div role="group" aria-label="..." class="btn-group"><a href="/index.php" class="btn btn-sm btn-danger">Календарь</a><a href="/description.php" class="btn btn-sm btn-danger">Описание</a><a href="/guest.html" class="btn btn-sm btn-danger">Гостевая книга</a></div>
 				</div>
 			</div>
 		</header>
