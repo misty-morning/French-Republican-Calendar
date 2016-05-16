@@ -93,6 +93,9 @@ a {
 a:visited {
   color: #c5320f; }
 
+input, textarea {
+  color: #000000; }
+
 .pusher-header {
   width: 100%;
   height: 200px; }

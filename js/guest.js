@@ -1,21 +1,17 @@
 var guestBookApp = angular.module("guestBookApp", []);
 
-guestBookApp.controller("GuestBookControler", function($scope) {
-	$scope.records = [
-			{
-				id: 0,
-				name: "vasya",
-				text: "ras",
-			},
-			{
-				id: 1,
-				name: "petya",
-				text: "dva",
-			},
-			{
-				id: 2,
-				name: "kolya",
-				text: "tri",
-			}
-		];
+guestBookApp.controller("GuestBookControler", function($scope, $http) {
+
+	$http.get("php/get_guest_book.php").then(function(response) {
+		$scope.records = response.data;
+	});
+
+	$scope.newRecord = function() {
+		$scope.records.push({
+			name: $scope.newName,
+			text: $scope.newText
+		});
+		$scope.newName = "";
+		$scope.newText = "";
+	}
 });

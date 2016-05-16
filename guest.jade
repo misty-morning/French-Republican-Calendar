@@ -9,13 +9,13 @@ block content
 		div.add-record
 			lable(for="add-record__name") Имя: 
 			br
-			input#add-record__name(type="text")
+			input#add-record__name(type="text" ng-model="newName")
 			br
 			lable(for="add-record__text") Текст:
 			br
-			textarea#add-record__text
+			textarea#add-record__text(ng-model="newText")
 			br
-			button#add-record__btn.btn.btn-sm.btn-danger Добавить запись
+			button#add-record__btn.btn.btn-sm.btn-danger(ng-click="newRecord()") Добавить запись
 
 		div.records
 			div.record(ng-repeat="record in records")
