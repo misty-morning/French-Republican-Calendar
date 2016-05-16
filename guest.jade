@@ -5,7 +5,24 @@ block head
 	title Французский республиканский календарь - Гостевая книга
 
 block content
+	div.guest-book(ng-app="guestBookApp" ng-controller="GuestBookControler")
+		div.add-record
+			lable(for="add-record__name") Имя: 
+			br
+			input#add-record__name(type="text")
+			br
+			lable(for="add-record__text") Текст:
+			br
+			textarea#add-record__text
+			br
+			button#add-record__btn.btn.btn-sm.btn-danger Добавить запись
+
+		div.records
+			div.record(ng-repeat="record in records")
+				div.record__name {{record.name}}
+				div.record__text {{record.text}}
 
 
 block scripts
+	script(type="text/javascript" src="libs/angular.min.js")
 	script(type="text/javascript" src="js/guest.js")

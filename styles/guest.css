@@ -1,0 +1,36 @@
+.guest-book {
+  padding-top: 15px; }
+
+.add-record {
+  padding: 20px 0px;
+  border: 2px #c5320f solid;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px; }
+
+.records {
+  padding: 0px 20px; }
+
+.record, .record__name, .record__text {
+  border: 2px #c5320f solid;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  text-align: left; }
+
+.record {
+  margin: 15px auto;
+  padding: 10px 20px; }
+
+.record__name {
+  margin: 15px 0px;
+  height: 30px;
+  width: 150px;
+  padding: 3px 10px; }
+
+.record__text {
+  margin: 15px 0px;
+  width: 100%;
+  padding: 3px 10px; }
