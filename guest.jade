@@ -6,6 +6,10 @@ block head
 
 block content
 	div.guest-book(ng-app="guestBookApp" ng-controller="GuestBookControler")
+		div.records
+			div.record(ng-repeat="record in records")
+				div.record__name {{record.name}}
+				div.record__text {{record.text}}
 		div.add-record
 			lable(for="add-record__name") Имя: 
 			br
@@ -16,12 +20,6 @@ block content
 			textarea#add-record__text(ng-model="newText")
 			br
 			button#add-record__btn.btn.btn-sm.btn-danger(ng-click="newRecord()") Добавить запись
-
-		div.records
-			div.record(ng-repeat="record in records")
-				div.record__name {{record.name}}
-				div.record__text {{record.text}}
-
 
 block scripts
 	script(type="text/javascript" src="libs/angular.min.js")
