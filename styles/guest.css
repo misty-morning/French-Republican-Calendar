@@ -21,6 +21,7 @@
   text-align: left; }
 
 .record {
+  max-width: 500px;
   margin: 15px auto;
   padding: 10px 20px; }
 
@@ -32,5 +33,6 @@
 
 .record__text {
   margin: 15px 0px;
+  min-height: 30px;
   width: 100%;
   padding: 3px 10px; }
