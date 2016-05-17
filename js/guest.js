@@ -40,11 +40,14 @@ var guestBookApp = angular.module("guestBookApp", [], function($httpProvider) {
 	}];
 });
 
+
 guestBookApp.controller("GuestBookControler", function($scope, $http) {
 
 	$http.get("php/guest_book-get.php").then(function(response) {
 		$scope.records = response.data;
 	});
+
+	$scope.sortparam = '-id';
 
 	$scope.newRecord = function() {
 		var tmpRecord = 
@@ -52,10 +55,11 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 			name: $scope.newName,
 			text: $scope.newText
 		}).then(function(response) {
-			console.log("added", response.data);
+			//console.log("added", response.data);
 			$scope.records.push({
-				name: $scope.newName,
-				text: $scope.newText
+				id: response.data.id,
+				name: response.data.name,
+				text: response.data.text,
 			});
 			$scope.newName = "";
 			$scope.newText = "";

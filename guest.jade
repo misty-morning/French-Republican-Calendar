@@ -7,7 +7,7 @@ block head
 block content
 	div.guest-book(ng-app="guestBookApp" ng-controller="GuestBookControler")
 		div.records
-			div.record(ng-repeat="record in records")
+			div.record(ng-repeat="record in records | orderBy:sortparam" data-record-id="{{record.id}}")
 				div.record__name {{record.name}}
 				div.record__text {{record.text}}
 		div.add-record
