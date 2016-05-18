@@ -32,7 +32,10 @@
   padding: 3px 10px; }
 
 .record__text {
-  margin: 15px 0px;
+  margin: 15px 0px 10px 0px;
   min-height: 30px;
   width: 100%;
   padding: 3px 10px; }
+
+.record__time {
+  font-size: 10px; }

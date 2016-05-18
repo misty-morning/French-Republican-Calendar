@@ -50,16 +50,17 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 	$scope.sortparam = '-id';
 
 	$scope.newRecord = function() {
-		var tmpRecord = 
+		//var tmpRecord = 
 		$http.post("php/guest_book-add.php", {
 			name: $scope.newName,
 			text: $scope.newText
 		}).then(function(response) {
-			//console.log("added", response.data);
+			console.log("added", response.data);
 			$scope.records.push({
 				id: response.data.id,
 				name: response.data.name,
 				text: response.data.text,
+				time: response.data.time,
 			});
 			$scope.newName = "";
 			$scope.newText = "";

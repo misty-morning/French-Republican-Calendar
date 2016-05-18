@@ -10,6 +10,7 @@ block content
 			div.record(ng-repeat="record in records | orderBy:sortparam" data-record-id="{{record.id}}")
 				div.record__name {{record.name}}
 				div.record__text {{record.text}}
+				div.record__time {{record.time}}
 		div.add-record
 			lable(for="add-record__name") Имя: 
 			br

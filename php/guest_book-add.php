@@ -10,17 +10,19 @@
 
 	$id = mysqli_insert_id($dbc);
 
-	$new_record_query = "SELECT * FROM guest_book WHERE id=$id";
+	$new_record_query = "SELECT id, name, record, DATE_FORMAT(time, '%d.%m.%Y %H:%i') time FROM guest_book WHERE id=$id";
 	$new_record = mysqli_query($dbc, $new_record_query);
 	//$records = array();
 	class record {
 		public $id;
+		public $time;
 		public $name;
 		public $text;
 	}
 	while ($row = mysqli_fetch_array($new_record)) {
 		$tmp = new record();
 		$tmp->id = $row['id'];
+		$tmp->time = $row['time'];
 		$tmp->name = $row['name'];
 		$tmp->text = $row['record'];
 		//array_push($records, $tmp);
