@@ -7,11 +7,15 @@ block head
 block content
 	div.guest-book(ng-app="guestBookApp" ng-controller="GuestBookControler")
 		div.records
-			div.record(ng-repeat="record in records | orderBy:sortparam" data-record-id="{{record.id}}")
+			div.record(ng-repeat="record in records | orderBy:'-id'" data-record-id="{{record.id}}")
 				div.record__name {{record.name}}
 				div.record__text {{record.text}}
 				div.record__time {{record.time}}
+		div.test
+			{{pagesCount()}}:{{recordsCount}}
 		div.pages
+			a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="partialLoad(num)")
+				{{num}}
 		div.add-record
 			lable(for="add-record__name") Имя: 
 			br
