@@ -10,7 +10,7 @@
 
 	$id = mysqli_insert_id($dbc);
 
-	$new_record_query = "SELECT id, name, record, DATE_FORMAT(time, '%d.%m.%Y %H:%i') time FROM guest_book WHERE id=$id";
+	$new_record_query = "SELECT id, name, record, DATE_FORMAT(time, '%d.%m.%Y %H:%i') time FROM guest_book WHERE id=$id LIMIT 1";
 	$new_record = mysqli_query($dbc, $new_record_query);
 	//$records = array();
 	class record {

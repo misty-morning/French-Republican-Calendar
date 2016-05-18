@@ -11,10 +11,11 @@ block content
 				div.record__name {{record.name}}
 				div.record__text {{record.text}}
 				div.record__time {{record.time}}
+		div.pages
 		div.add-record
 			lable(for="add-record__name") Имя: 
 			br
-			input#add-record__name(type="text" ng-model="newName")
+			input#add-record__name(type="text" ng-model="newName" maxlength="30")
 			br
 			lable(for="add-record__text") Текст:
 			br

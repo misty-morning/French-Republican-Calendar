@@ -2,41 +2,46 @@
 
 .guest-book {
 	padding-top: 15px;
-}
-.add-record {
-	padding: 20px 0px;
-	border: 2px $headClr solid;
-	@include border-radius($controlsBRadius);
-}
-.records {
-	padding: 0px 20px;
-}
-.record, .record__name, .record__text {
-	border: 2px $headClr solid;
-	@include border-radius($controlsBRadius);
-	text-align: left;
 
-}
-.record {
-	max-width: 500px;
-	margin: 15px auto;
-	padding: 10px 20px;
+	.add-record {
+		padding: 20px 0px;
+		border: 2px $headClr solid;
+		@include border-radius($controlsBRadius);
+	}
+	.records {
+		padding: 0px 20px;
+	}
+	.record, .record__name, .record__text {
+		border: 2px $headClr solid;
+		@include border-radius($controlsBRadius);
+		text-align: left;
 
-}
+	}
+	.record {
+		max-width: 500px;
+		margin: 15px auto;
+		padding: 10px 20px;
 
-.record__name {
-	margin: 15px 0px;
-	height: 30px;
-	width: 150px;
-	padding: 3px 10px;
-}
-.record__text {
-	margin: 15px 0px 10px 0px;
-	min-height: 30px;
-	width: 100%;
-	padding: 3px 10px;
-}
-.record__time {
-	//padding-left: 10px;
-	font-size: 10px;
+	}
+
+	.record__name {
+		display: inline-block;
+		margin: 15px 0px;
+		height: 30px;
+		min-width: 150px;
+		padding: 3px 10px;
+
+	}
+	.record__text {
+		margin: 0px 0px 10px 0px;
+		min-height: 30px;
+		max-height: 500px;
+		overflow: auto;
+		width: 100%;
+		padding: 6px 10px;
+	}
+	.record__time {
+		//padding-left: 10px;
+		font-size: 10px;
+	}
 }
