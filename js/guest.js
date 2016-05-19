@@ -43,34 +43,25 @@ var guestBookApp = angular.module("guestBookApp", [], function($httpProvider) {
 /*guestBookApp.factory('calcPages', function(count) {
 	return Math.ceil(count / 3);
 });*/
-guestBookApp.factory('pages', function() {
+/*guestBookApp.factory('pages', function() {
 	return {
 		calc: function(count) {
 			return Math.ceil(count / 3);
 		}
 	};
-})
+})*/
 
 guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 
 	$scope.recordsOnPage = 5;
 
 	$scope.recordsCount = 0;
-	//$scope.pagesAmount = pages.calc($scope.recordsCount);
 
-
-	
 	$http.get("php/guest_book-get.php").then(function(response) {
-		//$scope.records = response.data.records;
 		var tmp = parseInt(response.data[0]);
 		$scope.recordsCount = tmp;
 		$scope.partialLoad($scope.pagesCount());
-		// $scope.pagesCount();
 	});
-
-	//$scope.sortparam = '-id';
-	//$scope.pagesAmount = Math.ceil($scope.recordsCount / 3);
-
 
 	$scope.newRecord = function() {
 		//var tmpRecord = 
@@ -79,16 +70,11 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 			text: $scope.newText
 		}).then(function(response) {
 			console.log("added", response.data);
-			$scope.records.push({
-				id: response.data.id,
-				name: response.data.name,
-				text: response.data.text,
-				time: response.data.time,
-			});
-			$scope.recordsCount += 1;
-			//$scope.pagesCount();
 			$scope.newName = "";
 			$scope.newText = "";
+			var tmp = parseInt(response.data[0]);
+			$scope.recordsCount = tmp;
+			$scope.partialLoad($scope.pagesCount());
 		});
 	}
 	$scope.pagesCount = function() {
