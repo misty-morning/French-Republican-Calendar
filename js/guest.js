@@ -61,9 +61,10 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 
 	
 	$http.get("php/guest_book-get.php").then(function(response) {
-		console.log(response.data);
-		$scope.records = response.data.records;
-		$scope.recordsCount = response.data.count;
+		//$scope.records = response.data.records;
+		var tmp = parseInt(response.data[0]);
+		$scope.recordsCount = tmp;
+		$scope.partialLoad($scope.pagesCount());
 		// $scope.pagesCount();
 	});
 
