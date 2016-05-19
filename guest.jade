@@ -10,6 +10,7 @@ block content
 			h3 Гостевая книга
 			button.btn.btn-sm.btn-danger(ng-click="showAddRecord()" ng-show="showNRBBtnShown") Новая запись
 		div.add-record(ng-show="newRecBlockShown")
+			i.add-record__hide.glyphicon.glyphicon-remove(ng-click="hideAddRecord()")
 			lable(for="add-record__name") Имя: 
 			br
 			input(type="text" ng-model="newName" maxlength="30")
@@ -19,9 +20,9 @@ block content
 			textarea(ng-model="newText")
 			br
 			button.btn.btn-sm.btn-danger(ng-click="newRecord()") Добавить запись
-		div.pages
-			a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="partialLoad(num)")
-				{{num}}
+		//- div.pages
+		//- 	a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="partialLoad(num)")
+		//- 		{{num}}
 
 		div.records
 			div.record(ng-repeat="record in records | orderBy:'-id'" data-record-id="{{record.id}}")

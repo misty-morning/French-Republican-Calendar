@@ -70,6 +70,10 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 		$scope.showNRBBtnShown = false;
 		$scope.newRecBlockShown = true;
 	}
+	$scope.hideAddRecord = function() {
+		$scope.showNRBBtnShown = true;
+		$scope.newRecBlockShown = false;
+	}
 
 	$scope.newRecord = function() {
 		//var tmpRecord = 
@@ -83,8 +87,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 			var tmp = parseInt(response.data[0]);
 			$scope.recordsCount = tmp;
 			$scope.partialLoad($scope.pagesCount());
-			$scope.showNRBBtnShown = true;
-			$scope.newRecBlockShown = false;
+			$scope.hideAddRecord();
 		});
 	}
 	$scope.pagesCount = function() {
@@ -98,7 +101,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 		return btnArr;
 	}
 	$scope.bageBtnHandler = function(num)  {
-
+		//$scope.hideAddRecord();
 		$scope.partialLoad(num);
 	}
 	$scope.partialLoad = function(num) {
@@ -109,6 +112,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 		}).then(function(response) {
 			console.log(response.data);
 			$scope.records = response.data.records;
+			$scope.hideAddRecord();
 			//$scope.recordsCount = response.data.count;
 		});
 	}
