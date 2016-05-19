@@ -6,6 +6,10 @@ block head
 
 block content
 	div.guest-book(ng-app="guestBookApp" ng-controller="GuestBookControler")
+		div.pages
+			a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="partialLoad(num)")
+				{{num}}
+
 		div.records
 			div.record(ng-repeat="record in records | orderBy:'-id'" data-record-id="{{record.id}}")
 				div.record__name {{record.name}}

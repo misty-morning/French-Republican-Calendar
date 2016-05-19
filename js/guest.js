@@ -53,7 +53,7 @@ guestBookApp.factory('pages', function() {
 
 guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 
-	$scope.recordsOnPage = 3;
+	$scope.recordsOnPage = 5;
 
 	$scope.recordsCount = 0;
 	//$scope.pagesAmount = pages.calc($scope.recordsCount);
@@ -100,6 +100,10 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 		}
 		return btnArr;
 	}
+	$scope.bageBtnHandler = function(num)  {
+
+		$scope.partialLoad(num);
+	}
 	$scope.partialLoad = function(num) {
 		console.log(num);
 		$http.post("php/guest_book-partial_load.php", {
@@ -107,7 +111,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 			step: $scope.recordsOnPage
 		}).then(function(response) {
 			console.log(response.data);
-			$scope.records = response.data;
+			$scope.records = response.data.records;
 			//$scope.recordsCount = response.data.count;
 		});
 	}
