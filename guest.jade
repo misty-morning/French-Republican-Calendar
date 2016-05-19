@@ -6,7 +6,19 @@ block head
 
 block content
 	div.guest-book(ng-app="guestBookApp" ng-controller="GuestBookControler")
-
+		div.top
+			h3 Гостевая книга
+			button.btn.btn-sm.btn-danger(ng-click="showAddRecord()" ng-show="showNRBBtnShown") Новая запись
+		div.add-record(ng-show="newRecBlockShown")
+			lable(for="add-record__name") Имя: 
+			br
+			input(type="text" ng-model="newName" maxlength="30")
+			br
+			lable(for="add-record__text") Текст:
+			br
+			textarea(ng-model="newText")
+			br
+			button.btn.btn-sm.btn-danger(ng-click="newRecord()") Добавить запись
 		div.pages
 			a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="partialLoad(num)")
 				{{num}}
@@ -19,20 +31,11 @@ block content
 		//- div.test
 		//- 	{{pagesCount()}}:{{recordsCount}}
 		div.menage Показывать по: 
-			select.menage__show-num(ng-model="recordsOnPage" ng-options="opt for opt in pageLengthsOpt")
+			select.menage__show-num(ng-model="recordsOnPage" ng-options="opt for opt in recordsOnPageOpt")
 		div.pages
 			a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="partialLoad(num)")
 				{{num}}
-		div.add-record
-			lable(for="add-record__name") Имя: 
-			br
-			input#add-record__name(type="text" ng-model="newName" maxlength="30")
-			br
-			lable(for="add-record__text") Текст:
-			br
-			textarea#add-record__text(ng-model="newText")
-			br
-			button#add-record__btn.btn.btn-sm.btn-danger(ng-click="newRecord()") Добавить запись
+
 
 block scripts
 	script(type="text/javascript" src="libs/angular.min.js")

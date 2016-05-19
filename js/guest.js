@@ -53,15 +53,23 @@ guestBookApp.factory('pages', function() {
 
 guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 
-	$scope.recordsOnPage = 5;
-	$scope.pageLengthsOpt = [3, 5, 10];
+	$scope.recordsOnPage = 3;
+	$scope.recordsOnPageOpt = [3, 5, 10];
 	$scope.recordsCount = 0;
+
+	$scope.showNRBBtnShown = true;
+	$scope.newRecBlockShown = false;
 
 	$http.get("php/guest_book-get.php").then(function(response) {
 		var tmp = parseInt(response.data[0]);
 		$scope.recordsCount = tmp;
 		$scope.partialLoad($scope.pagesCount());
 	});
+
+	$scope.showAddRecord = function() {
+		$scope.showNRBBtnShown = false;
+		$scope.newRecBlockShown = true;
+	}
 
 	$scope.newRecord = function() {
 		//var tmpRecord = 
@@ -75,6 +83,8 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 			var tmp = parseInt(response.data[0]);
 			$scope.recordsCount = tmp;
 			$scope.partialLoad($scope.pagesCount());
+			$scope.showNRBBtnShown = true;
+			$scope.newRecBlockShown = false;
 		});
 	}
 	$scope.pagesCount = function() {

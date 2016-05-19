@@ -1,37 +1,43 @@
-.guest-book {
-  padding-top: 15px; }
-  .guest-book .add-record {
-    padding: 20px 0px;
-    border: 2px #c5320f solid;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -khtml-border-radius: 8px;
-    border-radius: 8px; }
-  .guest-book .records {
-    padding: 0px 20px; }
-  .guest-book .record, .guest-book .record__name, .guest-book .record__text {
-    border: 2px #c5320f solid;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -khtml-border-radius: 8px;
-    border-radius: 8px;
-    text-align: left; }
-  .guest-book .record {
-    max-width: 500px;
-    margin: 15px auto;
-    padding: 10px 20px; }
-  .guest-book .record__name {
-    display: inline-block;
-    margin: 15px 0px;
-    height: 30px;
-    min-width: 150px;
-    padding: 3px 10px; }
-  .guest-book .record__text {
-    margin: 0px 0px 10px 0px;
-    min-height: 30px;
-    max-height: 500px;
-    overflow: auto;
-    width: 100%;
-    padding: 6px 10px; }
-  .guest-book .record__time {
-    font-size: 10px; }
+.guest-book .top {
+  margin-bottom: 10px; }
+.guest-book .add-record {
+  padding: 20px 0px;
+  border: 2px #c5320f solid;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px; }
+.guest-book .records {
+  padding: 0px 20px; }
+.guest-book .record, .guest-book .record__name, .guest-book .record__text {
+  border: 2px #c5320f solid;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  text-align: left; }
+.guest-book .record {
+  max-width: 500px;
+  margin: 15px auto;
+  padding: 10px 20px; }
+.guest-book .record__name {
+  display: inline-block;
+  margin: 15px 0px;
+  height: 30px;
+  min-width: 150px;
+  padding: 3px 10px; }
+.guest-book .record__text {
+  margin: 0px 0px 10px 0px;
+  min-height: 30px;
+  max-height: 500px;
+  overflow: auto;
+  width: 100%;
+  padding: 6px 10px; }
+.guest-book .record__time {
+  font-size: 10px; }
+.guest-book .page-btn {
+  display: inline-block;
+  margin-left: 3px;
+  margin-right: 3px; }
+.guest-book .page-btn.page-btn_active {
+  border: 1px white solid; }

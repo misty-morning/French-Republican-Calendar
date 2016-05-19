@@ -1,8 +1,10 @@
 @import "_params";
 
 .guest-book {
-	padding-top: 15px;
-
+	//padding-top: 15px;
+	.top {
+		margin-bottom: 10px;
+	}
 	.add-record {
 		padding: 20px 0px;
 		border: 2px $headClr solid;
@@ -43,5 +45,13 @@
 	.record__time {
 		//padding-left: 10px;
 		font-size: 10px;
+	}
+	.page-btn {
+		display: inline-block;
+		margin-left: 3px;
+		margin-right: 3px;
+	}
+	.page-btn.page-btn_active {
+		border: 1px white solid;
 	}
 }
