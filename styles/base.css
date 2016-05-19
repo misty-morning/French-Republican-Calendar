@@ -93,7 +93,7 @@ a {
 a:visited {
   color: #c5320f; }
 
-input, textarea {
+input, textarea, select, option {
   color: #000000; }
 
 .pusher-header {

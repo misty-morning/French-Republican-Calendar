@@ -43,18 +43,18 @@ var guestBookApp = angular.module("guestBookApp", [], function($httpProvider) {
 /*guestBookApp.factory('calcPages', function(count) {
 	return Math.ceil(count / 3);
 });*/
-/*guestBookApp.factory('pages', function() {
+guestBookApp.factory('pages', function() {
 	return {
 		calc: function(count) {
 			return Math.ceil(count / 3);
 		}
 	};
-})*/
+})
 
 guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 
 	$scope.recordsOnPage = 5;
-
+	$scope.pageLengthsOpt = [3, 5, 10];
 	$scope.recordsCount = 0;
 
 	$http.get("php/guest_book-get.php").then(function(response) {

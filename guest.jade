@@ -6,6 +6,7 @@ block head
 
 block content
 	div.guest-book(ng-app="guestBookApp" ng-controller="GuestBookControler")
+
 		div.pages
 			a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="partialLoad(num)")
 				{{num}}
@@ -15,8 +16,10 @@ block content
 				div.record__name {{record.name}}
 				div.record__text {{record.text}}
 				div.record__time {{record.time}}
-		div.test
-			{{pagesCount()}}:{{recordsCount}}
+		//- div.test
+		//- 	{{pagesCount()}}:{{recordsCount}}
+		div.menage Показывать по: 
+			select.menage__show-num(ng-model="recordsOnPage" ng-options="opt for opt in pageLengthsOpt")
 		div.pages
 			a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="partialLoad(num)")
 				{{num}}
