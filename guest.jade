@@ -25,7 +25,7 @@ block content
 		//- 		{{num}}
 
 		div.records
-			div.record(ng-repeat="record in records | orderBy:'-id'" data-record-id="{{record.id}}")
+			div.record(ng-repeat="record in records | orderBy:id:true" data-record-id="{{record.id}}")
 				div.record__name {{record.name}}
 				div.record__text {{record.text}}
 				div.record__time {{record.time}}

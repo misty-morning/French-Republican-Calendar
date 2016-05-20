@@ -40,18 +40,25 @@ var guestBookApp = angular.module("guestBookApp", [], function($httpProvider) {
 	}];
 });
 
-/*guestBookApp.factory('calcPages', function(count) {
-	return Math.ceil(count / 3);
-});*/
-guestBookApp.factory('pages', function() {
+
+guestBookApp.factory('page', function() {
 	return {
-		calc: function(count) {
-			return Math.ceil(count / 3);
+		load: function(num, recordsOnPage) {
+			console.log(num);
+			$http.post("php/guest_book-partial_load.php", {
+				num: num,
+				step: recordsOnPage
+			}).then(function(response) {
+				console.log(response.data);
+				return response.data.records;
+			});
 		}
-	};
+	}
 })
 
-guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
+guestBookApp.controller("GuestBookControler", function($scope, $http) {
+
+	//$scope.page = page;
 
 	$scope.recordsOnPage = 3;
 	$scope.recordsOnPageOpt = [3, 5, 10];
@@ -87,7 +94,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, pages) {
 			var tmp = parseInt(response.data[0]);
 			$scope.recordsCount = tmp;
 			$scope.partialLoad($scope.pagesCount());
-			$scope.hideAddRecord();
+			//$scope.hideAddRecord();
 		});
 	}
 	$scope.pagesCount = function() {
