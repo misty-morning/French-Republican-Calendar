@@ -153,7 +153,7 @@ guestBookApp.directive("vmPageDivider", function() {
 				for (var i = scope.pagesAmount - 1; i >= 0; i--) {
 					scope.pagesArr.push(i + 1);
 				}
-			});
+			}); 
 		},
 	}
 });
