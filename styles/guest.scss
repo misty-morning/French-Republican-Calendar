@@ -64,3 +64,16 @@
 		border: 1px white solid;
 	}
 }
+
+.vm-page-divider {
+	.page {
+		display: inline-block;
+		margin-left: 3px;
+		margin-right: 3px;
+
+		&.page_active {
+			color: green;
+		}
+	}
+
+}

@@ -74,6 +74,10 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 	$scope.showNRBBtnShown = true;
 	$scope.newRecBlockShown = false;
 
+	$scope.$watch('recordsOnPage', function(recordsOnPage) {
+		$scope.partialLoad($scope.pagesCount());
+	});
+
 	$http.get("php/guest_book-get.php").then(function(response) {
 		var tmp = parseInt(response.data[0]);
 		$scope.recordsCount = tmp;
@@ -106,13 +110,13 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 	$scope.pagesCount = function() {
 		return Math.ceil($scope.recordsCount / $scope.recordsOnPage);
 	}
-	$scope.pageBtnNum = function() {
+/*	$scope.pageBtnNum = function() {
 		var btnArr = [];
 		for (var i = $scope.pagesCount() - 1; i >= 0; i--) {
 			btnArr.push(i + 1);
 		}
 		return btnArr;
-	}
+	}*/
 	$scope.pageBtnHandler = function(num)  {
 
 		$scope.partialLoad(num);
@@ -123,7 +127,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 			num: num,
 			step: $scope.recordsOnPage
 		}).then(function(response) {
-			console.log(response.data);
+			//console.log(response.data);
 			$scope.records = response.data.records;
 			$scope.hideAddRecord();
 
@@ -139,21 +143,51 @@ guestBookApp.directive("vmPageDivider", function() {
 			step: '=',
 			handler: '&func',
 		},
-		template: "<div><a href='javascript:void(0);' " + 
-		"ng-repeat='page in pagesArr' ng-click='handler({num: page})' " + 
-		"class='mv-page'>{{page}}</a></div>",
+		template: "<div class='vm-page-divider'><a href='javascript:void(0);' " + 
+		"ng-repeat='page in pagesArr | orderBy:id:true' ng-click='clickPage(page)' " + 
+		"class='page' ng-class='{page_active:page.active}'>{{page.id}}</a></div>",
 		replace: true,
 		link: function(scope, element, attrs) {
+			
 			console.log("scope", scope);
-			scope.$watchGroup(['num', 'step'], function(arr) {
-				//console.log("watchGroup dir", arr);
-				scope.pagesAmount = Math.ceil(arr[0] / arr[1]);
-				//console.log("pagesAmount dir", scope.pagesAmount);
+/*			function makeArr(num, step) {
+				scope.pagesAmount = Math.ceil(num / step);
 				scope.pagesArr = [];
 				for (var i = scope.pagesAmount - 1; i >= 0; i--) {
-					scope.pagesArr.push(i + 1);
+					scope.pagesArr.push({id: i + 1, active: false});
+				}
+			}*/
+			scope.firstLoad = true;
+			scope.$watchGroup(['num', 'step'], function(arr) {
+				//makeArr(arr[0], arr[1]);
+				var num = arr[0];
+				var step = arr[1];
+				scope.pagesAmount = Math.ceil(num / step);
+				scope.pagesArr = [];
+/*				for (var i = scope.pagesAmount - 1; i >= 0; i--) {
+					scope.pagesArr.push({id: i + 1, active: false});
+				}*/
+				for (var i = 0; i < scope.pagesAmount; i++) {
+					scope.pagesArr.push({id: i + 1, active: false});	
+				}
+
+				
+				if (num > 0) {
+					scope.pagesArr[scope.pagesArr.length - 1].active = true;
+					console.log(scope.pagesArr);
+					scope.firstLoad = false;
 				}
 			}); 
+			//scope.pagesArr[scope.pagesArr.length - 1].activness = true;
+			scope.clickPage = function(page) {
+				//scope.activness = 'page_active';
+				for (var i = 0; i < scope.pagesArr.length; i++) {
+					scope.pagesArr[i].active = false;
+				}
+				//scope.pagesArr[page.id].active = true;
+				page.active = true;
+				scope.handler({num: page.id});
+			}
 		},
 	}
 });

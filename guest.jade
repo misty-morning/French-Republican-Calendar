@@ -23,7 +23,7 @@ block content
 		//- div.pages
 		//- 	a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="partialLoad(num)")
 		//- 		{{num}}
-		vm-page-divider(num="recordsCount" step="recordsOnPage" func="pageBtnHandler(num)")
+		//- vm-page-divider(num="recordsCount" step="recordsOnPage" func="pageBtnHandler(num)")
 		div.records
 			div.record(ng-repeat="record in records | orderBy:id:true" data-record-id="{{record.id}}")
 				div.record__name {{record.name}}
@@ -33,9 +33,10 @@ block content
 		//- 	{{pagesCount()}}:{{recordsCount}}
 		div.menage Показывать по: 
 			select.menage__show-num(ng-model="recordsOnPage" ng-options="opt for opt in recordsOnPageOpt")
-		div.pages
-			a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="pageBtnHandler(num)")
-				{{num}}
+		vm-page-divider(num="recordsCount" step="recordsOnPage" func="pageBtnHandler(num)")
+		//- div.pages
+		//- 	a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="pageBtnHandler(num)")
+		//- 		{{num}}
 		//- div(vm-page-divider="showNRBBtnShown")
 		
 
