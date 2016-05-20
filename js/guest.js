@@ -40,7 +40,7 @@ var guestBookApp = angular.module("guestBookApp", [], function($httpProvider) {
 	}];
 });
 
-
+/*
 guestBookApp.factory('page', function() {
 	return {
 		load: function(num, recordsOnPage) {
@@ -54,7 +54,14 @@ guestBookApp.factory('page', function() {
 			});
 		}
 	}
-})
+})*/
+guestBookApp.factory("pageCount", function() {
+	return {
+		calc: function(num, step) {
+			return Math.ceil(num / step);
+		} 
+	}
+});
 
 guestBookApp.controller("GuestBookControler", function($scope, $http) {
 
@@ -83,7 +90,6 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 	}
 
 	$scope.newRecord = function() {
-		//var tmpRecord = 
 		$http.post("php/guest_book-add.php", {
 			name: $scope.newName,
 			text: $scope.newText
@@ -94,7 +100,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 			var tmp = parseInt(response.data[0]);
 			$scope.recordsCount = tmp;
 			$scope.partialLoad($scope.pagesCount());
-			//$scope.hideAddRecord();
+
 		});
 	}
 	$scope.pagesCount = function() {
@@ -107,8 +113,8 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 		}
 		return btnArr;
 	}
-	$scope.bageBtnHandler = function(num)  {
-		//$scope.hideAddRecord();
+	$scope.pageBtnHandler = function(num)  {
+
 		$scope.partialLoad(num);
 	}
 	$scope.partialLoad = function(num) {
@@ -120,7 +126,34 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 			console.log(response.data);
 			$scope.records = response.data.records;
 			$scope.hideAddRecord();
-			//$scope.recordsCount = response.data.count;
+
 		});
+	}
+});
+
+guestBookApp.directive("vmPageDivider", function() {
+	return {
+		restrict: 'E',
+		 scope: {
+			num: '=',
+			step: '=',
+			handler: '&func',
+		},
+		template: "<div><a href='javascript:void(0);' " + 
+		"ng-repeat='page in pagesArr' ng-click='handler({num: page})' " + 
+		"class='mv-page'>{{page}}</a></div>",
+		replace: true,
+		link: function(scope, element, attrs) {
+			console.log("scope", scope);
+			scope.$watchGroup(['num', 'step'], function(arr) {
+				//console.log("watchGroup dir", arr);
+				scope.pagesAmount = Math.ceil(arr[0] / arr[1]);
+				//console.log("pagesAmount dir", scope.pagesAmount);
+				scope.pagesArr = [];
+				for (var i = scope.pagesAmount - 1; i >= 0; i--) {
+					scope.pagesArr.push(i + 1);
+				}
+			});
+		},
 	}
 });

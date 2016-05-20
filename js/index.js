@@ -31,9 +31,6 @@ $(document).ready(function() {
 		$imgEl.css("border", "none");
 	}
 
-	
-	
-
 	// Visual calendar
 
 	$visualCalendar.append("<div id='vc--months'></div>");
@@ -128,10 +125,6 @@ $(document).ready(function() {
 		var revDate = new RevolutionaryCalendar(date, $calcFirstDay.val());
 		renderRevCalendar(revDate, $calcResult);
 	});
-
-
-
-
 
 });
 
