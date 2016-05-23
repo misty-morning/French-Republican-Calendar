@@ -55,13 +55,7 @@ guestBookApp.factory('page', function() {
 		}
 	}
 })*/
-guestBookApp.factory("pageCount", function() {
-	return {
-		calc: function(num, step) {
-			return Math.ceil(num / step);
-		} 
-	}
-});
+
 
 guestBookApp.controller("GuestBookControler", function($scope, $http) {
 
