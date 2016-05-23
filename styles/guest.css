@@ -49,9 +49,9 @@
 .guest-book .page-btn.page-btn_active {
   border: 1px white solid; }
 
-.vm-page-divider .page {
+vm-page-divider .page {
   display: inline-block;
   margin-left: 3px;
   margin-right: 3px; }
-  .vm-page-divider .page.page_active {
+  vm-page-divider .page.page_active {
     color: green; }

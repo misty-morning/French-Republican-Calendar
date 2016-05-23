@@ -33,7 +33,7 @@ block content
 		//- 	{{pagesCount()}}:{{recordsCount}}
 		div.menage Показывать по: 
 			select.menage__show-num(ng-model="recordsOnPage" ng-options="opt for opt in recordsOnPageOpt")
-		vm-page-divider(num="recordsCount" step="recordsOnPage" func="pageBtnHandler(num)")
+		vm-page-divider(num="recordsCount" step="recordsOnPage" max="4" func="pageBtnHandler(num)")
 		//- div.pages
 		//- 	a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="pageBtnHandler(num)")
 		//- 		{{num}}
