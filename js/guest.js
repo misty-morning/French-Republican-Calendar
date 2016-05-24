@@ -2,16 +2,12 @@ var guestBookApp = angular.module("guestBookApp", [], function($httpProvider) {
 	// this function is angularjs $http fix for php
 
 	$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-
 	$httpProvider.defaults.transformRequest = [function(data) {
-
 		var param = function(obj) {
 			var query = '';
 			var name, value, fullSubName, subValue, innerObj, i;
-
 			for (name in obj) {
 				value = obj[name];
-
 				if (value instanceof Array) {
 					for (i = 0; i < value.length; ++i) {
 						subValue = value[i];
@@ -32,17 +28,15 @@ var guestBookApp = angular.module("guestBookApp", [], function($httpProvider) {
 					query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
 				}
 			}
-
 			return query.length ? query.substr(0, query.length - 1) : query;
 		};
-
 		return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
 	}];
 });
 
-guestBookApp.controller("GuestBookControler", function($scope, $http) {
-
+guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 	// Models
+	$scope.sce = $sce;
 
 	$scope.recordsOnPage = 3;
 	$scope.recordsOnPageOpt = [3, 5, 10];
@@ -83,7 +77,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 			name: $scope.newName,
 			text: $scope.newText
 		}).then(function(response) {
-			console.log("added", response.data);
+			//console.log("added", response.data);
 			$scope.newName = "";
 			$scope.newText = "";
 			var tmp = parseInt(response.data[0]);
@@ -149,7 +143,6 @@ guestBookApp.directive("vmPageDivider", function() {
 				var num = arr[0];
 				var step = arr[1];
 				
-
 				scope.pagesAmount = Math.ceil(num / step);
 				scope.pagesArr = [];
 

@@ -26,6 +26,7 @@
 
 	$records = array();
 	while ($row = mysqli_fetch_array($records_con)) {
+		$row['text'] = nl2br($row['text']);
 		array_push($records, $row);
 	}
 	//echo json_encode(array("records" => $records, "num" => $num, "step" => $step, "index" => $index);

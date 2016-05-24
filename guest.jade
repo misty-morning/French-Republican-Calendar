@@ -20,25 +20,16 @@ block content
 			textarea(ng-model="newText" placeholder="Текст вашей записи...")#add-record__text.form-field
 			br
 			button.btn.btn-sm.btn-danger(ng-click="newRecord()") Добавить запись
-		//- div.pages
-		//- 	a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="partialLoad(num)")
-		//- 		{{num}}
-		//- vm-page-divider(num="recordsCount" step="recordsOnPage" func="pageBtnHandler(num)")
+
 		div.records
 			div.record(ng-repeat="record in records | orderBy:id:true" data-record-id="{{record.id}}")
 				div.record__name {{record.name}}
-				div.record__text {{record.text}}
+				div.record__text(ng-bind-html="sce.trustAsHtml(record.text)")
 				div.record__time {{record.time}}
-		//- div.test
-		//- 	{{pagesCount()}}:{{recordsCount}}
+
 		div.menage Показывать по: 
 			select.menage__show-num(ng-model="recordsOnPage" ng-options="opt for opt in recordsOnPageOpt")
 		vm-page-divider(num="recordsCount" step="recordsOnPage" max="4" func="pageBtnHandler(num)")
-		//- div.pages
-		//- 	a.page-btn(href="javascript:void(0);" ng-repeat="num in pageBtnNum()" ng-click="pageBtnHandler(num)")
-		//- 		{{num}}
-		//- div(vm-page-divider="showNRBBtnShown")
-		
 
 block scripts
 	script(type="text/javascript" src="libs/angular.min.js")
