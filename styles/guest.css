@@ -2,7 +2,7 @@
   margin-bottom: 10px; }
 .guest-book .add-record {
   position: relative;
-  padding: 20px 0px;
+  padding: 20px 20px;
   border: 2px #c5320f solid;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -14,6 +14,11 @@
     right: 10px;
     cursor: pointer;
     color: #c5320f; }
+  .guest-book .add-record #add-record__text {
+    width: 100%;
+    max-width: 400px;
+    height: 170px;
+    margin: 0px; }
 .guest-book .records {
   padding: 0px 20px; }
 .guest-book .record, .guest-book .record__name, .guest-book .record__text {

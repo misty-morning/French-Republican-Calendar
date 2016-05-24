@@ -7,7 +7,7 @@
 	}
 	.add-record {
 		position: relative;
-		padding: 20px 0px;
+		padding: 20px 20px;
 		border: 2px $headClr solid;
 		@include border-radius($controlsBRadius);
 
@@ -17,6 +17,12 @@
 			right: 10px;
 			cursor: pointer;
 			color: $headClr;
+		}
+		#add-record__text {
+			width: 100%;
+			max-width: 400px;
+			height: 170px;
+			margin: 0px;
 		}
 	}
 	.records {

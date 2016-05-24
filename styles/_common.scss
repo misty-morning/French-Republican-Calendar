@@ -3,10 +3,12 @@
 	@include border-radius($controlsBRadius);
 	background-color: #ffffff;
 	padding: 4px;
+	
+}
+.bigger-field {
+	min-width: 120px;
+	min-height: 30px;
 	margin: 5px;
-	width: 120px;
-	height: 30px;
-
 }
 .form-field option {
 	color: #000000;
