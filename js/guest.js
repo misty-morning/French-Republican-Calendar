@@ -56,7 +56,6 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 		var recordsOnPage = arr[1];
 
 		$scope.pagesCount = Math.ceil(recordsCount / recordsOnPage);
-		console.log($scope.pagesCount);
 		$scope.partialLoad($scope.pagesCount);
 	});
 
@@ -99,12 +98,11 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 	}
 	$scope.partialLoad = function(num) {
 		if (num > 0) {
-			console.log(num);
 			$http.post("php/guest_book-partial_load.php", {
 				num: num,
 				step: $scope.recordsOnPage
 			}).then(function(response) {
-				console.log(response.data);
+				//console.log(response.data);
 				$scope.records = response.data.records;
 				$scope.hideAddRecord();
 
@@ -128,8 +126,8 @@ guestBookApp.directive("vmPageDivider", function() {
 		"<a href='javascript:void(0);' ng-show='shownForward' ng-click='forward()'> ></a>",
 		// replace: true,
 		link: function(scope, element, attrs) {
-			console.log("scope", scope);
-			console.log("attrs", attrs);
+			//console.log("scope", scope);
+			//console.log("attrs", attrs);
 
 			scope.shownForward = false;
 			scope.shownBack = false;
@@ -140,7 +138,6 @@ guestBookApp.directive("vmPageDivider", function() {
 				for (var i = 0; i < scope.pagesArr.length; i++) {
 					if (scope.pagesArr[i].active) {
 						activeId = i;
-						console.log('for', activeId);
 						break;
 					}
 				}	
