@@ -40,31 +40,12 @@ var guestBookApp = angular.module("guestBookApp", [], function($httpProvider) {
 	}];
 });
 
-/*
-guestBookApp.factory('load', function() {
-	return {
-		part: function(num, recordsOnPage) {
-			console.log(num);
-			$http.post("php/guest_book-partial_load.php", {
-				num: num,
-				step: recordsOnPage
-			}).then(function(response) {
-				console.log(response.data);
-				return response.data.records;
-			});
-		}
-
-	}
-})*/
-
-
 guestBookApp.controller("GuestBookControler", function($scope, $http) {
 
 	// Models
 
 	$scope.recordsOnPage = 3;
 	$scope.recordsOnPageOpt = [3, 5, 10];
-	//$scope.pageBtnCount = 3;
 	$scope.recordsCount = 0;
 
 	$scope.showNRBBtnShown = true;
@@ -78,13 +59,6 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 		console.log($scope.pagesCount);
 		$scope.partialLoad($scope.pagesCount);
 	});
-/*	$scope.$watch('pagesCount', function(pagesCount) {
-		$scope.pagesArr = [];
-		for (var i = 0; i < $scope.pagesCount; i++) {
-			$scope.pagesArr.push({id: i + 1, active: false});	
-		}
-		$scope.partialLoad($scope.pagesArr);
-	});*/
 
 	// Init
 
@@ -136,7 +110,6 @@ guestBookApp.controller("GuestBookControler", function($scope, $http) {
 
 			});	
 		}
-
 	}
 });
 
@@ -146,15 +119,13 @@ guestBookApp.directive("vmPageDivider", function() {
 		 scope: {
 			num: '=',
 			step: '=',
-			//max: '=',
 			handler: '&func',
 		},
-		template: "<div class='vm-page-divider'>" + 
-		"<a href='javascript:void(0);' ng-show='shownBack' ng-click='back()'>< </a>" + 
+		template:  "<a href='javascript:void(0);' ng-show='shownBack' ng-click='back()'>< </a>" + 
 		"<a href='javascript:void(0);' " + 
 		"ng-repeat='page in shownPagesArr | orderBy:id:true' ng-click='clickPage(page)' " + 
 		"class='page' ng-class='{page_active:page.active}'>{{page.id}}</a>" + 
-		"<a href='javascript:void(0);' ng-show='shownForward' ng-click='forward()'> ></a></div>",
+		"<a href='javascript:void(0);' ng-show='shownForward' ng-click='forward()'> ></a>",
 		// replace: true,
 		link: function(scope, element, attrs) {
 			console.log("scope", scope);
@@ -162,10 +133,7 @@ guestBookApp.directive("vmPageDivider", function() {
 
 			scope.shownForward = false;
 			scope.shownBack = false;
-
-			//scope.shownPagesArr = [];
 			var max = parseInt(attrs.max);
-			//scope.activeId = 0; 
 
 			function getActiveId() {
 				var activeId;
@@ -193,40 +161,15 @@ guestBookApp.directive("vmPageDivider", function() {
 				}
 				if (num > 0) {
 					scope.pagesArr[scope.pagesArr.length - 1].active = true;
-					//console.log(scope.pagesArr);
 					scope.firstLoad = false;
 				}
 				if (scope.pagesAmount > max) {
-					//scope.shownForward = true;
 					var activeId = getActiveId();
-
-					//console.log('activeId', activeId);
-					//console.log('activeId - max', activeId - max);
 					scope.shownPagesArr = scope.pagesArr.slice(activeId - max + 1, activeId + 1);
-
 				} else {
-					//scope.shownForward = false;
-					//scope.shownBack = false;
 					scope.shownPagesArr = scope.pagesArr;
 				}
-
-/*				if (num > 0) {
-					scope.pagesArr[scope.pagesArr.length - 1].active = true;
-					//console.log(scope.pagesArr);
-					scope.firstLoad = false;
-				}*/
 			}); 
-/*			scope.$watch('pagesArr', function(pagesArr) {
-				if (scope.pagesArr) {
-					for (var i = 0; i < scope.pagesArr.length; i++) {
-						if (scope.pagesArr[i].active) {
-							scope.activeId = i;
-							console.log('scope.activeId', scope.activeId);
-							break;
-						}
-					}					
-				}
-			});*/
 			scope.clickPage = function(page) {
 				for (var i = 0; i < scope.pagesArr.length; i++) {
 					scope.pagesArr[i].active = false;
@@ -238,11 +181,10 @@ guestBookApp.directive("vmPageDivider", function() {
 				var firstElId = scope.shownPagesArr[0].id;
 				var startInx = firstElId - 2;
 				var endInx = firstElId + max - 2;
-				console.log('startInx', startInx);
-				console.log('endInx', endInx);
+				//console.log('startInx', startInx);
+				//console.log('endInx', endInx);
 
 				scope.shownPagesArr = scope.pagesArr.slice(startInx, endInx);
-
 			}
 
 			scope.back = function() {
@@ -250,8 +192,8 @@ guestBookApp.directive("vmPageDivider", function() {
 				var lastElId = scope.shownPagesArr[0].id;
 				var startInx = lastElId;
 				var endInx = lastElId + max;
-				console.log('startInx', startInx);
-				console.log('endInx', endInx);
+				//console.log('startInx', startInx);
+				//console.log('endInx', endInx);
 
 				scope.shownPagesArr = scope.pagesArr.slice(startInx, endInx);
 			}
@@ -265,10 +207,7 @@ guestBookApp.directive("vmPageDivider", function() {
 					if (shownPagesArr[shownPagesArr.length -1].id === scope.pagesAmount) {
 						scope.shownBack = false;
 					}						
-			
 				}
-
-
 			});
 		},
 	}
