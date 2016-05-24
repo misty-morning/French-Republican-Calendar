@@ -28,7 +28,7 @@ block content
 				div.record__time {{record.time}}
 
 		div.menage Показывать по: 
-			select.menage__show-num(ng-model="recordsOnPage" ng-options="opt for opt in recordsOnPageOpt")
+			select.menage__show-num.form-field(ng-model="recordsOnPage" ng-options="opt for opt in recordsOnPageOpt")
 		vm-page-divider(num="recordsCount" step="recordsOnPage" max="4" func="pageBtnHandler(num)")
 
 block scripts
