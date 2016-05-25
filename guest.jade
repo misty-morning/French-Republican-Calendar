@@ -15,11 +15,17 @@ block content
 			br
 			input(type="text" ng-model="newName" maxlength="30")#add-record__name.form-field
 			br
+			p.add-record__warn(ng-show='shownWarn.noName') Введите имя
+			br
 			lable(for="add-record__text") Текст:
 			br
 			textarea(ng-model="newText" placeholder="Текст вашей записи...")#add-record__text.form-field
 			br
-			button.btn.btn-sm.btn-danger(ng-click="newRecord()") Добавить запись
+			p.add-record__warn(ng-show='shownWarn.noText') Запись слишком короткая
+			br
+			p.add-record__warn(ng-show='shownWarn.tooMuchText') Запись слишком длинная
+			br
+			button.btn.btn-sm.btn-danger(ng-click="addRecord()") Добавить запись
 
 		div.records
 			div.record(ng-repeat="record in records | orderBy:id:true" data-record-id="{{record.id}}")

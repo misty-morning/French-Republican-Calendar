@@ -45,6 +45,12 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 	$scope.showNRBBtnShown = true;
 	$scope.newRecBlockShown = false;
 
+	$scope.shownWarn = {
+		noName: false,
+		noText: false,
+		tooMuchText: false,
+	};
+
 	$scope.$watchGroup(['recordsCount', 'recordsOnPage'], function(arr) {
 		var recordsCount = arr[0];
 		var recordsOnPage = arr[1];
@@ -71,7 +77,28 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 		$scope.showNRBBtnShown = true;
 		$scope.newRecBlockShown = false;
 	}
+	$scope.addRecord = function() {
+		$scope.shownWarn.noName = false;
+		$scope.shownWarn.noText = false;
+		$scope.shownWarn.tooMuchText = false;
 
+		var add = true;
+		if (!$scope.newName) {
+			$scope.shownWarn.noName = true;
+			add = false;
+		} 
+		if (!$scope.newText || $scope.newText.length < 5) {
+			$scope.shownWarn.noText = true;
+			add = false;
+		} 
+		if ($scope.newText.length > 1000) {
+			$scope.shownWarn.tooMuchText = true;
+			add = false;
+		} 
+		if (add) {
+			$scope.newRecord();
+		}
+	}
 	$scope.newRecord = function() {
 		$http.post("php/guest_book-add.php", {
 			name: $scope.newName,
