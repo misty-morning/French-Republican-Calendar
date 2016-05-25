@@ -113,11 +113,12 @@ guestBookApp.directive("vmPageDivider", function() {
 			step: '=',
 			handler: '&func',
 		},
-		template:  "<a href='javascript:void(0);' ng-show='shownBack' ng-click='back()'>< </a>" + 
-		"<a href='javascript:void(0);' " + 
-		"ng-repeat='page in shownPagesArr | orderBy:id:true' ng-click='clickPage(page)' " + 
-		"class='page' ng-class='{page_active:page.active}'>{{page.id}}</a>" + 
-		"<a href='javascript:void(0);' ng-show='shownForward' ng-click='forward()'> ></a>",
+		template:  "<a href='javascript:void(0);' ng-show='shownToBegining' ng-click='toBegining()'><< </a>" + 
+			"<a href='javascript:void(0);' ng-show='shownBack' ng-click='back()'>< </a>" + 
+			"<a href='javascript:void(0);' " + 
+			"ng-repeat='page in shownPagesArr | orderBy:id:true' ng-click='clickPage(page)' " + 
+			"class='page' ng-class='{page_active:page.active}'>{{page.id}}</a>" + 
+			"<a href='javascript:void(0);' ng-show='shownForward' ng-click='forward()'> ></a>",
 		// replace: true,
 		link: function(scope, element, attrs) {
 			//console.log("scope", scope);
@@ -125,6 +126,7 @@ guestBookApp.directive("vmPageDivider", function() {
 
 			scope.shownForward = false;
 			scope.shownBack = false;
+			scope.shownToBegining = false;
 			var max = parseInt(attrs.max);
 
 			function getActiveId() {
@@ -167,6 +169,15 @@ guestBookApp.directive("vmPageDivider", function() {
 				page.active = true;
 				scope.handler({num: page.id});
 			}
+			scope.toBegining = function() {
+				//var firstElId = scope.shownPagesArr[0].id;
+				var startInx = scope.pagesArr.length - max;
+				var endInx = scope.pagesArr.length;
+				//console.log('startInx', startInx);
+				//console.log('endInx', endInx);
+
+				scope.shownPagesArr = scope.pagesArr.slice(startInx, endInx);
+			}
 			scope.forward = function() {
 				var firstElId = scope.shownPagesArr[0].id;
 				var startInx = firstElId - 2;
@@ -190,12 +201,14 @@ guestBookApp.directive("vmPageDivider", function() {
 			scope.$watch('shownPagesArr', function(shownPagesArr) {
 				scope.shownForward = true;
 				scope.shownBack = true;
+				scope.shownToBegining = true;
 				if (shownPagesArr && shownPagesArr.length > 0) {
 					if (shownPagesArr[0].id === 1) {
 						scope.shownForward = false;
 					}
 					if (shownPagesArr[shownPagesArr.length -1].id === scope.pagesAmount) {
 						scope.shownBack = false;
+						scope.shownToBegining = false;
 					}						
 				}
 			});
