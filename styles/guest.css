@@ -22,8 +22,7 @@
   .guest-book .add-record .add-record__warn {
     color: #f42e11;
     font-size: 13px;
-    margin: 0px;
-    display: inline-block; }
+    margin: 0px; }
 .guest-book .records {
   padding: 0px 20px; }
 .guest-book .record, .guest-book .record__name, .guest-book .record__text {

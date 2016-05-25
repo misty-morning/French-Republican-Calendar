@@ -1,3 +1,7 @@
+.clear {
+	width: 100%;
+	clear: both;
+}
 .form-field {
 	border: 2px $headClr solid;
 	@include border-radius($controlsBRadius);
@@ -13,3 +17,4 @@
 .form-field option {
 	color: #000000;
 }
+

@@ -12,19 +12,16 @@ block content
 		div.add-record(ng-show="newRecBlockShown")
 			i.add-record__hide.glyphicon.glyphicon-remove(ng-click="hideAddRecord()")
 			lable(for="add-record__name") Имя: 
-			br
+			div.clear
 			input(type="text" ng-model="newName" maxlength="30")#add-record__name.form-field
-			br
 			p.add-record__warn(ng-show='shownWarn.noName') Введите имя
-			br
+			div.clear
 			lable(for="add-record__text") Текст:
-			br
+			div.clear
 			textarea(ng-model="newText" placeholder="Текст вашей записи...")#add-record__text.form-field
-			br
 			p.add-record__warn(ng-show='shownWarn.noText') Запись слишком короткая
-			br
 			p.add-record__warn(ng-show='shownWarn.tooMuchText') Запись слишком длинная
-			br
+			div.clear
 			button.btn.btn-sm.btn-danger(ng-click="addRecord()") Добавить запись
 
 		div.records

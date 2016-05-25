@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.clear {
+  width: 100%;
+  clear: both; }
+
 .form-field {
   border: 2px #c5320f solid;
   -webkit-border-radius: 8px;
