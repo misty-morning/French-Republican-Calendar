@@ -91,7 +91,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 			$scope.shownWarn.noText = true;
 			add = false;
 		} 
-		if ($scope.newText.length > 1000) {
+		if ($scope.newText && $scope.newText.length > 1000) {
 			$scope.shownWarn.tooMuchText = true;
 			add = false;
 		} 
