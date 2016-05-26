@@ -5,8 +5,9 @@ $(document).ready(function() {
 
 	$('[data-toggle="tooltip"]').tooltip();
 
-	renderCommonCalendar(commonTime, $indexCommonCalendar)
+	renderCommonCalendar(commonTime, $indexCommonCalendar);
 
 	var revTime = new RevolutionaryCalendar(commonTime, currentFirstDay);
+	//var revTime = new RevolutionaryCalendar(testTime, currentFirstDay);
 	renderRevCalendar(revTime, $indexRevCalendar);
 });

@@ -23,9 +23,29 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	var revYear;
 	var thisCommonYear = date.getFullYear();
 
-	var leapYear = thisCommonYear % 4 === 0;
+	//var leapYear = thisCommonYear % 4 === 0;
+
+	var leapYear;
+
+	var x400 = thisCommonYear % 400 === 0;
+	var x100 = thisCommonYear % 100 === 0;
+	var x4 = thisCommonYear % 4 === 0;
+	 if (x400) {
+	 	leapYear = true;
+	 } else {
+	 	if (x100) {
+	 		leapYear = false;
+	 	} else {
+	 		if (x4) {
+	 			leapYear = true;
+	 		} else {
+	 			leapYear = false;
+	 		}
+	 	}
+	 }
 
 	if (leapYear) {
+		//console.log("leapYear")
 		year[1] = 29;
 	}
 
