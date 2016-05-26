@@ -20,6 +20,15 @@ var RevolutionaryCalendar = function(date, firstDay) {
 
 	var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+	var revYear;
+	var thisCommonYear = date.getFullYear();
+
+	var leapYear = thisCommonYear % 4 === 0;
+
+	if (leapYear) {
+		year[1] = 29;
+	}
+
 	var daysAmount;
 
 	if ((thisCommonMonth != firstMonthOfThisYear) ||
@@ -44,11 +53,9 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	}
 	else {
 		daysAmount = thisCommonDay - firstDayOfThisYear;
-
 	}
 
-	var revYear;
-	var thisCommonYear = date.getFullYear();
+
 
 	if (thisCommonMonth > 8 || thisCommonMonth == 8 && thisCommonDay >= firstDayOfThisYear) {
 		revYear = thisCommonYear - 1791;
