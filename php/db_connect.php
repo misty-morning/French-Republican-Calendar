@@ -5,7 +5,7 @@
 	$charset = mysqli_set_charset($dbc, "utf8");
 
 	function get_text_block($name, $dbc) {
-		$block_query = "SELECT * FROM text_blocks WHERE name='".$name."'";
+		$block_query = "SELECT * FROM text_blocks WHERE name='".$name."' LIMIT 1";
 		$block_result = mysqli_query($dbc, $block_query);
 		$block = mysqli_fetch_array($block_result);
 
