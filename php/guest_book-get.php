@@ -1,5 +1,5 @@
 <?php
-	include 'db_connect.php';
+	require 'db_connect.php';
 
 	$count_query = "SELECT COUNT(*) FROM guest_book";
 	$count_con = mysqli_query($dbc, $count_query);

@@ -1,5 +1,5 @@
 <?php
-	include 'db_connect.php';
+	require 'db_connect.php';
 	header('Content-Type: application/json');
 
 	$num = $_POST['num'];

@@ -33,7 +33,7 @@
         <div class="container main-column">
             <div class="pusher-header"></div>
             <div class="description">
-                <?php include 'php/description.php'; ?>
+                <?php require 'php/description.php'; ?>
             </div>
         </div>
     </div>

@@ -33,7 +33,7 @@
         <div class="container main-column">
             <div class="pusher-header"></div>
             <div class="welcome">
-                <?php include 'php/index_welcome.php'; ?>
+                <?php require 'php/index_welcome.php'; ?>
             </div>
             <div class="row">
                 <div class="col-md-3 col-xs-12">
