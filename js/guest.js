@@ -39,7 +39,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 	$scope.sce = $sce;
 
 	$scope.recordsOnPage = 3;
-	$scope.recordsOnPageOpt = [3, 5, 10];
+	$scope.recordsOnPageOpt = [3, 5, 10, 30];
 	$scope.recordsCount = 0;
 
 	$scope.showNRBBtnShown = true;
@@ -140,17 +140,22 @@ guestBookApp.directive("vmPageDivider", function() {
 			step: '=',
 			handler: '&func',
 		},
-		template:  "<a href='javascript:void(0);' ng-show='shownToBegining' ng-click='toBegining()'><< </a>" + 
+		template: "<span ng-show='shownPages'>" +  
+			"<a href='javascript:void(0);' ng-show='shownToBegining' ng-click='toBegining()'><< </a>" + 
 			"<a href='javascript:void(0);' ng-show='shownBack' ng-click='back()'>< </a>" + 
+			
 			"<a href='javascript:void(0);' " + 
 			"ng-repeat='page in shownPagesArr | orderBy:id:true' ng-click='clickPage(page)' " + 
 			"class='page' ng-class='{page_active:page.active}'>{{page.id}}</a>" + 
-			"<a href='javascript:void(0);' ng-show='shownForward' ng-click='forward()'> ></a>",
+			
+			"<a href='javascript:void(0);' ng-show='shownForward' ng-click='forward()'> ></a>" + 
+			"</span>",
 		// replace: true,
 		link: function(scope, element, attrs) {
 			//console.log("scope", scope);
 			//console.log("attrs", attrs);
 
+			scope.shownPages = true;
 			scope.shownForward = false;
 			scope.shownBack = false;
 			scope.shownToBegining = false;
@@ -173,21 +178,29 @@ guestBookApp.directive("vmPageDivider", function() {
 				var step = arr[1];
 				
 				scope.pagesAmount = Math.ceil(num / step);
-				scope.pagesArr = [];
-
-				for (var i = 0; i < scope.pagesAmount; i++) {
-					scope.pagesArr.push({id: i + 1, active: false});	
-				}
-				if (num > 0) {
-					scope.pagesArr[scope.pagesArr.length - 1].active = true;
-					scope.firstLoad = false;
-				}
-				if (scope.pagesAmount > max) {
-					var activeId = getActiveId();
-					scope.shownPagesArr = scope.pagesArr.slice(activeId - max + 1, activeId + 1);
+				
+				if (scope.pagesAmount === 1) {
+					scope.shownPages = false;
 				} else {
-					scope.shownPagesArr = scope.pagesArr;
+					scope.shownPages = true;
+
+					scope.pagesArr = [];
+					for (var i = 0; i < scope.pagesAmount; i++) {
+						scope.pagesArr.push({id: i + 1, active: false});	
+					}
+
+					if (num > 0) {
+						scope.pagesArr[scope.pagesArr.length - 1].active = true;
+						scope.firstLoad = false;
+					}
+					if (scope.pagesAmount > max) {
+						var activeId = getActiveId();
+						scope.shownPagesArr = scope.pagesArr.slice(activeId - max + 1, activeId + 1);
+					} else {
+						scope.shownPagesArr = scope.pagesArr;
+					}
 				}
+
 			}); 
 			scope.clickPage = function(page) {
 				for (var i = 0; i < scope.pagesArr.length; i++) {
