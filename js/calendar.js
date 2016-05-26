@@ -75,8 +75,6 @@ var RevolutionaryCalendar = function(date, firstDay) {
 		daysAmount = thisCommonDay - firstDayOfThisYear;
 	}
 
-
-
 	if (thisCommonMonth > 8 || thisCommonMonth == 8 && thisCommonDay >= firstDayOfThisYear) {
 		revYear = thisCommonYear - 1791;
 	}
