@@ -2,53 +2,83 @@
 
 //First day of the calendar is the day of the autumn solstice
 var RevolutionaryCalendar = function(date, firstDay) {
+
+	var thisCommonYear = date.getFullYear();
+
 	var firstMonthOfThisYear = 8;
 
 	var firstDayOfThisYear;
 
-	if (!firstDay) {
-		firstDayOfThisYear = 22;
-	}
-	else {
-		firstDayOfThisYear = firstDay;
-	}
 
 	//firstDayOfThisYear -= 1;
 
 	var thisCommonMonth = date.getMonth();
 	var thisCommonDay = date.getDate();
 
+	firstDayOfThisYear = 22;
+	firstDayOfNextYear = 22;
+
+	var yearForFirstDateCalc;
+
+	if ( (thisCommonMonth > firstMonthOfThisYear) || 
+		(thisCommonMonth == firstMonthOfThisYear && thisCommonDay > 24) ) {
+		yearForFirstDateCalc = thisCommonYear;
+	} else if ( (thisCommonMonth < firstMonthOfThisYear) ||
+		 (thisCommonMonth == firstMonthOfThisYear && thisCommonDay < 22) ) {
+		yearForFirstDateCalc = thisCommonYear - 1;
+	} else {
+
+	} 
+	console.log("yearForFirstDateCalc", yearForFirstDateCalc)
+
+	if (firstDay) {
+		console.log("firstDay")
+		firstDayOfThisYear = firstDay;
+	} else {
+		for (year in equinoxes) {
+			if (parseInt(year) === yearForFirstDateCalc) {
+				firstDayOfThisYear = equinoxes[year];
+				console.log("found", firstDayOfThisYear);
+				break;
+			}
+		}
+	}
+
+	for (year in equinoxes) {
+		if (parseInt(year) === yearForFirstDateCalc + 1) {
+			firstDayOfNextYear = equinoxes[year];
+			console.log("found", firstDayOfNextYear)
+			break;
+		}
+	}
+
+	console.log("firstDayOfThisYear", firstDayOfThisYear)
+	console.log("firstDayOfNextYear", firstDayOfNextYear)
+
 	var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-	var revYear;
-	var thisCommonYear = date.getFullYear();
-
-	//var leapYear = thisCommonYear % 4 === 0;
 
 	var leapYear;
 
 	var x400 = thisCommonYear % 400 === 0;
 	var x100 = thisCommonYear % 100 === 0;
 	var x4 = thisCommonYear % 4 === 0;
-	 if (x400) {
-	 	leapYear = true;
-	 } else {
-	 	if (x100) {
-	 		leapYear = false;
-	 	} else {
-	 		if (x4) {
-	 			leapYear = true;
-	 		} else {
-	 			leapYear = false;
-	 		}
-	 	}
+	if (x400) {
+		leapYear = true;
+	} else {
+		if (x100) {
+			leapYear = false;
+		} else {
+			if (x4) {
+				leapYear = true;
+			} else {
+				leapYear = false;
+			}
+		}
 	}
-
 	if (leapYear) {
-		//console.log("leapYear")
 		year[1] = 29;
 	}
-
+	var revYear;
 	var daysAmount;
 
 	if ((thisCommonMonth != firstMonthOfThisYear) ||

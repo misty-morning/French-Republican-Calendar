@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	console.log("index");
 
 	// Calculate rev date
 
@@ -129,7 +129,8 @@ $(document).ready(function() {
 	$calcBnt.click(function() {
 		var date = new Date($calcYear.val(), $calcMonth.val(), $calcDay.val());
 
-		var revDate = new RevolutionaryCalendar(date, $calcFirstDay.val());
+		//var revDate = new RevolutionaryCalendar(date, $calcFirstDay.val());
+		var revDate = new RevolutionaryCalendar(date);
 		renderRevCalendar(revDate, $calcResult);
 	});
 
