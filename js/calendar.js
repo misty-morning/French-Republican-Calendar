@@ -42,7 +42,7 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	 			leapYear = false;
 	 		}
 	 	}
-	 }
+	}
 
 	if (leapYear) {
 		//console.log("leapYear")

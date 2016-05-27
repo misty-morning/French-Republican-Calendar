@@ -102,7 +102,7 @@
     </footer>
     <script type="text/javascript" src="libs/jquery-2.1.3.min.js"></script>
     <script src="libs/bootstrap-3.3.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/calendar_names.js"></script>
+    <script type="text/javascript" src="js/calendar_data.js"></script>
     <script type="text/javascript" src="js/calendar.js"></script>
     <script type="text/javascript" src="js/base.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
