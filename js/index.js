@@ -128,7 +128,7 @@ $(document).ready(function() {
 
 	$calcBnt.click(function() {
 		var date = new Date($calcYear.val(), $calcMonth.val(), $calcDay.val());
-
+		console.log("calc getDate", date.getDate())
 		//var revDate = new RevolutionaryCalendar(date, $calcFirstDay.val());
 		var revDate = new RevolutionaryCalendar(date);
 		renderRevCalendar(revDate, $calcResult);

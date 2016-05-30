@@ -9,6 +9,6 @@ $(document).ready(function() {
 	renderCommonCalendar(commonTime, $indexCommonCalendar);
 
 	var revTime = new RevolutionaryCalendar(commonTime);
-	//var revTime = new RevolutionaryCalendar(testTime, currentFirstDay);
+	//var revTime = new RevolutionaryCalendar(testTime);
 	renderRevCalendar(revTime, $indexRevCalendar);
 });
