@@ -1,6 +1,5 @@
 $(document).ready(function() {
-	console.log("index");
-
+	
 	// Calculate rev date
 
 	//Ui
@@ -18,7 +17,7 @@ $(document).ready(function() {
 
 	// Mouth Image
 
-	var revTime = new RevolutionaryCalendar(commonTime, currentFirstDay);
+	//var revTime = new RevolutionaryCalendar(commonTime, currentFirstDay);
 
 	var revMouthIndex = revTime.month;
 	//console.log(revMouthIndex);

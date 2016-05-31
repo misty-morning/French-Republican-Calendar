@@ -206,3 +206,5 @@ function renderCommonCalendar(date, $element) {
 var testTime = new Date(2015, 28, 8);
 
 var commonTime = new Date();
+
+var revTime = new RevolutionaryCalendar(commonTime);
