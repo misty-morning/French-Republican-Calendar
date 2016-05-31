@@ -102,7 +102,10 @@ $(document).ready(function() {
 		}
 		else {
 			$("#vc--current-month").addClass("__sansculottide");
-			var sansculottideAmount = 6;
+			var sansculottideAmount = 5;
+			if (revTime.additionalSansculottide) {
+				sansculottideAmount = 6;
+			}
 
 			for (var i = 0; i < sansculottideAmount; i++) {
 				$("#vc--current-month").append("<div data-id='" + (i + 1) + 

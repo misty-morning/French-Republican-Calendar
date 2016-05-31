@@ -87,7 +87,7 @@ var RevolutionaryCalendar = function(date, firstDay) {
 
 
 	if (firstDay) {
-		console.log("firstDay")
+		console.log("firstDay", firstDay)
 		firstDayOfThisYear = firstDay;
 	}
 
@@ -119,9 +119,11 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	}
 	var revYear;
 	var daysAmount;
+	var additionalSansculottide = false
 
 	if ((thisCommonMonth != firstMonthOfThisYear) ||
-		(thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear)) {
+		(thisCommonMonth === firstMonthOfThisYear && thisCommonDay < firstDayOfThisYear) ||
+		(firstDayFromPrevYear && thisCommonMonth === firstMonthOfThisYear) ) {
 
 		daysAmount = year[firstMonthOfThisYear] - firstDayOfThisYear;
 		if (thisCommonMonth > firstMonthOfThisYear) {
@@ -139,10 +141,14 @@ var RevolutionaryCalendar = function(date, firstDay) {
 			}
 			daysAmount += thisCommonDay;
 		}
+		if (daysAmount == 365) {
+			additionalSansculottide = true;
+			console.log("additionalSansculottide", additionalSansculottide);
+		}
 	}
 	else {
 /*		if (firstDayFromPrevYear) {
-			daysAmount = thisCommonDay - tmpThisYearStart;
+			daysAmount = thisCommonDay - tmpThisYearStart - 1;
 		} else {
 			daysAmount = thisCommonDay - firstDayOfThisYear;
 		}*/
@@ -163,6 +169,7 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	revolutionaryDate.day = daysAmount % 30 + 1;
 	revolutionaryDate.decade = daysAmount % 10;
 	revolutionaryDate.dayName = daysAmount;
+	revolutionaryDate.additionalSansculottide = additionalSansculottide;
 
 	console.log("days amount " + daysAmount);
 
