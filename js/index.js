@@ -1,14 +1,10 @@
 $(document).ready(function() {
-	
-	// Calculate rev date
 
-	//Ui
+	// Calender with Img
+
 	$imgHead = $("#month-img-head");
 	$imgEl = $("#month-img-el");
-
-	$visualCalendar = $("#visual-calendar");
-
-	// Mouth Image
+	$revDate = $("#index__rev-date");
 
 	//var revTime = new RevolutionaryCalendar(commonTime, currentFirstDay);
 
@@ -23,7 +19,11 @@ $(document).ready(function() {
 		$imgEl.css("border", "none");
 	}
 
+	renderFullRevCalendar(revTime, $revDate);
+
 	// Visual calendar
+
+	$visualCalendar = $("#visual-calendar");
 
 	$visualCalendar.append("<div id='vc--months'></div>");
 	for (var i = 0; i < 12; i++) {

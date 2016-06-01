@@ -158,9 +158,12 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	revolutionaryDate.month = daysAmount / 30 >> 0;
 	revolutionaryDate.day = daysAmount % 30 + 1;
 	revolutionaryDate.decade = daysAmount % 10;
+	revolutionaryDate.decadeNum = Math.floor(daysAmount / 10) + 1;
+	revolutionaryDate.mouthDecadeNum = Math.floor(revolutionaryDate.day / 10) + 1;
 	revolutionaryDate.dayName = daysAmount;
 	revolutionaryDate.additionalSansculottide = additionalSansculottide;
 
+	console.log(revolutionaryDate.mouthDecadeNum);
 	//console.log("days amount " + daysAmount);
 
 	return revolutionaryDate;
@@ -182,6 +185,26 @@ function renderRevCalendar(revolutionaryCalendar, $element) {
 		$element.html(calendarNames.sansculottideOrder[sansculottideNumber] + " санкюлотида: " + calendarNames.sansculottide[sansculottideNumber] + ", " + revYear + " год.");
 	}
 }
+function renderFullRevCalendar(revTime, $element) {
+	var romanYear = digconvert(revTime.year);
+	var romanDecade = digconvert(revTime.decadeNum);
+	var romanDay = digconvert(revTime.day);
+
+	$element.append("<p>"+romanYear+" ("+revTime.year+") год</p>");
+	if (revTime.dayName < 360) {
+		$element.append("<p>"+romanDecade+" ("+revTime.decadeNum+") декада</p>");
+	}
+	if (revTime.dayName < 360) {
+		$element.append("<p>"+romanDay+" ("+revTime.day+") "+calendarNames.month[revTime.month]+"</p>");
+		$element.append("<p>"+calendarNames.decade[revTime.decade]+" "+digconvert(revTime.mouthDecadeNum)+
+			" декады месяца</p>");
+		$element.append("<p> День "+calendarNames.day[revTime.dayName]+"</p>");
+
+	} else {
+		var	sansculottideNumber = revTime.dayName - 360;
+		$element.append("<p> "+calendarNames.sansculottideOrder[sansculottideNumber] + " санкюлотида: " + calendarNames.sansculottide[sansculottideNumber]+"</p>");
+	}
+}
 
 var currentFirstDay = 22;
 
@@ -193,7 +216,7 @@ function renderCommonCalendar(date, $element) {
 
 // Init
 
-var testTime = new Date(2018, 3, 9);
+var testTime = new Date(2018, 8, 22);
 
 var commonTime = new Date();
 
