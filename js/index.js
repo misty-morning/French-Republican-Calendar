@@ -106,6 +106,8 @@ $(document).ready(function() {
 
 	$calcFirstDay.hide();
 
+	var addFirstDay = false;
+
 	function yearChangeHandler() {
 		var val = parseInt($calcYear.val());
 		//console.log(val);
@@ -119,8 +121,10 @@ $(document).ready(function() {
 		}
 		if (found) {
 			$firstDayStuff.hide();
+			addFirstDay = false;
 		} else {
 			$firstDayStuff.show();
+			addFirstDay = true;
 		}
 	}
 
@@ -135,8 +139,11 @@ $(document).ready(function() {
 
 	$calcBnt.click(function() {
 		var date = new Date($calcYear.val(), $calcMonth.val(), $calcDay.val());
-		//var revDate = new RevolutionaryCalendar(date, $calcFirstDay.val());
-		var revDate = new RevolutionaryCalendar(date);
+		if (addFirstDay) {
+			var revDate = new RevolutionaryCalendar(date, $calcFirstDay.val());
+		} else {
+			var revDate = new RevolutionaryCalendar(date);
+		}
 		renderRevCalendar(revDate, $calcResult);
 	});
 
