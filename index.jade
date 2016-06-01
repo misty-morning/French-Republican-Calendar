@@ -51,12 +51,12 @@ block content
 					lable(for="calc--year") Год
 					input#calc--year(type="number" min="1792" max="3000").form-field.bigger-field
 				div
-					lable(for="calc--first-day") Осеннее равноденствие*
-					select#calc--first-day.form-field.bigger-field
+					lable(for="calc--first-day").first-day-stuff Осеннее равноденствие*
+					select#calc--first-day.form-field.bigger-field.first-day-stuff
 						option 22
 						option 23
 						option 24
-				p.index--comment
+				p.index--comment.first-day-stuff
 					| * - Год во французском республиканском календаре начинается с дня осеннего равноденствия. 
 					| Благодаря этой особенности он имеет более высокую (по сревнению с григорианским) астрономическую точность.
 					| Чтобы точно определить дату, необходимо указать дату предшествующего ей осеннего равноденствия.

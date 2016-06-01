@@ -79,14 +79,14 @@
                             <input id="calc--year" type="number" min="1792" max="3000" class="form-field bigger-field">
                         </div>
                         <div>
-                            <lable for="calc--first-day">Осеннее равноденствие*</lable>
-                            <select id="calc--first-day" class="form-field bigger-field">
+                            <lable for="calc--first-day" class="first-day-stuff">Осеннее равноденствие*</lable>
+                            <select id="calc--first-day" class="form-field bigger-field first-day-stuff">
                                 <option>22</option>
                                 <option>23</option>
                                 <option>24</option>
                             </select>
                         </div>
-                        <p class="index--comment">* - Год во французском республиканском календаре начинается с дня осеннего равноденствия. Благодаря этой особенности он имеет более высокую (по сревнению с григорианским) астрономическую точность. Чтобы точно определить дату, необходимо указать дату предшествующего ей осеннего равноденствия.</p>
+                        <p class="index--comment first-day-stuff">* - Год во французском республиканском календаре начинается с дня осеннего равноденствия. Благодаря этой особенности он имеет более высокую (по сревнению с григорианским) астрономическую точность. Чтобы точно определить дату, необходимо указать дату предшествующего ей осеннего равноденствия.</p>
                     </div>
                     <div>
                         <button id="calc--btn" class="btn btn-sm btn-danger">Результат</button>

@@ -3,13 +3,6 @@ $(document).ready(function() {
 	// Calculate rev date
 
 	//Ui
-	$calcDay = $("#calc--day");
-	$calcMonth = $("#calc-month");
-	$calcYear = $("#calc--year");
-	$calcFirstDay = $("#calc--first-day");
-	$calcBnt = $("#calc--btn");
-	$calcResult = $("#calc--result");
-
 	$imgHead = $("#month-img-head");
 	$imgEl = $("#month-img-el");
 
@@ -98,10 +91,47 @@ $(document).ready(function() {
 
 	// Date calculation
 
+	$calcDay = $("#calc--day");
+	$calcMonth = $("#calc-month");
+	$calcYear = $("#calc--year");
+	$calcFirstDay = $("#calc--first-day");
+	$calcBnt = $("#calc--btn");
+	$calcResult = $("#calc--result");
+	$firstDayStuff = $(".first-day-stuff");
+
 	$calcDay.val(commonTime.getDate());
 	$calcMonth.val(commonTime.getMonth());
 	$calcYear.val(commonTime.getFullYear());
 	$calcFirstDay.val(currentFirstDay);
+
+	$calcFirstDay.hide();
+
+	function yearChangeHandler() {
+		var val = parseInt($calcYear.val());
+		//console.log(val);
+		var found = false;
+		for (year in equinoxes) {
+			//console.log(year);
+			if (val == parseInt(year)) {
+				//$calcFirstDay.hide();
+				found = true
+			}
+		}
+		if (found) {
+			$firstDayStuff.hide();
+		} else {
+			$firstDayStuff.show();
+		}
+	}
+
+	yearChangeHandler();
+
+	$calcYear.change(function() {
+		yearChangeHandler();
+	});
+	$calcYear.keyup(function() {
+		yearChangeHandler();
+	});
 
 	$calcBnt.click(function() {
 		var date = new Date($calcYear.val(), $calcMonth.val(), $calcDay.val());

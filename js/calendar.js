@@ -183,7 +183,7 @@ function renderRevCalendar(revolutionaryCalendar, $element) {
 	}
 }
 
-var currentFirstDay = 23;
+var currentFirstDay = 22;
 
 // Common calendar
 

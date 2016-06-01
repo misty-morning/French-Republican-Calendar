@@ -439,3 +439,7 @@ var equinoxes = {
 	2024: 22,
 	2025: 22,
 };
+
+for (var i = 1992; i < 2000; i++) {
+	equinoxes[i] = 22;
+}
