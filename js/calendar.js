@@ -7,45 +7,10 @@ var RevolutionaryCalendar = function(date, firstDay) {
 
 	var firstMonthOfThisYear = 8;
 
-	//var firstDayOfThisYear;
-
 	var thisCommonMonth = date.getMonth();
 	var thisCommonDay = date.getDate();
 
 	var firstDayOfThisYear = 22;
-	//var lastDay = 22;
-	//firstDayOfNextYear = 22;
-
-	var yearForFirstDateCalc;
-
-	 
-/*	if ( (thisCommonMonth > firstMonthOfThisYear) || 
-		(thisCommonMonth == firstMonthOfThisYear && thisCommonDay > 24) ) {
-		yearForFirstDateCalc = thisCommonYear;
-	} else if ( (thisCommonMonth < firstMonthOfThisYear) ||
-		 (thisCommonMonth == firstMonthOfThisYear && thisCommonDay < 22) ) {
-		yearForFirstDateCalc = thisCommonYear - 1;
-	} else {
-
-
-	} 
-
-	console.log("yearForFirstDateCalc", yearForFirstDateCalc);
-
-	for (year in equinoxes) {
-		if (parseInt(year) === yearForFirstDateCalc) {
-			firstDayOfThisYear = equinoxes[year];
-			console.log("found", firstDayOfThisYear);
-			break;
-		}
-	}
-	for (year in equinoxes) {
-		if (parseInt(year) === yearForFirstDateCalc + 1) {
-			firstDayOfNextYear = equinoxes[year];
-			console.log("found", firstDayOfNextYear)
-			break;
-		}
-	}	*/
 
 	var firstPart;
 
@@ -60,62 +25,55 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	for (year in equinoxes) {
 		if (parseInt(year) === prevYear) {
 			tmpPrevYearStart = equinoxes[year];
-			console.log("found tmpThisYearStart", tmpPrevYearStart)
+			//console.log("found tmpThisYearStart", tmpPrevYearStart)
 			//break;
 		}
 		if (parseInt(year) === thisCommonYear) {
 			tmpThisYearStart = equinoxes[year];
-			console.log("found tmpPrevYearStart", tmpThisYearStart)
+			//console.log("found tmpPrevYearStart", tmpThisYearStart)
 			//break;
 		}
 		if (parseInt(year) === nextYear) {
 			tmpNextYearStart = equinoxes[year];
-			console.log("found tmpNextYearStart", tmpNextYearStart)
+			//console.log("found tmpNextYearStart", tmpNextYearStart)
 			break;
 		}
 
 	}
-	//if (tmpThisYearStart) {
-		if ( (thisCommonMonth > firstMonthOfThisYear) || 
-			(thisCommonMonth == firstMonthOfThisYear && thisCommonDay > 24) ) {
+
+	if ( (thisCommonMonth > firstMonthOfThisYear) || 
+		(thisCommonMonth == firstMonthOfThisYear && thisCommonDay > 24) ) {
+		firstDayOfThisYear = tmpThisYearStart;
+		firstPart = true;
+	} else if ( (thisCommonMonth < firstMonthOfThisYear) ||
+		 (thisCommonMonth == firstMonthOfThisYear && thisCommonDay < 22) ) {
+		firstDayOfThisYear = tmpPrevYearStart;
+		firstPart = false;
+
+	} else {
+		if (thisCommonDay === tmpThisYearStart) {
 			firstDayOfThisYear = tmpThisYearStart;
+			//console.log("=")
 			firstPart = true;
-			//lastDay = tmpThisYearStart;
-		} else if ( (thisCommonMonth < firstMonthOfThisYear) ||
-			 (thisCommonMonth == firstMonthOfThisYear && thisCommonDay < 22) ) {
+		} else if (thisCommonDay < tmpThisYearStart) {
 			firstDayOfThisYear = tmpPrevYearStart;
-			//lastDay = tmpNextYearStart;
+			//console.log("<")
+			firstDayFromPrevYear = true;
 			firstPart = false;
-
 		} else {
-			if (thisCommonDay === tmpThisYearStart) {
-				firstDayOfThisYear = tmpThisYearStart;
-				console.log("=")
-				firstPart = true;
-			} else if (thisCommonDay < tmpThisYearStart) {
-				firstDayOfThisYear = tmpPrevYearStart;
-				console.log("<")
-				firstDayFromPrevYear = true;
-				firstPart = false;
-			} else {
-				firstDayOfThisYear = tmpThisYearStart;
-				console.log(">")
-				firstPart = true;
-				//lastDay = 
-			}
+			firstDayOfThisYear = tmpThisYearStart;
+			//console.log(">")
+			firstPart = true;
+		}
 
-		} 		
-	//}
-
-
+	} 		
 
 	if (firstDay) {
 		console.log("firstDay", firstDay)
 		firstDayOfThisYear = firstDay;
 	}
 
-	console.log("firstDayOfThisYear", firstDayOfThisYear);
-	//console.log("firstDayOfNextYear", firstDayOfNextYear);
+	//console.log("firstDayOfThisYear", firstDayOfThisYear);
 
 	var year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -156,8 +114,7 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	} else {
 		daysForLastSansculottide += tmpThisYearStart - 1;
 	}
-	//daysForLastSansculottide += tmpThisYearStart - 1;
-	console.log("daysForLastSansculottide", daysForLastSansculottide);
+	//console.log("daysForLastSansculottide", daysForLastSansculottide);
 	if (daysForLastSansculottide == 365) {
 		additionalSansculottide = true;
 	}
@@ -183,10 +140,6 @@ var RevolutionaryCalendar = function(date, firstDay) {
 			}
 			daysAmount += thisCommonDay;
 		}
-/*		if (daysAmount == 365) {
-			additionalSansculottide = true;
-			console.log("additionalSansculottide", additionalSansculottide);
-		}*/
 	}
 	else {
 		daysAmount = thisCommonDay - firstDayOfThisYear;	
@@ -208,7 +161,7 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	revolutionaryDate.dayName = daysAmount;
 	revolutionaryDate.additionalSansculottide = additionalSansculottide;
 
-	console.log("days amount " + daysAmount);
+	//console.log("days amount " + daysAmount);
 
 	return revolutionaryDate;
 };
