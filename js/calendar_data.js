@@ -1,4 +1,4 @@
-var calendarNames = {
+var calendarData = {
 	day: [
 		// Вандемьер
 		"винограда",
@@ -375,10 +375,69 @@ var calendarNames = {
 	],
 	month: ["вандемьера", "брюмера", "фримера", "нивоза", "плювиоза", "вантоза", "жерминаля", "флореаля", "прериаля", "мессидора", "термидора", "фрюктидора"],
 	monthCommon: ["вандемьер", "брюмер", "фример", "нивоз", "плювиоз", "вантоз", "жерминаль", "флореаль", "прериаль", "мессидор", "термидор", "фрюктидор"],
-	monthImgUrls:  ["img/months/Vandemiaire.jpg", "img/months/Brumaire.jpg", "img/months/Frimaire.jpg", "img/months/Nivose.jpg", "img/months/Pluviose.jpg", "img/months/Ventose.jpg", "img/months/Germinal.jpg", "img/months/Floreal.jpg", "img/months/Prairial.jpg", "img/months/Messidor.jpg", "img/months/Thermidor.jpg", "img/months/Fructidor.jpg"],
+	//monthImgUrls:  ["img/months/Vandemiaire.jpg", "img/months/Brumaire.jpg", "img/months/Frimaire.jpg", "img/months/Nivose.jpg", "img/months/Pluviose.jpg", "img/months/Ventose.jpg", "img/months/Germinal.jpg", "img/months/Floreal.jpg", "img/months/Prairial.jpg", "img/months/Messidor.jpg", "img/months/Thermidor.jpg", "img/months/Fructidor.jpg"],
 	decade: ["Примиди", "Дуоди", "Триди", "Квартиди", "Квинтиди", "Секстиди", "Септиди", "Октиди", "Нониди", "Декади"],
 	sansculottide: ["День Доблести (Добродетели)", "День Таланта", "День Труда", "День Мнений", "День Наград", "День Революции"],
 	sansculottideOrder: ["Первая", "Вторая", "Третья", "Четвертая", "Пятая", "Шестая"],
+	equinoxes: {
+		1792: 22,
+		1793: 22,
+		1794: 22,
+		1795: 23,
+		1796: 22,
+		1797: 22,
+		1798: 22,
+		1799: 23,
+		1800: 23,
+		1801: 23,
+		1802: 23,
+		1803: 24,
+		1804: 23,
+		1805: 23,
+
+		1806: 23,
+		1807: 24,
+		1808: 23,
+		1809: 23,
+		1810: 23,
+		1811: 23,
+
+
+		1992: 22,
+		1993: 23,
+		1994: 23,
+		1995: 23,
+		1996: 22,
+		1997: 22,
+		1998: 23,
+		1999: 23,
+		2000: 22,
+		2001: 22,
+		2002: 23,
+		2003: 23,
+		2004: 22,
+		2005: 22,
+		2006: 23,
+		2007: 23,
+		2008: 22,
+		2009: 22,
+		2010: 23,
+		2011: 23,
+		2012: 22,
+		2013: 22,
+		2014: 23,
+		2015: 23,
+		2016: 22,
+		2017: 22,
+		2018: 23,
+		2019: 23,
+		2020: 22,
+		2021: 22,
+		2022: 23,
+		2023: 23,
+		2024: 22,
+		2025: 22,
+	},
 };
 
 // Common calendar
@@ -387,7 +446,7 @@ var commonWeekArray = ["Воскресенье", "Понедельник", "Вт
 var commonMonthArray = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 
 // First day date
-
+/*
 var equinoxes = {
 	1792: 22,
 	1793: 22,
@@ -446,7 +505,7 @@ var equinoxes = {
 	2023: 23,
 	2024: 22,
 	2025: 22,
-};
+};*/
 
 /*for (var i = 1992; i < 2000; i++) {
 	equinoxes[i] = 22;

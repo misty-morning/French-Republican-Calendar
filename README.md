@@ -6,3 +6,4 @@ Data base configuration should be put in "php/db_config.php" file. Example:
 		const DB_NAME = "calendar";
 	?>
 Data base should contain two tables: text_blocks, guest_book.
+For roman numerals calculations code from here http://ph0enix.ru/romannums/ was used.

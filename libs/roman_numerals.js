@@ -1,4 +1,6 @@
- function basedigit(x) { //Convert base digit 1,5,10,50,100,500,1000 to Rom digit
+// This script was gotten from here: http://ph0enix.ru/romannums/ 
+
+function basedigit(x) { //Convert base digit 1,5,10,50,100,500,1000 to Rom digit
 	 var y
 	 switch (x) {
 		 case 1:

@@ -38,7 +38,9 @@
             <div class="row">
                 <div class="col-md-3 col-xs-12">
                     <div class="month-img-block">
-                        <h3 id="month-img-head"></h3><img id="month-img-el" class="month-img-el"></div>
+                        <h3 id="month-img-head"></h3><img id="month-img-el" class="month-img-el">
+                        <div id="index__rev-date" class="index__rev-date"></div>
+                    </div>
                 </div>
                 <div class="col-md-9 col-xs-12 visual-calendar-block">
                     <h3>Визуальный календарь</h3>
@@ -102,6 +104,7 @@
     </footer>
     <script type="text/javascript" src="libs/jquery-2.1.3.min.js"></script>
     <script src="libs/bootstrap-3.3.2/js/bootstrap.min.js"></script>
+    <script src="libs/roman_numerals.js"></script>
     <script type="text/javascript" src="js/calendar_data.js"></script>
     <script type="text/javascript" src="js/calendar.js"></script>
     <script type="text/javascript" src="js/base.js"></script>

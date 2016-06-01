@@ -3,6 +3,8 @@
 //First day of the calendar is the day of the autumn solstice
 var RevolutionaryCalendar = function(date, firstDay) {
 
+	this.data = calendarData;
+
 	var thisCommonYear = date.getFullYear();
 
 	var firstMonthOfThisYear = 8;
@@ -22,19 +24,19 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	var tmpThisYearStart = 22;
 	var tmpPrevYearStart = 22;
 	var tmpNextYearStart = 22;
-	for (year in equinoxes) {
+	for (year in this.data.equinoxes) {
 		if (parseInt(year) === prevYear) {
-			tmpPrevYearStart = equinoxes[year];
+			tmpPrevYearStart = this.data.equinoxes[year];
 			//console.log("found tmpThisYearStart", tmpPrevYearStart)
 			//break;
 		}
 		if (parseInt(year) === thisCommonYear) {
-			tmpThisYearStart = equinoxes[year];
+			tmpThisYearStart = this.data.equinoxes[year];
 			//console.log("found tmpPrevYearStart", tmpThisYearStart)
 			//break;
 		}
 		if (parseInt(year) === nextYear) {
-			tmpNextYearStart = equinoxes[year];
+			tmpNextYearStart = this.data.equinoxes[year];
 			//console.log("found tmpNextYearStart", tmpNextYearStart)
 			break;
 		}
@@ -152,73 +154,52 @@ var RevolutionaryCalendar = function(date, firstDay) {
 		revYear = thisCommonYear - 1792;
 	}
 
-	var revolutionaryDate = {};
+	this.year = revYear;
+	this.month = daysAmount / 30 >> 0;
+	this.day = daysAmount % 30 + 1;
+	this.decade = daysAmount % 10;
+	this.decadeNum = Math.floor(daysAmount / 10) + 1;
+	this.mouthDecadeNum = Math.floor(this.day / 10) + 1;
+	this.dayName = daysAmount;
+	this.additionalSansculottide = additionalSansculottide;
 
-	revolutionaryDate.year = revYear;
-	revolutionaryDate.month = daysAmount / 30 >> 0;
-	revolutionaryDate.day = daysAmount % 30 + 1;
-	revolutionaryDate.decade = daysAmount % 10;
-	revolutionaryDate.decadeNum = Math.floor(daysAmount / 10) + 1;
-	revolutionaryDate.mouthDecadeNum = Math.floor(revolutionaryDate.day / 10) + 1;
-	revolutionaryDate.dayName = daysAmount;
-	revolutionaryDate.additionalSansculottide = additionalSansculottide;
-
-	console.log(revolutionaryDate.mouthDecadeNum);
 	//console.log("days amount " + daysAmount);
 
-	return revolutionaryDate;
+	this.render = function($element) {
+		var dayName = this.data.day[this.dayName];
+		var revMonth = this.data.month[this.month];
+		var revDecade = this.data.decade[this.decade];
+
+		var revDay = this.day;
+		var revYear = this.year;
+
+		if (this.dayName < 360) {
+			$element.html("День " + dayName +  ".<br>" + revDecade + ", " + revDay + " " + revMonth + " " + revYear + " года.");
+		}
+		else {
+			var	sansculottideNumber = this.dayName - 360;
+			$element.html(this.data.sansculottideOrder[sansculottideNumber] + " санкюлотида: " + this.data.sansculottide[sansculottideNumber] + ", " + revYear + " год.");
+		}
+	}
+	this.fullRender = function($element) {
+		var romanYear = digconvert(this.year);
+		var romanDecade = digconvert(this.decadeNum);
+		var romanDay = digconvert(this.day);
+
+		$element.append("<p>"+romanYear+" ("+this.year+") год</p>");
+		if (this.dayName < 360) {
+			$element.append("<p>"+romanDecade+" ("+this.decadeNum+") декада</p>");
+		}
+		if (this.dayName < 360) {
+			$element.append("<p>"+romanDay+" ("+this.day+") "+this.data.month[this.month]+"</p>");
+			$element.append("<p>"+this.data.decade[this.decade]+" "+digconvert(this.mouthDecadeNum)+
+				" декады месяца</p>");
+			$element.append("<p> День "+this.data.day[this.dayName]+"</p>");
+
+		} else {
+			var	sansculottideNumber = this.dayName - 360;
+			$element.append("<p> "+this.data.sansculottideOrder[sansculottideNumber] + " санкюлотида: " + this.data.sansculottide[sansculottideNumber]+"</p>");
+		}
+	}
 };
 
-function renderRevCalendar(revolutionaryCalendar, $element) {
-	var dayName = calendarNames.day[revolutionaryCalendar.dayName];
-	var revMonth = calendarNames.month[revolutionaryCalendar.month];
-	var revDecade = calendarNames.decade[revolutionaryCalendar.decade];
-
-	var revDay = revolutionaryCalendar.day;
-	var revYear = revolutionaryCalendar.year;
-
-	if (revolutionaryCalendar.dayName < 360) {
-		$element.html("День " + dayName +  ".<br>" + revDecade + ", " + revDay + " " + revMonth + " " + revYear + " года.");
-	}
-	else {
-		var	sansculottideNumber = revolutionaryCalendar.dayName - 360;
-		$element.html(calendarNames.sansculottideOrder[sansculottideNumber] + " санкюлотида: " + calendarNames.sansculottide[sansculottideNumber] + ", " + revYear + " год.");
-	}
-}
-function renderFullRevCalendar(revTime, $element) {
-	var romanYear = digconvert(revTime.year);
-	var romanDecade = digconvert(revTime.decadeNum);
-	var romanDay = digconvert(revTime.day);
-
-	$element.append("<p>"+romanYear+" ("+revTime.year+") год</p>");
-	if (revTime.dayName < 360) {
-		$element.append("<p>"+romanDecade+" ("+revTime.decadeNum+") декада</p>");
-	}
-	if (revTime.dayName < 360) {
-		$element.append("<p>"+romanDay+" ("+revTime.day+") "+calendarNames.month[revTime.month]+"</p>");
-		$element.append("<p>"+calendarNames.decade[revTime.decade]+" "+digconvert(revTime.mouthDecadeNum)+
-			" декады месяца</p>");
-		$element.append("<p> День "+calendarNames.day[revTime.dayName]+"</p>");
-
-	} else {
-		var	sansculottideNumber = revTime.dayName - 360;
-		$element.append("<p> "+calendarNames.sansculottideOrder[sansculottideNumber] + " санкюлотида: " + calendarNames.sansculottide[sansculottideNumber]+"</p>");
-	}
-}
-
-var currentFirstDay = 22;
-
-// Common calendar
-
-function renderCommonCalendar(date, $element) {
-	$element.html(commonWeekArray[date.getDay()] + ",<br> " + date.getDate() + " " + commonMonthArray[date.getMonth()] + " " + date.getFullYear() + " года.");
-}
-
-// Init
-
-var testTime = new Date(2018, 8, 22);
-
-var commonTime = new Date();
-
-var revTime = new RevolutionaryCalendar(commonTime);
-//var revTime = new RevolutionaryCalendar(testTime);
