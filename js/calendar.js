@@ -56,6 +56,7 @@ var RevolutionaryCalendar = function(date, firstDay) {
 
 	var tmpThisYearStart = 22;
 	var tmpPrevYearStart = 22;
+	var tmpNextYearStart = 22;
 	for (year in equinoxes) {
 		if (parseInt(year) === prevYear) {
 			tmpPrevYearStart = equinoxes[year];
@@ -67,11 +68,11 @@ var RevolutionaryCalendar = function(date, firstDay) {
 			console.log("found tmpPrevYearStart", tmpThisYearStart)
 			//break;
 		}
-/*		if (parseInt(year) === nextYear) {
+		if (parseInt(year) === nextYear) {
 			tmpNextYearStart = equinoxes[year];
 			console.log("found tmpNextYearStart", tmpNextYearStart)
 			break;
-		}*/
+		}
 
 	}
 	//if (tmpThisYearStart) {
@@ -143,29 +144,6 @@ var RevolutionaryCalendar = function(date, firstDay) {
 	var daysAmount;
 	var additionalSansculottide = false;
 
-/*	function calcDays() {
-		 var days = year[firstMonthOfThisYear] - firstDayOfThisYear;
-		if (thisCommonMonth > firstMonthOfThisYear) {
-			for (var i = firstMonthOfThisYear + 1; i < thisCommonMonth; i++) {
-				days += year[i];
-			}
-			days += thisCommonDay;
-		}
-		else if (thisCommonMonth <= firstMonthOfThisYear) {
-			for (var i = firstMonthOfThisYear + 1; i <= 11; i++) {
-				days += year[i];
-			}
-			for (var i = 0; i < thisCommonMonth; i++) {
-				days += year[i];
-			}
-			days += thisCommonDay;
-		}
-		console.log("days", days)
-		return days;
-	}
-
-	var daysForLastSansculottide = calcDays();*/
-
 	var daysForLastSansculottide = year[firstMonthOfThisYear] - firstDayOfThisYear;
 	for (var i = firstMonthOfThisYear + 1; i <= 11; i++) {
 		daysForLastSansculottide += year[i];
@@ -174,11 +152,11 @@ var RevolutionaryCalendar = function(date, firstDay) {
 		daysForLastSansculottide += year[i];
 	}
 	if (firstPart) {
-
+		daysForLastSansculottide += tmpNextYearStart - 1;
 	} else {
-		
+		daysForLastSansculottide += tmpThisYearStart - 1;
 	}
-	daysForLastSansculottide += tmpThisYearStart - 1;
+	//daysForLastSansculottide += tmpThisYearStart - 1;
 	console.log("daysForLastSansculottide", daysForLastSansculottide);
 	if (daysForLastSansculottide == 365) {
 		additionalSansculottide = true;
@@ -262,7 +240,7 @@ function renderCommonCalendar(date, $element) {
 
 // Init
 
-var testTime = new Date(1967, 8, 9);
+var testTime = new Date(2018, 3, 9);
 
 var commonTime = new Date();
 
