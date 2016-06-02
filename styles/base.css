@@ -102,6 +102,11 @@ a:visited {
 input, textarea, select, option {
   color: #000000; }
 
+.check-warn {
+  color: #f42e11;
+  font-size: 13px;
+  margin: 0px; }
+
 .pusher-header {
   width: 100%;
   height: 200px; }

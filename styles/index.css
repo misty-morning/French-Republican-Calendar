@@ -109,3 +109,6 @@
 
 .index--comment {
   font-size: 11px; }
+
+#calc__wrong-year {
+  display: none; }

@@ -14,13 +14,13 @@ block content
 			lable(for="add-record__name") Имя: 
 			div.clear
 			input(type="text" ng-model="newName" maxlength="30")#add-record__name.form-field
-			p.add-record__warn(ng-show='shownWarn.noName') Введите имя
+			p.check-warn(ng-show='shownWarn.noName') Введите имя
 			div.clear
 			lable(for="add-record__text") Текст:
 			div.clear
 			textarea(ng-model="newText" placeholder="Текст вашей записи...")#add-record__text.form-field
-			p.add-record__warn(ng-show='shownWarn.noText') Запись слишком короткая
-			p.add-record__warn(ng-show='shownWarn.tooMuchText') Запись слишком длинная
+			p.check-warn(ng-show='shownWarn.noText') Запись слишком короткая
+			p.check-warn(ng-show='shownWarn.tooMuchText') Запись слишком длинная
 			div.clear
 			button.btn.btn-sm.btn-danger(ng-click="addRecord()") Добавить запись
 

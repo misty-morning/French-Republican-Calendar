@@ -97,29 +97,36 @@ $(document).ready(function() {
 	$calcFirstDay = $("#calc--first-day");
 	$calcBnt = $("#calc--btn");
 	$calcResult = $("#calc--result");
+	$calcDate = $("#calc--date");
 	$firstDayStuff = $(".first-day-stuff");
+	$yearWarn = $("#calc__wrong-year");
 
 	$calcDay.val(commonTime.getDate());
 	$calcMonth.val(commonTime.getMonth());
 	$calcYear.val(commonTime.getFullYear());
 	$calcFirstDay.val(currentFirstDay);
 
+
 	$calcFirstDay.hide();
 
 	var addFirstDay = false;
 
 	function yearChangeHandler() {
+		$yearWarn.hide();
 		var val = parseInt($calcYear.val());
 		//console.log(val);
-		var found = false;
+		var showFirstDayOpt = false;
+		if (val < 1792) {
+			showFirstDayOpt = true;
+		}
 		for (year in revTime.data.equinoxes) {
 			//console.log(year);
 			if (val == parseInt(year)) {
 				//$calcFirstDay.hide();
-				found = true
+				showFirstDayOpt = true;
 			}
 		}
-		if (found) {
+		if (showFirstDayOpt) {
 			$firstDayStuff.hide();
 			addFirstDay = false;
 		} else {
@@ -138,13 +145,21 @@ $(document).ready(function() {
 	});
 
 	$calcBnt.click(function() {
-		var date = new Date($calcYear.val(), $calcMonth.val(), $calcDay.val());
-		if (addFirstDay) {
-			var revDate = new RevolutionaryCalendar(date, $calcFirstDay.val());
+		$calcResult.empty();
+		$calcDate.empty();
+		if ($calcYear.val() >= 1792) {
+			var date = new Date($calcYear.val(), $calcMonth.val(), $calcDay.val());
+			if (addFirstDay) {
+				var revDate = new RevolutionaryCalendar(date, $calcFirstDay.val());
+			} else {
+				var revDate = new RevolutionaryCalendar(date);
+			}
+			renderCommonCalendar(date, $calcDate);
+			revDate.render($calcResult);
 		} else {
-			var revDate = new RevolutionaryCalendar(date);
+			$yearWarn.show();
 		}
-		revDate.render($calcResult);
+
 	});
 
 });
