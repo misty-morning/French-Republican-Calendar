@@ -7,8 +7,9 @@
 
 	$count_query = "SELECT COUNT(*) FROM guest_book";
 	$count_con = mysqli_query($dbc, $count_query);
-	$count = mysqli_fetch_array($count_con);
+	$count = mysqli_fetch_row($count_con);
 	$count = $count[0];
+
 	$first_page = $count % $step;
 	if ($first_page > 0) {
 		if ($num == 1) {
@@ -25,7 +26,7 @@
 	$records_con = mysqli_query($dbc, $records_query);
 
 	$records = array();
-	while ($row = mysqli_fetch_array($records_con)) {
+	while ($row = mysqli_fetch_assoc($records_con)) {
 		$row['text'] = nl2br($row['text']);
 		array_push($records, $row);
 	}

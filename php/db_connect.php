@@ -9,7 +9,7 @@
 
 		$block_query = "SELECT content FROM text_blocks WHERE name='$name' LIMIT 1";
 		$block_result = mysqli_query($dbc, $block_query);
-		$block = mysqli_fetch_array($block_result);
+		$block = mysqli_fetch_assoc($block_result);
 
 		echo $block['content'];
 
