@@ -1,9 +1,9 @@
 <?php
 	require_once 'db_connect.php';
-	header('Content-Type: application/json');
+	//header('Content-Type: application/json');
 
-	$num = $_POST['num'];
-	$step = $_POST['step'];
+	$num = $_GET['num'];
+	$step = $_GET['step'];
 
 	$count_query = "SELECT COUNT(*) FROM guest_book";
 	$count_con = mysqli_query($dbc, $count_query);

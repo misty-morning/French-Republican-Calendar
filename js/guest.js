@@ -119,9 +119,10 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 	}
 	$scope.partialLoad = function(num) {
 		if (num > 0) {
-			$http.post("php/guest_book-partial_load.php", {
-				num: num,
-				step: $scope.recordsOnPage
+			$http.get("php/guest_book-partial_load.php", { params: {
+					num: num,
+					step: $scope.recordsOnPage
+				}
 			}).then(function(response) {
 				//console.log(response.data);
 				$scope.records = response.data.records;
