@@ -91,7 +91,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 			$scope.shownWarn.noText = true;
 			add = false;
 		} 
-		if ($scope.newText && $scope.newText.length > 1000) {
+		if ($scope.newText && $scope.newText.length > 2000) {
 			$scope.shownWarn.tooMuchText = true;
 			add = false;
 		} 
@@ -107,7 +107,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 			//console.log("added", response.data);
 			$scope.newName = "";
 			$scope.newText = "";
-			var tmp = parseInt(response.data[0]);
+			var tmp = parseInt(response.data);
 			$scope.recordsCount = tmp;
 			$scope.partialLoad($scope.pagesCount);
 
@@ -136,7 +136,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 guestBookApp.directive("vmPageDivider", function() {
 	return {
 		restrict: 'E',
-		 scope: {
+		scope: {
 			num: '=',
 			step: '=',
 			handler: '&func',
