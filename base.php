@@ -2,6 +2,12 @@
 	require_once $_SERVER['DOCUMENT_ROOT']."/libs/ti.php"; 
 	require_once $_SERVER['DOCUMENT_ROOT']."/php/vars.php";
 
+	$page_name = $_SERVER['PHP_SELF'];
+
+	require_once 'php/db_connect.php';
+	$seo_query = "SELECT * FROM seo WHERE page='$page_name' LIMIT 1";
+	$seo_con = mysqli_query($dbc, $seo_query);
+	$seo = mysqli_fetch_assoc($seo_con);
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +17,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link href="/libs/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" type="text/css" href="/styles/base.css">
-	<title>Французский республиканский календарь</title>
+
+	<title><?php echo $seo['title']; ?></title>
+	<meta name="description" content="<?php echo $seo['description']; ?>">
+	<meta name="keywords" content="<?php echo $seo['keywords']; ?>">
 
 	<?php startblock('head') ?>
 	<?php endblock() ?>
@@ -26,8 +35,8 @@
 		<div class="container main-column">
 			<div class="pusher-header"></div>
 
-		<?php startblock('content') ?>
-		<?php endblock() ?>
+			<?php startblock('content') ?>
+			<?php endblock() ?>
 
 		</div>
 	</div>

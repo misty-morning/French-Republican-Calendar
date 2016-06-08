@@ -1,4 +1,7 @@
-<?php require_once 'base.php' ?>
+<?php 
+	$page_name = "description";
+	require_once 'base.php' 
+?>
 
 <?php startblock('head') ?>
 	<link rel="stylesheet" type="text/css" href="/styles/description.css">

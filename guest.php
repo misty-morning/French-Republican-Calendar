@@ -1,4 +1,7 @@
-<?php require_once 'base.php' ?>
+<?php 
+	$page_name = "guest";
+	require_once 'base.php' 
+?>
 
 <?php startblock('head') ?>
 	<link rel="stylesheet" type="text/css" href="/styles/guest.css">
