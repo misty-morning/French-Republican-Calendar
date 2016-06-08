@@ -61,7 +61,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 
 	// Init
 
-	$http.get("php/guest_book-get.php").then(function(response) {
+	$http.get("/php/guest_book-get.php").then(function(response) {
 		var tmp = parseInt(response.data[0]);
 		$scope.recordsCount = tmp;
 		$scope.partialLoad($scope.pagesCount);
@@ -100,7 +100,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 		}
 	}
 	$scope.newRecord = function() {
-		$http.post("php/guest_book-add.php", {
+		$http.post("/php/guest_book-add.php", {
 			name: $scope.newName,
 			text: $scope.newText
 		}).then(function(response) {
@@ -119,7 +119,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 	}
 	$scope.partialLoad = function(num) {
 		if (num > 0) {
-			$http.get("php/guest_book-partial_load.php", { params: {
+			$http.get("/php/guest_book-partial_load.php", { params: {
 					num: num,
 					step: $scope.recordsOnPage
 				}
