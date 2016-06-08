@@ -5,7 +5,9 @@
 <?php endblock() ?>
 
 <?php startblock('scripts') ?>
-	<script type="text/javascript" src="/js/index.js"></script>
+	<script type="text/javascript" src="/js/extended-calendar.js"></script>
+	<script type="text/javascript" src="/js/visual-calendar.js"></script>
+	<script type="text/javascript" src="/js/calc-calendar.js"></script>
 <?php endblock() ?>
 
 <?php startblock('content') ?>

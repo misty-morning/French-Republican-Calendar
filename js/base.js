@@ -14,6 +14,7 @@ var commonTime = new Date();
 
 var revTime = new RevolutionaryCalendar(commonTime);
 //var revTime = new RevolutionaryCalendar(testTime);
+var revMouthIndex = revTime.month;
 
 $(document).ready(function() {
 	
