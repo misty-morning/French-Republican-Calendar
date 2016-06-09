@@ -8,14 +8,6 @@ html, body {
 	height: 100%;
 	width: 100%;
 }
-input, select {
-	color: #000000;
-}
-body {
-	background-color: $bodyBackClr;
-	//overflow: hidden;
-}
-
 * html .main {
      height: 100%;
  }
@@ -31,29 +23,6 @@ body {
 	padding-bottom: 60px;
 	overflow: hidden;
 	
-}
-h1, h2, h3, h4 {
-	color: $headClr;
-}
-* {
-	color: $fontClr;
-}
-a {
-	color: $linkClr;
-}
-a:visited {
-	color: $headClr;
-}
-input, textarea, select, option {
-	color: #000000;
-}
-.comment {
-	font-size: 11px;
-}
-.check-warn {
-	color: $warnClr;
-	font-size: 13px;
-	margin: 0px;
 }
 .pusher-header {
 	width: 100%;
@@ -71,8 +40,30 @@ input, textarea, select, option {
     padding-bottom: 30000px; /* отступ */
     margin-bottom: -29975px; /* поле */
 }
-
 .pusher-footer {
 	width: 100%;
 	height: 60px;
+}
+body {
+	background-color: $bodyBackClr;
+	//overflow: hidden;
+}
+* {
+	color: $fontClr;
+}
+h1, h2, h3, h4 {
+	color: $headClr;
+}
+
+input, select {
+	color: #000000;
+}
+a {
+	color: $linkClr;
+}
+a:visited {
+	color: $headClr;
+}
+input, textarea, select, option {
+	color: #000000;
 }

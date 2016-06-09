@@ -64,12 +64,6 @@ html, body {
   height: 100%;
   width: 100%; }
 
-input, select {
-  color: #000000; }
-
-body {
-  background-color: #8a0505; }
-
 * html .main {
   height: 100%; }
 
@@ -86,29 +80,6 @@ body > .main {
   position: relative;
   padding-bottom: 60px;
   overflow: hidden; }
-
-h1, h2, h3, h4 {
-  color: #c5320f; }
-
-* {
-  color: white; }
-
-a {
-  color: #f9f627; }
-
-a:visited {
-  color: #c5320f; }
-
-input, textarea, select, option {
-  color: #000000; }
-
-.comment {
-  font-size: 11px; }
-
-.check-warn {
-  color: #f42e11;
-  font-size: 13px;
-  margin: 0px; }
 
 .pusher-header {
   width: 100%;
@@ -131,3 +102,24 @@ input, textarea, select, option {
 .pusher-footer {
   width: 100%;
   height: 60px; }
+
+body {
+  background-color: #8a0505; }
+
+* {
+  color: white; }
+
+h1, h2, h3, h4 {
+  color: #c5320f; }
+
+input, select {
+  color: #000000; }
+
+a {
+  color: #f9f627; }
+
+a:visited {
+  color: #c5320f; }
+
+input, textarea, select, option {
+  color: #000000; }
