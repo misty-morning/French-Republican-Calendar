@@ -1,16 +1,4 @@
 @import "_params";
 @import "_visual-calendar";
-
-.month-img-block {
-	text-align: center;
-}
-.month-img-el {
-	width: 200px;
-	border: 5px $headClr ridge;
-}
-.index--comment {
-	font-size: 11px;
-}
-#calc__wrong-year {
-	display: none;
-}
+@import "_extended-calendar";
+@import "_calc-calendar";

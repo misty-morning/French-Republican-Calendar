@@ -3,6 +3,10 @@
   overflow: auto;
   margin-top: 15px; }
 
+.vc__comment {
+  display: inline-block;
+  width: 600px; }
+
 .visual-calendar {
   /*	th {
   		display: inline-block;
@@ -100,15 +104,12 @@
     padding: 0;
     height: 66px; }
 
-.month-img-block {
+.ext-cal {
   text-align: center; }
 
-.month-img-el {
+.ext-cal__img {
   width: 200px;
   border: 5px #c5320f ridge; }
-
-.index--comment {
-  font-size: 11px; }
 
 #calc__wrong-year {
   display: none; }

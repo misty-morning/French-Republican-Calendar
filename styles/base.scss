@@ -47,6 +47,9 @@ a:visited {
 input, textarea, select, option {
 	color: #000000;
 }
+.comment {
+	font-size: 11px;
+}
 .check-warn {
 	color: $warnClr;
 	font-size: 13px;

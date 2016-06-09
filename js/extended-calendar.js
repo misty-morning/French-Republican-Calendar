@@ -1,9 +1,9 @@
 $(document).ready(function() {
 	// Calender with Img
 
-	$imgHead = $("#month-img-head");
-	$imgEl = $("#month-img-el");
-	$revDate = $("#index__rev-date");
+	$imgHead = $("#ext-cal__head");
+	$imgEl = $("#ext-cal__img");
+	$revDate = $("#ext-cal__date");
 
 	//console.log(revTime.month);
 
