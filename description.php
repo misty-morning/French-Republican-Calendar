@@ -11,6 +11,6 @@
 
 <?php startblock('content') ?>
 	<div class="description">
-		<?php require_once $_SERVER['DOCUMENT_ROOT'].'/php/description.php'; ?>
+		<?php get_text_block('description_main'); ?>
 	</div>
 <?php endblock() ?>

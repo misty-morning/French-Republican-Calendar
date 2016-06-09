@@ -14,19 +14,19 @@
 
 <?php startblock('content') ?>
 	<div class="welcome">
-		<?php require_once 'php/index_welcome.php'; ?>
+		<?php get_text_block('index_welcome'); ?>
 	</div>
 	<div class="row">
 		<div class="col-md-3 col-xs-12">
-			<?php require_once 'templates/extended-calendar.php'; ?>
+			<?php require 'templates/extended-calendar.php'; ?>
 		</div>
 		<div class="col-md-9 col-xs-12 visual-calendar-block">
-			<?php require_once 'templates/visual-calendar.php'; ?>
+			<?php require 'templates/visual-calendar.php'; ?>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12 col-xs-12">
-			<?php require_once 'templates/calc-calendar.php'; ?>
+			<?php require 'templates/calc-calendar.php'; ?>
 		</div>
 	</div>
 <?php endblock() ?>

@@ -4,7 +4,8 @@
 
 	$page_name = $_SERVER['PHP_SELF'];
 
-	require_once 'php/db_connect.php';
+	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+	$charset = mysqli_set_charset($dbc, "utf8");
 	$seo_query = "SELECT * FROM seo WHERE page='$page_name' LIMIT 1";
 	$seo_con = mysqli_query($dbc, $seo_query);
 	$seo = mysqli_fetch_assoc($seo_con);
