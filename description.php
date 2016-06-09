@@ -1,5 +1,4 @@
 <?php 
-	$page_name = "description";
 	require_once 'base.php' 
 ?>
 

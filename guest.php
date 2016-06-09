@@ -1,5 +1,4 @@
 <?php 
-	$page_name = "guest";
 	require_once 'base.php' 
 ?>
 

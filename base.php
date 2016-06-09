@@ -8,6 +8,7 @@
 	$seo_query = "SELECT * FROM seo WHERE page='$page_name' LIMIT 1";
 	$seo_con = mysqli_query($dbc, $seo_query);
 	$seo = mysqli_fetch_assoc($seo_con);
+	mysqli_close($dbc);
 ?>
 <!DOCTYPE html>
 <html>

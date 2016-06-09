@@ -1,5 +1,4 @@
 <?php 
-	$page_name = "index";
 	require_once 'base.php' 
 ?>
 
