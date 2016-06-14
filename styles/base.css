@@ -20,6 +20,14 @@
 .form-field option {
   color: #000000; }
 
+.comment {
+  font-size: 11px; }
+
+.check-warn {
+  color: #f42e11;
+  font-size: 13px;
+  margin: 0px; }
+
 header {
   height: 200px;
   width: 100%;

@@ -1,6 +1,4 @@
-<?php 
-	require_once 'base.php' 
-?>
+<?php require_once 'base.php'; ?>
 
 <?php startblock('head') ?>
 	<link rel="stylesheet" type="text/css" href="/styles/index.css">
