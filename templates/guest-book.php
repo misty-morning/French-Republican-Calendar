@@ -27,5 +27,5 @@
 	<div class="menage">Показывать по:
 		<select ng-model="recordsOnPage" ng-options="opt for opt in recordsOnPageOpt" class="menage__show-num form-field"></select>
 	</div>
-	<vm-page-divider num="recordsCount" step="recordsOnPage" max="4" func="pageBtnHandler(num)"></vm-page-divider>
+	<vm-page-divider num="recordsCount" step="recordsOnPage" max="10" func="pageBtnHandler(num)"></vm-page-divider>
 </div>

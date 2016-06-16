@@ -6,6 +6,7 @@
 
 <?php startblock('scripts') ?>
 	<script type="text/javascript" src="libs/angular.min.js"></script>
+	<script type="text/javascript" src="js/vmNg.js"></script>
 	<script type="text/javascript" src="js/guest-book.js"></script>
 <?php endblock() ?>
 
