@@ -218,6 +218,9 @@ guestBookApp.directive("vmPageDivider", function() {
 				//console.log('endInx', endInx);
 
 				scope.shownPagesArr = scope.pagesArr.slice(startInx, endInx);
+
+				var lastPageNum = scope.pagesArr.length - 1;
+				scope.clickPage(scope.pagesArr[lastPageNum]);
 			}
 			scope.forward = function() {
 				var firstElId = scope.shownPagesArr[0].id;
