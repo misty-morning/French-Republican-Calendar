@@ -1,3 +1,7 @@
+var MIN_SYMB_IN_RECORD_NAME = 5;
+var MAX_SYMB_IN_RECORD = 10000;
+var RECORDS_ON_PAGE_DEFAULT = 5;
+
 var guestBookApp = angular.module("guestBookApp", ["vmNg"], function($httpProvider) {
 	// this function is angularjs $http fix for php
 
@@ -34,11 +38,11 @@ var guestBookApp = angular.module("guestBookApp", ["vmNg"], function($httpProvid
 	}];
 });
 
-guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
+guestBookApp.controller("GuestBookControler", function($scope, $http, $sce, async) {
 	// Models
 	$scope.sce = $sce;
 
-	$scope.recordsOnPage = 5;
+	$scope.recordsOnPage = RECORDS_ON_PAGE_DEFAULT;
 	$scope.recordsOnPageOpt = [3, 5, 10, 30];
 	$scope.recordsCount = 0;
 
@@ -64,9 +68,11 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 	$http.get("/php/guest_book-get.php").then(function(response) {
 		var tmp = parseInt(response.data[0]);
 		$scope.recordsCount = tmp;
+		console.log($scope.recordsCount);
 		$scope.partialLoad($scope.pagesCount);
 	});
-
+	$scope.test = async.getCount();
+	console.log($scope.test);
 	// Func
 
 	$scope.showAddRecord = function() {
@@ -87,11 +93,11 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 			$scope.shownWarn.noName = true;
 			add = false;
 		} 
-		if (!$scope.newText || $scope.newText.length < 5) {
+		if (!$scope.newText || $scope.newText.length < MIN_SYMB_IN_RECORD_NAME) {
 			$scope.shownWarn.noText = true;
 			add = false;
 		} 
-		if ($scope.newText && $scope.newText.length > 2000) {
+		if ($scope.newText && $scope.newText.length > MAX_SYMB_IN_RECORD) {
 			$scope.shownWarn.tooMuchText = true;
 			add = false;
 		} 
@@ -131,4 +137,17 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce) {
 			});	
 		}
 	}
+});
+guestBookApp.factory("async", function($http) {
+	var factory = {};
+
+	factory.getCount = function() {
+		return $http.get("/php/guest_book-get.php").then(function(response) {
+			return parseInt(response.data[0]);
+
+		});
+		//return $http.get("/php/guest_book-get.php");
+	}
+
+	return factory;
 });
