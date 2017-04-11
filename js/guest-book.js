@@ -73,6 +73,7 @@ guestBookApp.controller("GuestBookControler", function($scope, $http, $sce, asyn
 	});
 	$scope.test = async.getCount();
 	console.log($scope.test);
+	
 	// Func
 
 	$scope.showAddRecord = function() {
